@@ -1,0 +1,49 @@
+<ion-tabs>
+  <div class="bgNavbar">
+    <div class="navbar">
+
+      <div class="divContenedorOpcion" routerLink="/tabs/home" (click)="switchTab('tab1')">
+        <div><img src="assets/images/home.png" class="iconSetup"></div>
+        <div>
+          <div>
+            <label class="textoOpciones">Inicio</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="divContenedorOpcion" routerLink="/tabs/expenses" (click)="switchTab('tab2')">
+        <div><img src="assets/images/list.png" class="iconSetup"></div>
+        <div>
+          <div>
+            <label class="textoOpciones">Actividad</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="divContenedorOpcion" routerLink="/tabs/centeractionbutton" (click)="switchTab('tab3')">
+        <div class="btnMore">
+          <img src="assets/images/more.png" class="iconSetup">
+        </div>
+      </div>
+
+      <div class="divContenedorOpcion" routerLink="/tabs/due-manager" (click)="switchTab('tab4')">
+        <div><img src="assets/images/debt_icon.png" class="iconSetup"></div>
+        <div>
+          <div>
+            <label class="textoOpciones">Deudas</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="divContenedorOpcion" routerLink="/tabs/more" (click)="switchTab('tab5')">
+        <div><img src="assets/images/more_options.png" class="iconSetup"></div>
+        <div>
+          <div>
+            <label class="textoOpciones">Más</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-tabs>

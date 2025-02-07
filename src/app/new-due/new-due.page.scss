@@ -1,0 +1,134 @@
+.icnStepper
+{
+    height: 50px;
+    width: 50px;
+    padding: 6px;
+    border-radius: 25px;
+    background-color: var(--color-contenedor-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stepperLine
+{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.stepperText
+{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.amigoItem
+{
+    align-items: center;
+    display:flex;
+    
+}
+
+.icnAmigo
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: var(--color-contenedor-2);
+}
+
+.friendsContainer
+{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.btnAñadirAmigo
+{
+    background-color: var(--color-contenedor-2);
+    height: fit-content;
+    width: fit-content;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 300;
+    border-radius: 15px;
+    word-break:keep-all;
+    display:flex;
+}
+
+.prevnextLine
+{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
+
+.importeInput
+{
+    background-color: var(--color-background); 
+    border: 0px;
+    flex-grow: 1;
+    outline:none;
+    font-size: 50px;
+    font-weight: 600;
+    margin-left: 5px;
+    color: var(--color-acento);
+}
+
+.importeInput:focus
+{
+    background-color: var(--color-background); 
+    border: 0px solid #ff000000;
+    outline:none;
+    caret-color: var(--color-primarytext);
+}
+
+.accountCard
+{
+    display: flex;
+    background-color: var(--color-acento);
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.accountCardSelected
+{
+    display: flex;
+    background-color: var(--color-acento);
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: var(--color-success);
+}
+
+.btnSeleccionCuenta
+{
+    width: 50px; 
+    height: 100%; 
+    background-color: var(--color-contenedor-2);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page4SummaryContainers
+{
+    background-color: var(--color-contenedor-2); 
+    padding: 15px; 
+    border-radius: 20px;
+    margin-top: 10px;
+}

@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true">
+  <div
+    style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
+    <label style="font-size: 25px; font-weight: 600;">Nuevo gasto o ingreso</label>
+
+    <div class="optionsContainer">
+      <div class="optionButton" routerLink="/newexpense">
+        <img style="height: 35px; width: 35px;" src="assets/images/money_recive.svg">
+        <label style="flex-grow: 1; margin-left: 10px; font-size: 16px; color: var(--color-success);"> Nuevo ingreso
+        </label>
+        <img style="height: 35px; width: 35px;" src="/assets/images/more.png">
+      </div>
+
+      <div class="optionButton">
+        <img style="height: 35px; width: 35px;" src="assets/images/money_send.svg">
+        <label style="flex-grow: 1; margin-left: 10px; font-size: 16px; color: var(--color-error);"> Nuevo gasto
+        </label>
+        <img style="height: 35px; width: 35px;" src="/assets/images/more.png">
+      </div>
+    </div>
+
+    <label style="font-size: 25px; font-weight: 600; margin-top: 15px;">Nueva deuda</label>
+
+    <div class="optionsContainer">
+
+      <div class="optionButton" routerLink="/newdue">
+        <img style="height: 35px; width: 35px;" src="assets/images/money_recive.svg"> 
+        <label style="flex-grow: 1; margin-left: 10px; font-size: 16px; color: var(--color-success);"> Me han prestado
+        </label>
+        <img style="height: 35px; width: 35px;" src="/assets/images/more.png">
+      </div>
+
+      <div class="optionButton">
+        <img style="height: 35px; width: 35px;" src="assets/images/money_send.svg">
+        <label style="flex-grow: 1; margin-left: 10px; font-size: 16px; color: var(--color-error);"> He prestado
+        </label>
+        <img style="height: 35px; width: 35px;" src="/assets/images/more.png">
+      </div>
+
+    </div>
+  </div>
+</ion-content>
