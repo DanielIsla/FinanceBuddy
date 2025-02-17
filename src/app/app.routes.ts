@@ -21,4 +21,12 @@ export const routes: Routes = [
     path: 'newexpense',
     loadComponent: () => import('./new-expense/new-expense.page').then( m => m.NewExpensePage)
   },
+  {
+    path: 'friends',
+    loadComponent: () => import('./friends/friends.page').then( m => m.FriendsPage)
+  },
+  {
+    path: 'statistics',
+    loadComponent: () => import('./statistics/statistics.page').then( m => m.StatisticsPage)
+  },
 ];

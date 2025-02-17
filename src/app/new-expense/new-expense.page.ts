@@ -58,7 +58,7 @@ export class NewExpensePage implements OnInit {
 
       case 3:
         {
-          this.headerAction = "Cuenta a añadir";
+          this.headerAction = "Cuenta de cargo";
           this.headerStep = "Paso 3 de 4";
           this.nextBtnText = "Continuar"
           break;

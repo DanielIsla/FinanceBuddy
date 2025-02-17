@@ -36,61 +36,61 @@
         {
         <div style="width: 100%; height: 100%;">
           <div class="categoriesContainer">
-            <div class="div2 categoryBox">
+            <div class="food categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/restaurant.png">
               <label style="font-size: 14px;"> Comida </label>
             </div>
-            <div class="div3 categoryBox">
+            <div class="transport categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/transport.png">
               <label style="font-size: 14px;"> Transporte </label>
             </div>
 
-            <div class="div4 categoryBox">
+            <div class="home categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/home.png">
               <label style="font-size: 14px;"> Hogar </label>
             </div>
 
-            <div class="div5 categoryBox">
+            <div class="leisure categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/leisure.png">
               <label style="font-size: 14px;"> Ocio </label>
             </div>
 
-            <div class="div6 categoryBox">
+            <div class="personal categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/technology.png">
               <label style="font-size: 14px;"> Personal </label>
             </div>
 
-            <div class="div7 categoryBox">
+            <div class="health categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/health.png">
               <label style="font-size: 14px;"> Salud </label>
             </div>
 
-            <div class="div8 categoryBox">
+            <div class="work categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/work.png">
               <label style="font-size: 14px;"> Trabajo </label>
             </div>
 
-            <div class="div9 categoryBox">
+            <div class="trips categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/trips.png">
               <label style="font-size: 14px;"> Viajes </label>
             </div>
 
-            <div class="div10 categoryBox">
+            <div class="family categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/family.png">
               <label style="font-size: 14px;"> Familia </label>
             </div>
 
-            <div class="div11 categoryBox">
+            <div class="supermarket categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/supermarket.png">
               <label style="font-size: 14px;"> Mercado </label>
             </div>
 
-            <div class="div12 categoryBox">
+            <div class="education categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/education.png">
               <label style="font-size: 14px;"> Educación </label>
             </div>
 
-            <div class="div13 categoryBox">
+            <div class="other categoryBox">
               <img style="height: 60px; width: 60px;" src="assets/images/categories/other.png">
               <label style="font-size: 14px;"> Otros </label>
             </div>
@@ -101,18 +101,6 @@
 
         @if (pageNumber == 2)
         {
-        <div class="amigoItem">
-          <div class="icnAmigo"> <img src="assets/images/pfp.webp"></div>
-          <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-            <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Jose Luis </label>
-            <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> +34 678 65 75 85
-            </label>
-          </div>
-          <div class="btnAñadirAmigo" style="color: var(--color-success);">
-            Seleccionado
-            <img style="height: 22px; width: 22px; margin-left: 5px;" src="assets/images/selected.png">
-          </div>
-        </div>
 
         <div style="display: flex; margin-top: 20px;">
           <label style="font-size: 50px; font-weight: 600;">$</label>
@@ -129,8 +117,8 @@
         @if (pageNumber == 3)
         {
 
-        <label style="font-size: 16px;  display: flex; flex-direction: column-reverse;">Elige a que cuenta se añadirá el
-          dinero recibido</label>
+        <label style="font-size: 16px;  display: flex; flex-direction: column-reverse;">Elige a que cuenta se cargará el
+          gasto</label>
 
         <div style="display: flex; margin-top: 20px;">
           <div class="accountCardSelected">
@@ -151,16 +139,11 @@
 
         @if (pageNumber == 4)
         {
-        <div class="page4SummaryContainers">
-          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse;"> Amigo seleccionado </label>
-
-          <div class="amigoItem" style="margin-top: 10px;">
-            <div class="icnAmigo"> <img src="assets/images/pfp.webp"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-              <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Jose Luis </label>
-              <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> +34 678 65 75 85
-              </label>
-            </div>
+        <div class="page4SummaryContainers" style="display: flex; align-items: center;">
+          <img style="height: 50px; width: 50px; background-color: var(--color-acento); padding: 3px; border-radius: 25px;" src="assets/images/categories/restaurant.png" >
+          <div style="display: flex; flex-direction: column; margin-left: 15px;">
+            <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Categoria </label>
+            <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> Restaurantes </label>
           </div>
         </div>
 
@@ -173,9 +156,16 @@
         </div>
 
         <div class="page4SummaryContainers">
-          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Cuenta a añadir
+          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Concepto
+            transacción </label>
+          <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> Este es el
+            concepto de la transacción </label>
+        </div>
+
+        <div class="page4SummaryContainers">
+          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Cuenta de cargo
           </label>
-          <div class="accountCard" style="flex-grow: 0; width: 100%; border-radius: 20px; margin-top: 5px;">
+          <div class="accountCard" style="flex-grow: 0; width: 100%; border-radius: 20px; margin-top: 10px;">
             <div style="display: flex; flex-grow: 1;">
               <label style="flex-grow: 1;"> Revolut </label>
               <img style="height: 25px; width: 25px;" src="assets/images/revolut_icon.png">
@@ -199,12 +189,6 @@
           </div>
         </div>
 
-        <div class="page4SummaryContainers">
-          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Concepto
-            transacción </label>
-          <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> Este es el
-            concepto de la transacción </label>
-        </div>
         }
       </div>
 

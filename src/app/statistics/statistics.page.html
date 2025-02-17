@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true">
+
+  <div style="display: flex; padding: 25px; height: 100%; flex-grow: 1; flex-direction: column; background-color: var(--color-background);">
+    <div style="display:flex; align-items: center;">
+      <div style="background-color: var(--color-contenedor-2); height: 60px; width: 60px; border-radius: 30px; padding: 17px;">
+        <img src="assets/images/back.png">
+      </div>
+    </div>
+
+    <label style="font-size: 25px; font-weight: 600; text-align: center; position: absolute; align-self: center; margin-top: 15px;">Estadísticas</label>
+  
+    <input type="checkbox" id="toggle" class="toggleCheckbox" />
+    <label for="toggle" class='toggleContainer'>
+      <div (click)="pageChangeSpent()">Gastado</div>
+      <div (click)="pageChangeIncome()">Ingresado</div>
+    </label>
+
+    <div class="friendsContainer">
+      @if (pageNumber == 1)
+      {
+
+      }
+
+      @if (pageNumber == 2)
+      {
+        
+      }
+
+    </div>
+  </div>
+</ion-content>

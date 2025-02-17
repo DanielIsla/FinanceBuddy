@@ -70,18 +70,18 @@
     padding-bottom: 30px;
     }
     
-    .div2 { grid-area: 1 / 1 / 2 / 2; }
-    .div3 { grid-area: 1 / 2 / 2 / 3; }
-    .div4 { grid-area: 1 / 3 / 2 / 4; }
-    .div5 { grid-area: 2 / 1 / 3 / 2; }
-    .div6 { grid-area: 2 / 2 / 3 / 3; }
-    .div7 { grid-area: 2 / 3 / 3 / 4; }
-    .div8 { grid-area: 3 / 1 / 4 / 2; }
-    .div9 { grid-area: 3 / 2 / 4 / 3; }
-    .div10 { grid-area: 3 / 3 / 4 / 4; }
-    .div11 { grid-area: 4 / 1 / 5 / 2; }
-    .div12 { grid-area: 4 / 2 / 5 / 3; }
-    .div13 { grid-area: 4 / 3 / 5 / 4; }
+    .food { grid-area: 1 / 1 / 2 / 2; }
+    .transport { grid-area: 1 / 2 / 2 / 3; }
+    .home { grid-area: 1 / 3 / 2 / 4; }
+    .leisure { grid-area: 2 / 1 / 3 / 2; }
+    .personal { grid-area: 2 / 2 / 3 / 3; }
+    .health { grid-area: 2 / 3 / 3 / 4; }
+    .work { grid-area: 3 / 1 / 4 / 2; }
+    .trips { grid-area: 3 / 2 / 4 / 3; }
+    .family { grid-area: 3 / 3 / 4 / 4; }
+    .supermarket { grid-area: 4 / 1 / 5 / 2; }
+    .education { grid-area: 4 / 2 / 5 / 3; }
+    .other { grid-area: 4 / 3 / 5 / 4; }
 
 .btnAñadirAmigo
 {

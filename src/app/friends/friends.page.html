@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true">
+
+  <add-friend></add-friend>
+
+  <div style="display: flex; padding: 25px; height: 100%; flex-grow: 1; flex-direction: column; background-color: var(--color-background);">
+    <div style="display:flex; align-items: center;">
+      <div style="background-color: var(--color-contenedor-2); height: 60px; width: 60px; border-radius: 30px; padding: 17px;">
+        <img src="assets/images/back.png">
+      </div>
+    </div>
+
+    <label style="font-size: 25px; font-weight: 600; text-align: center; position: absolute; align-self: center; margin-top: 15px;">Amigos</label>
+  
+    <input type="checkbox" id="toggle" class="toggleCheckbox" />
+    <label for="toggle" class='toggleContainer'>
+      <div (click)="pageChangeFriends()">Amigos</div>
+      <div (click)="pageChangeRecommended()">Recomendado</div>
+    </label>
+  
+    <div class="friendsContainer">
+      @if (pageNumber == 1)
+      {
+        <div class="amigoItem">
+          <div class="icnAmigo"> <img src="assets/images/pfp.webp"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+            <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Jose Luis </label>
+            <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> +34 678 65 75 85 </label>
+          </div>
+          <img style="height: 30x; width: 30px;" src="assets/images/continue.png">
+        </div>
+      }
+
+      @if (pageNumber == 2)
+      {
+        <div class="amigoItem">
+          <div class="icnAmigo"> <img src="assets/images/pfp.webp"></div>
+          <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+            <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Jose Luis </label>
+            <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> +34 678 65 75 85 </label>
+          </div>
+          <div class="btnAñadirAmigo">
+            Añadir
+            <img style="height: 22px; width: 22px; margin-left: 5px;" src="assets/images/more.png">
+          </div>
+        </div>
+      }
+
+    </div>
+
+    <div style="display: flex; flex-direction: row-reverse;">
+      <div (click)="mostrarPopup()" style=" display: flex; padding: 15px; border-radius: 15px; background-color: var(--color-acento); align-items: center;">
+        <img style="height: 25px; width: 25px; " src="assets/images/more.png">
+        <label style="font-weight: 450; font-size: 16px; text-align: center; margin-left: 5px;"> Nuevo amigo </label>
+      </div>
+    </div>
+  </div>
+</ion-content>
