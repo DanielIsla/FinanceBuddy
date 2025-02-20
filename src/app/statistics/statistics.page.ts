@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
@@ -12,7 +13,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 })
 export class StatisticsPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   pageNumber: number = 1;
 
@@ -29,4 +30,7 @@ export class StatisticsPage implements OnInit {
     this.pageNumber = 2;
   }
 
+  goBack() {
+    this.navCtrl.back();
+  }
 }

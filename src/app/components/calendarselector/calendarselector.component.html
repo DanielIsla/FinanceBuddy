@@ -1,0 +1,35 @@
+<div #popupContainer class="popup-container" (click)="cerrarPopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <!-- Calendario aquí -->
+    <div class="calendar-container">
+      <!-- Selector de Mes -->
+      <div class="calendar-header">
+        <div class="btnMonths" (click)="changeMonth(-1)">
+          <img style="height: 30px; width: 30px; rotate: 180deg;" src="assets/images/continue.png">
+        </div>
+        <span>{{ currentDate.toLocaleString('default', { month: 'long', year: 'numeric' }) }}</span>
+        <div class="btnMonths" (click)="changeMonth(1)">
+          <img style="height: 30px; width: 30px;" src="assets/images/continue.png">
+        </div>
+      </div>
+
+      <!-- Días de la semana -->
+      <div class="calendar-grid">
+        <div class="day-name" *ngFor="let day of ['D', 'L', 'M', 'X', 'J', 'V', 'S']">{{ day }}</div>
+
+        <!-- Generar días del mes -->
+        <div *ngFor="let day of days" class="day" [class.empty]="day.isPreviousMonth || day.isNextMonth"
+          [class.disabled]="day.isFuture" [class.range-start]="!day.isFuture && isRangeStart(day.day)"
+          [class.range-end]="!day.isFuture && isRangeEnd(day.day)"
+          [class.in-range]="!day.isFuture && isInRange(day.day)" (click)="!day.isFuture && selectDate(day.day)">
+          {{ day.day }}
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <div style="background-color: var(--color-error); height: 50px; width: 50px; display: flex; align-items: center; justify-content: center; border-radius: 25px;" (click)="cerrarPopup()"> <img style="height: 35px; width: 35px; rotate: 45deg;" src="assets/images/more.png"> </div>
+        <div style="background-color: var(--color-success); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; " (click)="cerrarPopup()"> Aceptar </div>
+      </div>
+    </div>
+  </div>
+</div>

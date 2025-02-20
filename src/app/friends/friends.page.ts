@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { IonicModule } from '@ionic/angular';
 import { PopupComponent } from '../components/addfriendpopup/addfriendpopup.component';
@@ -14,7 +15,7 @@ import { PopupComponent } from '../components/addfriendpopup/addfriendpopup.comp
 })
 export class FriendsPage implements OnInit 
 {
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   pageNumber: number = 1;
 
@@ -36,5 +37,9 @@ export class FriendsPage implements OnInit
 
   mostrarPopup() {
     this.popup.abrirPopup();
+  }
+
+  goBack() {
+    this.navCtrl.back();
   }
 }

@@ -1,4 +1,6 @@
 <ion-content [fullscreen]="true">
+  <app-calendarselector #calendarselector></app-calendarselector>
+
   <div
     style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
     <label style="font-size: 25px; font-weight: 600;">Deudas</label>
@@ -8,6 +10,17 @@
       <div>Debes</div>
       <div>Te deben</div>
     </label>
+
+    <div class="selectStartEndDate">
+      <div>
+        <div (click)="abrirPopup()" style="background-color: var(--color-contenedor-2); margin-top:3px; width: fit-content; padding: 4px; display: flex; align-items: center; border-radius: 15px;">
+          <img style="width: 15px; height: 15px; rotate: 270deg;" src="assets/images/back.png">
+          <label style="padding-left: 5px; padding-right: 5px; font-size: 14px; color: var;"> 16/04/2024</label>
+          <img style="width: 35px; height: 35px;"  src="assets/images/calendar.png">
+        </div>
+      </div>
+    </div>
+    
 
   </div>
 </ion-content>
