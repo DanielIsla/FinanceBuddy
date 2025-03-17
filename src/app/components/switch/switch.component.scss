@@ -1,0 +1,34 @@
+.switch-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .switch {
+    width: var(--size, 50px);
+    height: calc(var(--size, 50px) / 2);
+    background-color: var(--off-color, #ccc);
+    border-radius: 20px;
+    position: relative;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .switch-handle {
+    width: calc(var(--size, 40px) / 2);
+    height: calc(var(--size, 40px) / 2);
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .switch.checked {
+    background-color: var(--on-color, #4caf50);
+  }
+  
+  .switch.checked .switch-handle {
+    transform: translateX(100%);
+  }
+  

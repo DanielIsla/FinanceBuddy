@@ -1,5 +1,4 @@
-.icnStepper
-{
+.icnStepper {
     height: 50px;
     width: 50px;
     padding: 6px;
@@ -11,52 +10,52 @@
     align-items: center;
 }
 
-.stepperLine
-{
+.stepperLine {
     margin-top: 25px;
     display: flex;
     align-items: center;
 }
 
-.stepperText
-{
+.stepperText {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
 }
 
-.amigoItem
-{
+.amigoItem {
     align-items: center;
-    display:flex;
-    
+    display: flex;
+
 }
 
-.icnAmigo
-{
+.icnAmigo {
     height: 50px;
     width: 50px;
     border-radius: 25px;
     background-color: var(--color-contenedor-2);
 }
 
-.friendsContainer
-{
+.friendsContainer {
     display: flex;
     flex-direction: column;
     gap: 25px;
     margin-top: 25px;
 }
 
-.categoryBox
-{
+.categoryBox {
     background-color: var(--color-contenedor-2);
     border-radius: 20px;
     padding: 10px;
+    border: 4px solid;
+    transition: transform 0.2s ease-in-out, border-color 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.categoryBox:hover {
+    transform: scale(1.1);
 }
 
 .categoriesContainer {
@@ -68,23 +67,69 @@
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     padding-bottom: 30px;
-    }
-    
-    .food { grid-area: 1 / 1 / 2 / 2; }
-    .transport { grid-area: 1 / 2 / 2 / 3; }
-    .home { grid-area: 1 / 3 / 2 / 4; }
-    .leisure { grid-area: 2 / 1 / 3 / 2; }
-    .personal { grid-area: 2 / 2 / 3 / 3; }
-    .health { grid-area: 2 / 3 / 3 / 4; }
-    .work { grid-area: 3 / 1 / 4 / 2; }
-    .trips { grid-area: 3 / 2 / 4 / 3; }
-    .family { grid-area: 3 / 3 / 4 / 4; }
-    .supermarket { grid-area: 4 / 1 / 5 / 2; }
-    .education { grid-area: 4 / 2 / 5 / 3; }
-    .other { grid-area: 4 / 3 / 5 / 4; }
+}
 
-.btnAñadirAmigo
-{
+.food {
+    grid-area: 1 / 1 / 2 / 2;
+    border-color: var(--color-comida);
+}
+
+.transport {
+    grid-area: 1 / 2 / 2 / 3;
+    border-color: var(--color-transporte);
+}
+
+.home {
+    grid-area: 1 / 3 / 2 / 4;
+    border-color: var(--color-hogar);
+}
+
+.leisure {
+    grid-area: 2 / 1 / 3 / 2;
+    border-color: var(--color-ocio);
+}
+
+.personal {
+    grid-area: 2 / 2 / 3 / 3;
+    border-color: var(--color-personal);
+}
+
+.health {
+    grid-area: 2 / 3 / 3 / 4;
+    border-color: var(--color-salud);
+}
+
+.work {
+    grid-area: 3 / 1 / 4 / 2;
+    border-color: var(--color-trabajo);
+}
+
+.trips {
+    grid-area: 3 / 2 / 4 / 3;
+    border-color: var(--color-viajes);
+}
+
+.family {
+    grid-area: 3 / 3 / 4 / 4;
+    border-color: var(--color-familia);
+}
+
+.supermarket {
+    grid-area: 4 / 1 / 5 / 2;
+    border-color: var(--color-mercado);
+}
+
+.education {
+    grid-area: 4 / 2 / 5 / 3;
+    border-color: var(--color-educacion);
+}
+
+.other {
+    grid-area: 4 / 3 / 5 / 4;
+    border-color: var(--color-otros);
+}
+
+.btnAñadirAmigo {
     background-color: var(--color-contenedor-2);
     height: fit-content;
     width: fit-content;
@@ -92,39 +137,35 @@
     padding: 10px;
     font-weight: 300;
     border-radius: 15px;
-    word-break:keep-all;
-    display:flex;
+    word-break: keep-all;
+    display: flex;
 }
 
-.prevnextLine
-{
+.prevnextLine {
     display: flex;
     flex-direction: row-reverse;
     gap: 10px;
 }
 
-.importeInput
-{
-    background-color: var(--color-background); 
+.importeInput {
+    background-color: var(--color-background);
     border: 0px;
     flex-grow: 1;
-    outline:none;
+    outline: none;
     font-size: 50px;
     font-weight: 600;
     margin-left: 5px;
     color: var(--color-acento);
 }
 
-.importeInput:focus
-{
-    background-color: var(--color-background); 
+.importeInput:focus {
+    background-color: var(--color-background);
     border: 0px solid #ff000000;
-    outline:none;
+    outline: none;
     caret-color: var(--color-primarytext);
 }
 
-.accountCard
-{
+.accountCard {
     display: flex;
     background-color: var(--color-acento);
     flex-direction: column;
@@ -134,8 +175,7 @@
     border-radius: 20px;
 }
 
-.accountCardSelected
-{
+.accountCardSelected {
     display: flex;
     background-color: var(--color-acento);
     flex-direction: column;
@@ -147,10 +187,9 @@
     border-color: var(--color-success);
 }
 
-.btnSeleccionCuenta
-{
-    width: 50px; 
-    height: 100%; 
+.btnSeleccionCuenta {
+    width: 50px;
+    height: 100%;
     background-color: var(--color-contenedor-2);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -160,10 +199,28 @@
     align-items: center;
 }
 
-.page4SummaryContainers
-{
-    background-color: var(--color-contenedor-2); 
-    padding: 15px; 
+.page4SummaryContainers {
+    background-color: var(--color-contenedor-2);
+    padding: 15px;
     border-radius: 20px;
     margin-top: 10px;
+}
+
+.keyboard-visible {
+    padding-bottom: 300px;
+    /* Ajusta este valor según el tamaño del teclado */
+}
+
+.keyboard-visible .content-wrapper {
+    padding-bottom: 300px;
+    /* Ajusta el valor según el tamaño del teclado */
+    transition: padding-bottom 0.3s ease-in-out;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+    /* Asegúrate de que la página sea desplazable */
 }

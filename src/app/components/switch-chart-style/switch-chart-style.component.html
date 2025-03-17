@@ -1,0 +1,14 @@
+<div 
+  class="switch-container" 
+  (click)="switchToggle()"
+  [style.--size]="size"
+  [style.--on-color]="onColor"
+  [style.--off-color]="offColor"
+>
+  <div class="switch" [class.checked]="checked">
+    <div class="switch-handle">
+      <img [src]="switchHandleImage">
+    </div>
+  </div>
+</div>
+

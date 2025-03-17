@@ -1,0 +1,47 @@
+/* Puedes agregar estos estilos en tu archivo .scss */
+
+.bar {
+    transition: fill 0.3s ease;
+  }
+  
+  .bar:hover {
+    fill: #333;  /* Cambiar el color al pasar el mouse */
+  }
+  
+  .axis-label {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .scale {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .y-axis path,
+  .y-axis line {
+    shape-rendering: crispEdges;
+    stroke: #aaaaaa00;;
+  }
+  
+  .x-axis path,
+  
+  .x-axis line 
+  {
+    shape-rendering: crispEdges;
+    stroke: #aaaaaa00;
+  }
+
+  /* bar-chart.component.scss */
+:host {
+    display: block;
+    width: 100%;
+    height: 400px;  /* Asegúrate de que tenga una altura definida */
+  }
+  
+  #chartContainer {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  

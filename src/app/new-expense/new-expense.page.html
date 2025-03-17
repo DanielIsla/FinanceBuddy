@@ -109,7 +109,7 @@
 
         <label
           style="font-size: 20px; margin-top: 25px; font-weight: 600; flex-grow: 1; display: flex; flex-direction: column-reverse;">Concepto</label>
-        <input
+        <input class="reactiveField"
           style="width: 100%; height: 60px; margin-top: 10px; margin-bottom: 25px; padding: 10px; outline:none; border: 0px; background-color: var(--color-contenedor-2); border-radius: 20px;"
           type="text" id="fname" name="fname" size="9">
         }
@@ -193,9 +193,9 @@
       </div>
 
       <div class="prevnextLine">
-        <div style="padding: 10px; border-radius: 15px; background-color: var(--color-acento);" (click)="nextPage()">
+        <div class="reactiveBtn" style="padding: 10px; border-radius: 15px; background-color: var(--color-acento);" (click)="nextPage()">
           {{nextBtnText}} </div>
-        <div style="padding: 10px; display: flex; border-radius: 15px; background-color: var(--color-acento);"
+        <div class="reactiveBtn" style="padding: 10px; display: flex; border-radius: 15px; background-color: var(--color-acento);"
           (click)="prevPage()"> <img height="22px" width="22px" src="assets/images/back.png"> </div>
       </div>
 

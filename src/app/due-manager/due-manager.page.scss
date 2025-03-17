@@ -60,6 +60,7 @@
 
 .selectStartEndDate{
 display: flex;
+flex-direction: row-reverse;
 gap: 20px;
 margin-top: 10px;
 }

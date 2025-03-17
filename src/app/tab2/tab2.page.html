@@ -1,33 +1,44 @@
 <ion-content [fullscreen]="true">
-  <div style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
+  <app-calendarselector #calendarselector></app-calendarselector>
+
+  <div
+    style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
     <label style="font-size: 25px; font-weight: 600;">Historial de actividad</label>
-  
-    <div class="timeFilter">
-      <div class="btnTime">Hoy</div>
-      <div class="btnTime">Ayer</div>
-      <div class="btnTime">Últimos 7 dias</div>
-      <div class="btnTime">Últimos 30 dias</div>
-      <div class="btnTime">Últimos 90 dias</div>
-      <div class="btnTime">Histórico</div>
+
+    <app-switch-data [textLeft]="'Gastado'" [textRight]="'Ingresado'"></app-switch-data>
+
+    <div class="selectStartEndDate">
+      <div>
+        <div (click)="abrirPopup()"
+          style="margin-top:3px; width: fit-content; padding: 4px; display: flex; align-items: center; border-radius: 15px;">
+          <img style="width: 15px; height: 15px; rotate: 270deg;" src="assets/images/back.png">
+          <label style=" font-size: 14px; color: var;"></label>
+          <img style="width: 35px; height: 35px;" src="assets/images/calendar.png">
+        </div>
+      </div>
+
+      <div style="flex-grow: 1; display: flex; align-items: center;">
+        <label style="font-size: 20px; font-weight: 600; height: fit-content;"> Últimos 7 dias </label>
+      </div>
     </div>
-  
+
     <div class="lastTransacctions">
       <div class="transactionItem">
-          <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-          <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-              <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-              <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-          </div>
-          <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+        <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+          <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+          <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
+        </div>
+        <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
       </div>
-    
+
       <div class="transactionItem">
-          <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-          <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-              <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-              <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-          </div>
-          <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+        <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+        <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+          <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+          <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
+        </div>
+        <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
       </div>
     </div>
   </div>

@@ -47,4 +47,26 @@
 
 body {
     background-color: var(--color-background);
+    color: white;
 }
+
+.reactiveBtn {
+    cursor: pointer;
+  user-select: none;
+    transition: transform 0.15s ease-out;
+}
+
+.reactiveBtn:active {
+    transform: scale(1.1, 1);
+}
+
+.reactiveField {
+    cursor: pointer;
+  user-select: none;
+    transition: transform 0.15s ease-out;
+}
+
+.reactiveField:active {
+    transform: scale(1.1, 1);
+}
+

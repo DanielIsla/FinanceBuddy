@@ -1,0 +1,37 @@
+.switch-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .switch {
+    width: var(--size, 40px);
+    height: calc(var(--size, 40px) / 2);
+    background-color: var(--color-contenedor-2);
+    border-radius: 20px;
+    position: relative;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .switch-handle {
+    width: calc(var(--size, 40px) / 2);
+    height: calc(var(--size, 40px) / 2);
+    background-color: var(--color-acento);
+    border-radius: 50%;
+    padding: 2px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .switch.checked {
+    background-color: var(--color-contenedor-2);
+  }
+  
+  .switch.checked .switch-handle {
+    transform: translateX(100%);
+  }
+  

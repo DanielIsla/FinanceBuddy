@@ -1,0 +1,6 @@
+<input type="checkbox" id="toggle" class="toggleCheckbox" />
+<label for="toggle" class='toggleContainer'>
+  <!-- Agrega la prevención de propagación del evento en los clics en el texto -->
+  <div (click)="onOptionClick($event, 'left')">{{ textLeft }}</div>
+  <div (click)="onOptionClick($event, 'right')">{{ textRight }}</div>
+</label>

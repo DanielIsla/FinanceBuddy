@@ -1,17 +1,44 @@
 :root {
 
-    --color-background: rgb(3, 8, 13);
-    --color-contenedor: rgb(3, 7, 12);
-    --color-contenedor-2: rgb(16, 20, 30);
-  
-    --color-acento2: rgb(249, 127, 80);
-    --color-acento: rgb(65, 133, 255);
-    --color-acento-shadow: rgba(114, 163, 255, 0.5);
-  
-    --color-success: rgb(61, 212, 81);
-    --color-error: rgb(209, 49, 49);
-  
-    --color-primarytext: rgb(255, 255, 255);
-    --color-secondarytext: rgb(153, 153, 153);
-    --color-secondarytext-container: rgb(226, 226, 226);
-  }
+  --color-background: rgb(3, 8, 13);
+  --color-contenedor: rgb(3, 7, 12);
+  --color-contenedor-2: rgb(16, 20, 30);
+
+  --color-acento2: rgb(249, 127, 80);
+  --color-acento: rgb(65, 133, 255);
+  --color-acento-shadow: rgba(114, 163, 255, 0.5);
+
+  --color-success: rgb(61, 212, 81);
+  --color-error: rgb(209, 49, 49);
+
+  --color-primarytext: rgb(255, 255, 255);
+  --color-secondarytext: rgb(153, 153, 153);
+  --color-secondarytext-container: rgb(226, 226, 226);
+
+
+  --color-comida: #ff9800;
+  /* Naranja */
+  --color-transporte: #2196f3;
+  /* Azul */
+  --color-hogar: #795548;
+  /* Marrón */
+  --color-ocio: #9c27b0;
+  /* Morado */
+  --color-personal: #e91e63;
+  /* Rosa */
+  --color-salud: #4caf50;
+  /* Verde */
+  --color-trabajo: #212121;
+  /* Negro */
+  --color-viajes: #009688;
+  /* Turquesa */
+  --color-familia: #f44336;
+  /* Rojo */
+  --color-mercado: #ffeb3b;
+  /* Amarillo */
+  --color-educacion: #3f51b5;
+  /* Azul oscuro */
+  --color-otros: #9e9e9e;
+  /* Gris */
+
+}

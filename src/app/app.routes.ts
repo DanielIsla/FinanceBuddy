@@ -29,4 +29,13 @@ export const routes: Routes = [
     path: 'statistics',
     loadComponent: () => import('./statistics/statistics.page').then( m => m.StatisticsPage)
   },
+
+  {
+    path: 'accounts',
+    loadComponent: () => import('./accounts/accounts.page').then( m => m.AccountsPage)
+  },
+  {
+    path: 'accounts/new-account',
+    loadComponent: () => import('./new-account/new-account.page').then( m => m.NewAccountPage)
+  },
 ];
