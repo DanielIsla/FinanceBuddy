@@ -14,6 +14,44 @@
       cuenta</label>
 
     <div class="textboxContainer">
+
+      <div
+        style="background-color: var(--color-acento); height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600;">
+        Seleccionar banco </div>
+
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <label
+            style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">Nombre
+            de cuenta</label>
+          <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9">
+        </div>
+  
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <label
+            style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">IBAN
+            de cuenta</label>
+          <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9">
+        </div>
+
+        <label
+          style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px; margin-bottom: 10px;">Moneda *</label>
+      <app-dropdown [options]="currencyOptions" placeholder="Selecciona una moneda"
+        (selected)="onCurrencySelected($event)"></app-dropdown>
+
+      <div style="width: 100%; display: flex; flex-direction: column; align-items: center; ">
+        <label
+          style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px; margin-bottom: 10px;">Balance
+          inicial *</label>
+        <div style="display: flex; flex-direction: row; width: 100%; height: 60px;">
+          <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9"
+            style="width: 100%; margin-top: 0px;">
+          <img src="assets/images/currency/EUR_icon.png"
+            style="height: 100%; width: fit-content; padding-top: 10px; padding-bottom: 10px;">
+        </div>
+      </div>
+
+      
+
     </div>
 
     <!-- Botones cerrar y aceptar -->

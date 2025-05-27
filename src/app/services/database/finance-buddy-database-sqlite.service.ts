@@ -36,58 +36,60 @@ export class DatabaseService {
   async createTables() {
     try {
       await this.executeSql(`
-        CREATE TABLE IF NOT EXISTS Amigos (
-          ID INTEGER PRIMARY KEY AUTOINCREMENT,
-          Nombre_apellidos TEXT NOT NULL,
-          E_mail TEXT UNIQUE,
-          Telefono TEXT
-        );
-      `);
+            CREATE TABLE IF NOT EXISTS Friends (
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                FullName TEXT NOT NULL,
+                Email TEXT UNIQUE,
+                Phone TEXT
+            );
+        `);
       await this.executeSql(`
-        CREATE TABLE IF NOT EXISTS Transacciones (
-          ID INTEGER PRIMARY KEY AUTOINCREMENT,
-          Categoria_base TEXT NOT NULL,
-          Categoria_concreta TEXT,
-          Importe REAL NOT NULL,
-          Concepto TEXT,
-          ID_cuenta_cargo INTEGER,
-          Fecha TEXT DEFAULT (datetime('now', 'localtime')),
-          FOREIGN KEY (ID_cuenta_cargo) REFERENCES Cuentas(ID)
-        );
-      `);
+            CREATE TABLE IF NOT EXISTS Transactions (
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                BaseCategory TEXT NOT NULL,
+                SpecificCategory TEXT,
+                Amount REAL NOT NULL,
+                Concept TEXT,
+                AccountID INTEGER,
+                Date TEXT DEFAULT (datetime('now', 'localtime')),
+                FOREIGN KEY (AccountID) REFERENCES Accounts(ID)
+            );
+        `);
       await this.executeSql(`
-        CREATE TABLE IF NOT EXISTS Deudas (
-          ID INTEGER PRIMARY KEY AUTOINCREMENT,
-          Amigos_vinculados TEXT NOT NULL,
-          Categoria_base TEXT NOT NULL,
-          Categoria_concreta TEXT,
-          Importe REAL NOT NULL,
-          Concepto TEXT,
-          ID_cuenta_cargo INTEGER,
-          Fecha TEXT DEFAULT (datetime('now', 'localtime')),
-          FOREIGN KEY (ID_cuenta_cargo) REFERENCES Cuentas(ID)
-        );
-      `);
+            CREATE TABLE IF NOT EXISTS Debts (
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                LinkedFriends TEXT NOT NULL,
+                BaseCategory TEXT NOT NULL,
+                SpecificCategory TEXT,
+                Amount REAL NOT NULL,
+                Concept TEXT,
+                AccountID INTEGER,
+                Date TEXT DEFAULT (datetime('now', 'localtime')),
+                FOREIGN KEY (AccountID) REFERENCES Accounts(ID)
+            );
+        `);
       await this.executeSql(`
-        CREATE TABLE IF NOT EXISTS Pagos_Deudas (
-          ID INTEGER PRIMARY KEY AUTOINCREMENT,
-          ID_deuda INTEGER,
-          ID_cuenta_pago INTEGER,
-          Importe_pagado REAL NOT NULL,
-          Fecha_pago TEXT DEFAULT (datetime('now', 'localtime')),
-          FOREIGN KEY (ID_deuda) REFERENCES Deudas(ID),
-          FOREIGN KEY (ID_cuenta_pago) REFERENCES Cuentas(ID)
-        );
-      `);
+            CREATE TABLE IF NOT EXISTS DebtPayments (
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                DebtID INTEGER,
+                PaymentAccountID INTEGER,
+                AmountPaid REAL NOT NULL,
+                PaymentDate TEXT DEFAULT (datetime('now', 'localtime')),
+                FOREIGN KEY (DebtID) REFERENCES Debts(ID),
+                FOREIGN KEY (PaymentAccountID) REFERENCES Accounts(ID)
+            );
+        `);
       await this.executeSql(`
-        CREATE TABLE IF NOT EXISTS Cuentas (
-          ID INTEGER PRIMARY KEY AUTOINCREMENT,
-          Nombre_cuenta TEXT NOT NULL,
-          Tipo_cuenta TEXT,
-          Saldo REAL DEFAULT 0.0,
-          Descripcion TEXT
-        );
-      `);
+            CREATE TABLE IF NOT EXISTS Accounts (
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                AccountName TEXT NOT NULL,
+                AccountType TEXT,
+                IBAN TEXT,
+                Currency TEXT,
+                Balance REAL DEFAULT 0.0,
+                Bank_tint TEXT
+            );
+        `);
     } catch (error) {
       console.error('Error creating tables:', error);
     }
@@ -104,8 +106,7 @@ export class DatabaseService {
     }
   }
 
-  async addFriend(nombre: string, email: string, telefono: string)
-  {
+  async addFriend(nombre: string, email: string, telefono: string) {
     const sql = 'INSERT INTO Amigos (Nombre_apellidos, E_mail, Telefono) VALUES (?, ?, ?)';
     await this.executeSql(sql)
   }

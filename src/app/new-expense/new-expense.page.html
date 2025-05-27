@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content fullscreen="false">
   <div
     style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
     <div style="display: flex; flex-grow: 1; flex-direction: column;">
@@ -27,79 +27,43 @@
           style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
         <div [ngStyle]="{'background-color': pageNumber >= 4 ? 'var(--color-acento)' : 'gray'}"
           style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
+        <div [ngStyle]="{'background-color': pageNumber >= 5 ? 'var(--color-acento)' : 'gray'}"
+          style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
       </div>
 
 
       <div style="height: 100%; margin-top: 25px; display: flex; flex-direction: column;">
 
+        <!-- Select the expense category -->
         @if (pageNumber == 1)
         {
         <div style="width: 100%; height: 100%;">
           <div class="categoriesContainer">
-            <div class="food categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/restaurant.png">
-              <label style="font-size: 14px;"> Comida </label>
-            </div>
-            <div class="transport categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/transport.png">
-              <label style="font-size: 14px;"> Transporte </label>
-            </div>
-
-            <div class="home categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/home.png">
-              <label style="font-size: 14px;"> Hogar </label>
-            </div>
-
-            <div class="leisure categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/leisure.png">
-              <label style="font-size: 14px;"> Ocio </label>
-            </div>
-
-            <div class="personal categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/technology.png">
-              <label style="font-size: 14px;"> Personal </label>
-            </div>
-
-            <div class="health categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/health.png">
-              <label style="font-size: 14px;"> Salud </label>
-            </div>
-
-            <div class="work categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/work.png">
-              <label style="font-size: 14px;"> Trabajo </label>
-            </div>
-
-            <div class="trips categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/trips.png">
-              <label style="font-size: 14px;"> Viajes </label>
-            </div>
-
-            <div class="family categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/family.png">
-              <label style="font-size: 14px;"> Familia </label>
-            </div>
-
-            <div class="supermarket categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/supermarket.png">
-              <label style="font-size: 14px;"> Mercado </label>
-            </div>
-
-            <div class="education categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/education.png">
-              <label style="font-size: 14px;"> Educación </label>
-            </div>
-
-            <div class="other categoryBox">
-              <img style="height: 60px; width: 60px;" src="assets/images/categories/other.png">
-              <label style="font-size: 14px;"> Otros </label>
-            </div>
-
+            <ng-container *ngFor="let category of categories">
+              <div *ngIf="category.parentCat == category.subCat" class="{{category.styleClass}} categoryBox" (click)="selectCategory(category.parentCat)">
+                <img style="height: 60px; width: 60px;" [src]="category.iconPath">
+                <label style="font-size: 14px;">{{ category.textToShow }}</label>
+              </div>
+            </ng-container>
           </div>
         </div>
         }
 
         @if (pageNumber == 2)
+        {
+          <div style="width: 100%; height: 100%;">
+          <div class="categoriesContainer">
+            <ng-container *ngFor="let category of categories">
+              <div *ngIf="category.parentCat == selectedCategory && category.parentCat != category.subCat" class="{{category.parentCat}} categoryBox" (click)="selectSubCategory(category.subCat)">
+                <img style="height: 60px; width: 60px;" [src]="category.iconPath">
+                <label style="font-size: 14px;">{{ category.textToShow }}</label>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        }
+
+        @if (pageNumber == 3)
         {
 
         <div style="display: flex; margin-top: 20px;">
@@ -114,7 +78,7 @@
           type="text" id="fname" name="fname" size="9">
         }
 
-        @if (pageNumber == 3)
+        @if (pageNumber == 4)
         {
 
         <label style="font-size: 16px;  display: flex; flex-direction: column-reverse;">Elige a que cuenta se cargará el
@@ -137,13 +101,16 @@
         </div>
         }
 
-        @if (pageNumber == 4)
+        @if (pageNumber == 5)
         {
         <div class="page4SummaryContainers" style="display: flex; align-items: center;">
-          <img style="height: 50px; width: 50px; background-color: var(--color-acento); padding: 3px; border-radius: 25px;" src="assets/images/categories/restaurant.png" >
+          <img
+            style="height: 50px; width: 50px; background-color: var(--color-acento); padding: 3px; border-radius: 25px;"
+            src="assets/images/categories/restaurant.png">
           <div style="display: flex; flex-direction: column; margin-left: 15px;">
             <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Categoria </label>
-            <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> Restaurantes </label>
+            <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;">
+              Restaurantes </label>
           </div>
         </div>
 
@@ -193,9 +160,11 @@
       </div>
 
       <div class="prevnextLine">
-        <div class="reactiveBtn" style="padding: 10px; border-radius: 15px; background-color: var(--color-acento);" (click)="nextPage()">
+        <div *ngIf="pageNumber != 1 && pageNumber != 2" class="reactiveBtn" style="padding: 10px; border-radius: 15px; background-color: var(--color-acento);"
+          (click)="nextPage()">
           {{nextBtnText}} </div>
-        <div class="reactiveBtn" style="padding: 10px; display: flex; border-radius: 15px; background-color: var(--color-acento);"
+        <div class="reactiveBtn"
+          style="padding: 10px; display: flex; border-radius: 15px; background-color: var(--color-acento);"
           (click)="prevPage()"> <img height="22px" width="22px" src="assets/images/back.png"> </div>
       </div>
 

@@ -1,0 +1,28 @@
+<div class="dropdown-container">
+  <!-- Botón para abrir el dropdown -->
+  <button class="dropdown-button" (click)="toggleDropdown()">
+    <span *ngIf="selectedOption; else placeholderText" style="align-content: center; display: flex; align-items: center; flex-grow: 1;">
+      <img [src]="selectedOption?.image" class="dropdown-image" alt="Icono" />
+      {{ selectedOption?.label }}
+    </span>
+  </button>
+
+  <!-- Placeholder cuando no hay opción seleccionada -->
+  <ng-template #placeholderText>
+    <img src="assets/images/back.png" style="height: 20px; width: 20px; rotate: 270deg;">
+    <span class="dropdown-placeholder">{{ placeholder }}</span>
+  </ng-template>
+
+  <!-- Lista desplegable de opciones -->
+  <ul *ngIf="isOpen" class="dropdown-menu">
+    <li 
+      *ngFor="let option of options"
+      (click)="selectOption(option)"
+      class="dropdown-item"
+    >
+      <img [src]="option.image" class="dropdown-image" alt="Icono" />
+      <label style="flex-grow: 1;">{{ option.label }}</label>
+      
+    </li>
+  </ul>
+</div>

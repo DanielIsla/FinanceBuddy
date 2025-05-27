@@ -1,153 +1,169 @@
-<ion-content [fullscreen]="true">
-  <div style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background);">
-
-    <div class="welcomeHeader">
-        <img src="assets/images/pfp.webp" style="height: 50px; width: 50px;">
-        <div class="headerData">
-            <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> Hola, Daniel </label>
-            <label style="font-size: 12px; color: var(--color-secondarytext);"> daniel.isla.martinez.gmail.com </label>
+<ion-content fullscreen="false">
+    <div
+        style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background);">
+        <div class="welcomeHeader">
+            <img src="assets/images/pfp.webp" style="height: 50px; width: 50px;">
+            <div class="headerData">
+                <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> Hola, Daniel
+                </label>
+                <label style="font-size: 12px; color: var(--color-secondarytext);"> daniel.isla.martinez.gmail.com
+                </label>
+            </div>
+            <div class="settingsBtn">
+                <img src="assets/images/settings.png">
+            </div>
         </div>
-        <div class="settingsBtn">
-            <img src="assets/images/settings.png">
+
+        <div class="balanceLine">
+            <div class="balanceBox">
+                <label style="font-size: 12px; color: var(--color-secondarytext);"> Balance total </label>
+                <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $336,56 </label>
+            </div>
+
+            <div class="balanceBox">
+                <label style="font-size: 12px; color: var(--color-secondarytext);"> Gastos mensuales </label>
+                <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $54,92 </label>
+            </div>
+        </div>
+
+        <div style="height: 25px;"></div>
+
+        <div class="balanceLine">
+            <div class="balanceBox">
+                <label style="font-size: 12px; color: var(--color-secondarytext);"> Cantidad a deber </label>
+                <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $25.56 </label>
+            </div>
+
+            <div class="balanceBox">
+                <label style="font-size: 12px; color: var(--color-secondarytext);"> Cantidad que te deben </label>
+                <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $5.25 </label>
+            </div>
+        </div>
+
+        <div class="accountCard">
+            <div style="display: flex; flex-grow: 1;">
+                <label style="flex-grow: 1;"> Revolut </label>
+                <img style="height: 25px; width: 25px;" src="assets/images/revolut_icon.png">
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 5px; ">
+                <label style="font-size: 12px; color: var(--color-secondarytext-container);"> Saldo disponible </label>
+                <label style="font-size: 28px; color: var(--color-primarytext); font-weight: 600;"> $54,92 </label>
+            </div>
+        </div>
+
+        <!--Opciones rápidas-->
+        <div style="display: flex; padding-right: 50px; padding-left: 50px;  padding-bottom: 20px;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div
+                    style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;">
+                    <img src="assets/images/friends.png"></div>
+                <label style="text-align: center; font-size: 14px; margin-top: 5px;">Amigos</label>
+            </div>
+
+            <div
+                style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-grow: 1;">
+                <div
+                    style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;">
+                    <img src="assets/images/statistics.png"></div>
+                <label style="text-align: center; font-size: 14px; margin-top: 5px;">Estadisticas</label>
+            </div>
+
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div
+                    style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;">
+                    <img src="assets/images/wallet.png"></div>
+                <label style="text-align: center; font-size: 14px; margin-top: 5px;">Cuentas</label>
+            </div>
+
+        </div>
+
+
+        <div style="display: flex; margin-right: 25px; margin-left: 25px; margin-bottom: 20px;">
+            <label style="font-weight: 450; font-size: 18px; flex-grow: 1;"> Transacciones recientes</label>
+            <label style="font-weight: 450; font-size: 18px; color: var(--color-acento);"> Ver todo</label>
+        </div>
+
+        <div class="lastTransacctions">
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
+
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
+
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
+
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
+
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
+
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">s
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
+
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
+
+            <div class="transactionItem">
+                <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
+                    <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
+                    <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene
+                        2025</label>
+                </div>
+                <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
+            </div>
         </div>
     </div>
-
-    <div class="balanceLine">
-        <div class="balanceBox">
-            <label style="font-size: 12px; color: var(--color-secondarytext);"> Balance total </label>
-            <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $336,56 </label>
-        </div>
-
-        <div class="balanceBox">
-            <label style="font-size: 12px; color: var(--color-secondarytext);"> Gastos mensuales </label>
-            <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $54,92 </label>
-        </div>
-    </div>
-
-    <div style="height: 25px;"></div>
-
-    <div class="balanceLine">
-        <div class="balanceBox">
-            <label style="font-size: 12px; color: var(--color-secondarytext);"> Cantidad a deber </label>
-            <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $25.56 </label>
-        </div>
-
-        <div class="balanceBox">
-            <label style="font-size: 12px; color: var(--color-secondarytext);"> Cantidad que te deben </label>
-            <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> $5.25 </label>
-        </div>
-    </div>
-
-    <div class="accountCard">
-        <div style="display: flex; flex-grow: 1;">
-            <label style="flex-grow: 1;"> Revolut </label>
-            <img style="height: 25px; width: 25px;" src="assets/images/revolut_icon.png">
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 5px; ">
-            <label style="font-size: 12px; color: var(--color-secondarytext-container);"> Saldo disponible </label>
-            <label style="font-size: 28px; color: var(--color-primarytext); font-weight: 600;"> $54,92 </label>
-        </div>
-    </div>
-
-    <!--Opciones rápidas-->
-    <div style="display: flex; padding-right: 50px; padding-left: 50px;  padding-bottom: 20px;">
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <div style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;"> <img src="assets/images/friends.png"></div>
-            <label style="text-align: center; font-size: 14px; margin-top: 5px;">Amigos</label>
-        </div>
-
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-grow: 1;">
-            <div style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;"> <img src="assets/images/statistics.png"></div>
-            <label style="text-align: center; font-size: 14px; margin-top: 5px;">Estadisticas</label>
-        </div>
-
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <div style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;"> <img src="assets/images/wallet.png"></div>
-            <label style="text-align: center; font-size: 14px; margin-top: 5px;">Cuentas</label>
-        </div>
-
-    </div>
-
-
-    <div style="display: flex; margin-right: 25px; margin-left: 25px; margin-bottom: 20px;">
-        <label style="font-weight: 450; font-size: 18px; flex-grow: 1;"> Transacciones recientes</label>
-        <label style="font-weight: 450; font-size: 18px; color: var(--color-acento);"> Ver todo</label>
-    </div>
-
-    <div class="lastTransacctions">
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-error); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-        <div class="transactionItem">
-            <div class="icnTransaccion"> <img src="assets/images/revolut_icon.png"></div>
-            <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-                <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> Pago Revolut</label>
-                <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> Sab, 28 Ene 2025</label>
-            </div>
-            <label style="color: var(--color-success); font-weight: 600; font-size: 18px;"> -15,50$ </label>
-        </div>
-
-    </div>
-</div>
 </ion-content>

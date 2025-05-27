@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { DatabaseService } from '../services/database/finance-buddy-database-sqlite.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,5 +10,9 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent],
 })
 export class Tab1Page {
-  constructor() {}
+  constructor(private dbService: DatabaseService) {}
+
+  ngOnInit() {
+    this.dbService.initializeDatabase();
+  }
 }

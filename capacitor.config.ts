@@ -4,11 +4,19 @@ import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
   plugins: {
+    StatusBar: {
+      overlaysWebView: false,
+      style: "DARK",
+      backgroundColor: "#ffffffff"
+    },
+
     Keyboard: {
       resize: KeyboardResize.Body,
       style: KeyboardStyle.Dark,
       resizeOnFullScreen: true,
     },
+
+    
 
     CapacitorSQLite: {
       iosDatabaseLocation: 'Library/CapacitorDatabase',

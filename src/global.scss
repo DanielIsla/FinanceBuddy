@@ -45,6 +45,11 @@
     --ion-font-family: Inter;
 }
 
+ion-content {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 body {
     background-color: var(--color-background);
     color: white;
@@ -67,6 +72,6 @@ body {
 }
 
 .reactiveField:active {
-    transform: scale(1.1, 1);
+    transform: scale(1.03, 1);
 }
 
