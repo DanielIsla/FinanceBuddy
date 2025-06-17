@@ -1,19 +1,27 @@
 :root {
 
-  --color-background: rgb(0, 0, 0);
-  --color-contenedor: rgb(2, 1, 1);
-  --color-contenedor-2: rgb(32, 24, 17);
+  --ion-background-color: rgb(0, 0, 0); /* ¡Tu color de fondo principal! */
+  --ion-background-color-rgb: rgb(0, 0, 0); // También es bueno definir el RGB
+  --background : rgb(0, 0, 0);
 
-  --color-acento: rgb(244, 121, 54);
-  --color-acento2: rgb(65, 133, 255);
-  --color-acento-shadow: rgba(244, 120, 54, 0.5);
+  /* Fondos - Más profundidad y un toque sutil */
+  --color-background: rgb(0, 0, 0); /* Un negro casi puro, pero con una pizca de calidez/profundidad */
+  --color-contenedor-2: rgb(30, 30, 30); /* Base más oscura que el fondo, pero no tan "rústica" como la anterior */
+  --color-contenedor: rgb(53, 53, 53); /* Contenedores secundarios, con un ligero contraste y modernidad */
 
-  --color-success: rgb(61, 212, 81);
-  --color-error: rgb(209, 49, 49);
+  /* Colores de acento - El acento principal se mantiene, el secundario más nítido */
+  --color-acento: rgb(245, 72, 0); /* ¡Tu color principal se mantiene, es genial! */
+  --color-acento2: rgb(55, 155, 255); /* Azul más vibrante y eléctrico para un mejor contraste */
+  --color-acento-shadow: rgba(244, 120, 54, 0.4); /* Sombra ligeramente más sutil para el acento */
 
-  --color-primarytext: rgb(255, 255, 255);
-  --color-secondarytext: rgb(153, 153, 153);
-  --color-secondarytext-container: rgb(226, 226, 226);
+  /* Colores de estado - Más vivos y claros */
+  --color-success: rgb(50, 200, 70); /* Verde más brillante y definido */
+  --color-error: rgb(220, 50, 50); /* Rojo más puro y directo */
+
+  /* Colores de texto - Mayor contraste y legibilidad */
+  --color-primarytext: rgb(240, 240, 240); /* Blanco ligeramente roto para menos fatiga visual */
+  --color-secondarytext: rgb(160, 160, 160); /* Gris medio que contraste bien con los fondos */
+  --color-secondarytext-container: rgb(200, 200, 200); /* Un gris más claro para textos en contenedores, mayor legibilidad */
 
 
   --color-comida: #ff9800;

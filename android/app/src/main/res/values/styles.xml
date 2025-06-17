@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <!-- Base application theme -->
-  <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-    <item name="android:windowActionBar">false</item>
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:statusBarColor">#FF0000</item> <!-- color personalizado -->
-    <item name="android:navigationBarColor">#FFFFFFFF</item> <!-- color para la barra inferior -->
-  </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
-  <!-- SplashScreen theme (just for the splash screen) -->
-  <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
-    <item name="android:background">@drawable/splash</item>
-  </style>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+    </style>
 
+
+    <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
+        <item name="android:background">@drawable/splash</item>
+    </style>
 </resources>
-

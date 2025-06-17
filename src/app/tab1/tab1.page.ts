@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-import { DatabaseService } from '../services/database/finance-buddy-database-sqlite.service';
+import { FinanceBuddyDatabaseSQLiteService } from '../services/database/finance-buddy-database-sqlite.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,9 +10,12 @@ import { DatabaseService } from '../services/database/finance-buddy-database-sql
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent],
 })
 export class Tab1Page {
-  constructor(private dbService: DatabaseService) {}
+  constructor(private dbService: FinanceBuddyDatabaseSQLiteService) {}
 
   ngOnInit() {
-    this.dbService.initializeDatabase();
+  }
+
+  async exTest() {
+    this.dbService.executeSql('INSERT INTO Accounts (AccountName, AccountType, Currency) VALUES (?, ?, ?)', ['Cuenta Test desde new account', 'Corriente', 'EUR']);
   }
 }

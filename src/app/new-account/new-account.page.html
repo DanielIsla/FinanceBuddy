@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content>
 
   <div
     style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
@@ -15,26 +15,42 @@
 
     <div class="textboxContainer">
 
+      @if(selectedBank == undefined)
+      {
       <div
-        style="background-color: var(--color-acento); height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600;">
-        Seleccionar banco </div>
+        style="background-color: var(--color-acento); height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600;"
+        (click)="openBankSelectionModal()"> Seleccionar banco </div>
+      }
 
-        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-          <label
-            style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">Nombre
-            de cuenta</label>
-          <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9">
+      @else
+      {
+      <div style="display: flex; width: 100%; gap: 10px;">
+        <div
+          [ngStyle]="{'background-color': selectedBank.corporateColorHex, border: '1px solid ' + selectedBank.corporateColorHexSecondary, 'color': selectedBank.corporateColorHexSecondary}"
+          style="height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; flex-grow: 1;"> {{selectedBank.shortName}}
         </div>
-  
-        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-          <label
-            style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">IBAN
-            de cuenta</label>
-          <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9">
+        <div style="height: 80px; width: 80px; background-color: var(--color-error); border-radius: 25px; align-items: center; justify-content: center; display: flex;" (click)="restartBankSelection()">
+          <img style="height: 50px; width: 50px; rotate: 45deg;" src="assets/images/more.png">
         </div>
+      </div>
 
+      }
+
+      <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
         <label
-          style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px; margin-bottom: 10px;">Moneda *</label>
+          style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">Nombre
+          de cuenta</label>
+        <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9">
+      </div>
+
+      <div style="width: 100%; display: flex; flex-direction: column; align-items: center;" *ngIf="selectedBank != undefined && selectedBank.shortName != 'Efectivo' ">
+        <label style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">IBAN de cuenta</label>
+        <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9">
+      </div>
+
+      <label
+        style="font-size: 20px; margin-top: 20px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px; margin-bottom: 10px;">Moneda
+        *</label>
       <app-dropdown [options]="currencyOptions" placeholder="Selecciona una moneda"
         (selected)="onCurrencySelected($event)"></app-dropdown>
 
@@ -44,13 +60,13 @@
           inicial *</label>
         <div style="display: flex; flex-direction: row; width: 100%; height: 60px;">
           <input class="dataInput reactiveField" type="text" id="fname" name="fname" size="9"
-            style="width: 100%; margin-top: 0px;">
+            style="width: 100%; margin-top: 0px;" [(ngModel)]="startingAmount">
           <img src="assets/images/currency/EUR_icon.png"
             style="height: 100%; width: fit-content; padding-top: 10px; padding-bottom: 10px;">
         </div>
       </div>
 
-      
+
 
     </div>
 
@@ -60,9 +76,7 @@
         style="background-color: var(--color-error); height: 50px; width: 50px; display: flex; align-items: center; justify-content: center; border-radius: 25px;">
         <img style="height: 35px; width: 35px; rotate: 45deg;" src="assets/images/more.png">
       </div>
-      <div
-        style="background-color: var(--color-success); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; ">
-        Aceptar </div>
+      <div (click)="storeData()" style="background-color: var(--color-success); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; "> Aceptar </div>
     </div>
 
   </div>

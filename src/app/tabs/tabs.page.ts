@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';  // Import RouterModule
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
 
-  selectedTab: string = 'inicio'; // Default tab
+  selectedTab: string = 'tab1'; // Default tab
 
 
   constructor(private router: Router) {

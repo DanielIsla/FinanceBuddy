@@ -4,34 +4,49 @@ import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacito
 @Injectable({
   providedIn: 'root'
 })
-export class DatabaseService {
+
+export class FinanceBuddyDatabaseSQLiteService {
   private sqlite: SQLiteConnection = new SQLiteConnection(CapacitorSQLite);
   private db!: SQLiteDBConnection;
   private isOpen = false;
 
-  constructor() {
-    this.initializeDatabase();
-  }
-
-  async initializeDatabase() {
+  async initializeDatabase(): Promise<void> {
     try {
-      if (this.isOpen) {
-        return;
-      }
-      const ret = await this.sqlite.checkConnectionsConsistency();
-      const isConn = (await this.sqlite.isConnection('mydatabase', false)).result;
-      if (ret.result && isConn) {
-        this.db = await this.sqlite.retrieveConnection('mydatabase', false);
+      const isConn = (await this.sqlite.isConnection('financebuddydb', false)).result;
+
+      if (isConn) {
+        this.db = await this.sqlite.retrieveConnection('financebuddydb', false);
       } else {
-        this.db = await this.sqlite.createConnection('mydatabase', false, 'no-encryption', 1, false);
+        this.db = await this.sqlite.createConnection('financebuddydb', false, 'no-encryption', 1, false);
       }
+
       await this.db.open();
-      this.isOpen = true;
+
       await this.createTables();
-    } catch (error) {
-      console.error('Error initializing database:', error);
+    } catch (err) {
+      console.error('Error initializing database:', err);
     }
   }
+
+  private async ensureDbOpen(): Promise<void> {
+    if (!this.db) {
+      const isConn = (await this.sqlite.isConnection('financebuddydb', false)).result;
+      if (isConn) {
+        this.db = await this.sqlite.retrieveConnection('financebuddydb', false);
+        await this.db.open();
+      } else {
+        await this.initializeDatabase();
+      }
+    } else {
+      const isOpen = await this.db.isDBOpen();
+      if (!isOpen) {
+        await this.db.open();
+      }
+    }
+  }
+
+
+
 
   async createTables() {
     try {
@@ -96,18 +111,12 @@ export class DatabaseService {
   }
 
   //Este método es utilizado para ejecutar consultas sql
-  async executeSql(sql: string, params?: boolean): Promise<any> {
+  async executeSql(sql: string, params: any[] = []): Promise<any> {
     try {
-      await this.initializeDatabase();
-      return this.db.execute(sql, params);
+      await this.ensureDbOpen();
+      return this.db!.run(sql, params);
     } catch (error) {
       console.error('Error executing SQL:', error);
-      return null;
     }
-  }
-
-  async addFriend(nombre: string, email: string, telefono: string) {
-    const sql = 'INSERT INTO Amigos (Nombre_apellidos, E_mail, Telefono) VALUES (?, ?, ?)';
-    await this.executeSql(sql)
   }
 }

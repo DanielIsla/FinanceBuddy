@@ -5,6 +5,7 @@ import { Platform } from '@ionic/angular';
 import { time } from 'ionicons/icons';
 import { timeout } from 'd3';
 import { isPlatformServer } from '@angular/common';
+import { FinanceBuddyDatabaseSQLiteService } from './services/database/finance-buddy-database-sqlite.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ import { isPlatformServer } from '@angular/common';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
-  constructor(private platform: Platform) {
+  visible = true;
+  overlays  = false;
+  constructor(private platform: Platform, private dbService: FinanceBuddyDatabaseSQLiteService) {
     this.initializeApp();
   }
 
@@ -23,5 +26,9 @@ export class AppComponent {
     await StatusBar.setBackgroundColor({ color: '#ffffffff' });
     await StatusBar.setStyle({ style: Style.Dark });
     await StatusBar.show();
+  }
+
+  async ngOnInit() {
+  await this.dbService.initializeDatabase();
   }
 }

@@ -2,13 +2,11 @@
     <div
         style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background);">
         <div class="welcomeHeader">
-            <img src="assets/images/pfp.webp" style="height: 50px; width: 50px;">
-            <div class="headerData">
-                <label style="font-size: 18px; color: var(--color-primarytext); font-weight: 500;"> Hola, Daniel
-                </label>
-                <label style="font-size: 12px; color: var(--color-secondarytext);"> daniel.isla.martinez.gmail.com
-                </label>
+
+            <div style="flex-grow: 1; display: flex; ">
+                <img src="assets/images/FinanceBuddy.png" style="width: 100%; object-fit:contain;">
             </div>
+            <img src="assets/images/pfp.webp" style="height: 50px; width: 50px;">
             <div class="settingsBtn">
                 <img src="assets/images/settings.png">
             </div>
@@ -54,10 +52,11 @@
 
         <!--Opciones rápidas-->
         <div style="display: flex; padding-right: 50px; padding-left: 50px;  padding-bottom: 20px;">
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;" (click)="exTest()" >
                 <div
                     style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;">
-                    <img src="assets/images/friends.png"></div>
+                    <img src="assets/images/friends.png">
+                </div>
                 <label style="text-align: center; font-size: 14px; margin-top: 5px;">Amigos</label>
             </div>
 
@@ -65,14 +64,16 @@
                 style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-grow: 1;">
                 <div
                     style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;">
-                    <img src="assets/images/statistics.png"></div>
+                    <img src="assets/images/statistics.png">
+                </div>
                 <label style="text-align: center; font-size: 14px; margin-top: 5px;">Estadisticas</label>
             </div>
 
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <div
                     style="background-color: var(--color-contenedor-2); padding: 10px; height: 60px; width: 60px; border-radius: 30px;">
-                    <img src="assets/images/wallet.png"></div>
+                    <img src="assets/images/wallet.png">
+                </div>
                 <label style="text-align: center; font-size: 14px; margin-top: 5px;">Cuentas</label>
             </div>
 

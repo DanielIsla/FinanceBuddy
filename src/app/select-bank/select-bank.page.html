@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="false">
+  <div
+    style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
+    <!--Top back + name bar-->
+    <div style="display:flex; align-items: center;">
+      <div (click)="goBack()"
+        style="background-color: var(--color-contenedor-2); height: 60px; width: 60px; border-radius: 30px; padding: 17px; margin-bottom: 20px;">
+        <img src="assets/images/back.png">
+      </div>
+    </div>
+    <label
+      style="font-size: 25px; font-weight: 600; text-align: center; position: absolute; align-self: center; margin-top: 15px;">Selección
+      banco</label>
+
+    <!--Search bar + bank list-->
+    <div>
+      <div style="display: flex; flex-direction: row; width: 100%; height: 60px; margin-bottom: 20px; padding: 5px 0px 5px 10px;" class="dataInput reactiveField">
+        <img src="assets/images/search.png"
+          style="height: 100%; width: fit-content; padding-top: 10px; padding-bottom: 10px;">
+        <input type="text" id="fname" name="fname" size="9"
+          style="width: 100%; margin-top: 0px; margin-bottom: 0px; padding: 10px; outline:none; border: 0px; background-color: transparent;" [(ngModel)]="searchTerm">
+      </div>
+
+      <label *ngIf="searchTerm == '' " style="font-size: 20px; margin-top: 20px; margin-bottom: 10px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">Efectivo</label>
+      <div *ngIf="cashEntity.shortName.toLowerCase().includes(searchTerm.toLowerCase())" style=" height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; margin-bottom: 20px;" [ngStyle]="{'background-color': cashEntity.corporateColorHex, border: '1px solid ' + cashEntity.corporateColorHexSecondary, 'color': cashEntity.corporateColorHexSecondary}" (click)="selectBank(cashEntity)">{{cashEntity.shortName}}</div>
+
+      <label *ngIf="searchTerm == '' " style="font-size: 20px; margin-top: 20px; margin-bottom: 10px; font-weight: 600; display: flex; flex-direction: column-reverse; width: 100%; padding-left: 10px;">Bancos</label>
+      <ng-container *ngFor="let bank of banks">
+        <div *ngIf="bank.shortName.toLowerCase().includes(searchTerm.toLowerCase())" style=" height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; margin-bottom: 20px;" [ngStyle]="{'background-color': bank.corporateColorHex, border: '1px solid ' + bank.corporateColorHexSecondary, 'color': bank.corporateColorHexSecondary}" (click)="selectBank(bank)">
+        {{bank.shortName}}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ion-content>

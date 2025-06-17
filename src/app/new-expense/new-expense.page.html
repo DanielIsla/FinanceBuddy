@@ -40,9 +40,10 @@
         <div style="width: 100%; height: 100%;">
           <div class="categoriesContainer">
             <ng-container *ngFor="let category of categories">
-              <div *ngIf="category.parentCat == category.subCat" class="{{category.styleClass}} categoryBox" (click)="selectCategory(category.parentCat)">
+              <div *ngIf="category.parentCat == category.subCat" class="{{category.styleClass}} categoryBox" (click)="selectCategory(category)">
                 <img style="height: 60px; width: 60px;" [src]="category.iconPath">
-                <label style="font-size: 14px;">{{ category.textToShow }}</label>
+                <div style="height: 15px; width: 100%;"></div>
+                <label style="font-size: 14px;">{{ category.subcatTextToShow }}</label>
               </div>
             </ng-container>
           </div>
@@ -54,9 +55,10 @@
           <div style="width: 100%; height: 100%;">
           <div class="categoriesContainer">
             <ng-container *ngFor="let category of categories">
-              <div *ngIf="category.parentCat == selectedCategory && category.parentCat != category.subCat" class="{{category.parentCat}} categoryBox" (click)="selectSubCategory(category.subCat)">
+              <div *ngIf="category.parentCat == selectedCategory.subCat && category.parentCat != category.subCat" class="{{category.parentCat}} categoryBox" (click)="selectSubCategory(category)">
                 <img style="height: 60px; width: 60px;" [src]="category.iconPath">
-                <label style="font-size: 14px;">{{ category.textToShow }}</label>
+                <div style="height: 15px; width: 100%;"></div>
+                <label style="font-size: 14px;">{{ category.subcatTextToShow }}</label>
               </div>
             </ng-container>
           </div>
@@ -68,14 +70,14 @@
 
         <div style="display: flex; margin-top: 20px;">
           <label style="font-size: 50px; font-weight: 600;">$</label>
-          <input class="importeInput" type="number" id="fname" name="fname" size="9">
+          <input class="importeInput" type="number" id="fname" name="fname" size="9" [(ngModel)]="amount" >
         </div>
 
         <label
           style="font-size: 20px; margin-top: 25px; font-weight: 600; flex-grow: 1; display: flex; flex-direction: column-reverse;">Concepto</label>
         <input class="reactiveField"
           style="width: 100%; height: 60px; margin-top: 10px; margin-bottom: 25px; padding: 10px; outline:none; border: 0px; background-color: var(--color-contenedor-2); border-radius: 20px;"
-          type="text" id="fname" name="fname" size="9">
+          type="text" id="fname" name="fname" size="9" [(ngModel)]="concept">
         }
 
         @if (pageNumber == 4)
@@ -106,11 +108,10 @@
         <div class="page4SummaryContainers" style="display: flex; align-items: center;">
           <img
             style="height: 50px; width: 50px; background-color: var(--color-acento); padding: 3px; border-radius: 25px;"
-            src="assets/images/categories/restaurant.png">
+            src={{selectedCategory.iconPath}}>
           <div style="display: flex; flex-direction: column; margin-left: 15px;">
             <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Categoria </label>
-            <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;">
-              Restaurantes </label>
+            <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> {{selectedCategory.catTextToShow}} > {{selectedCategory.subcatTextToShow}} </label>
           </div>
         </div>
 
@@ -119,14 +120,13 @@
             transacción </label>
           <label
             style="font-size: 30px;  display: flex; flex-direction: column-reverse; margin-top: 5px; font-weight: 600; color: var(--color-acento);">
-            54$ </label>
+            {{amount}}$ </label>
         </div>
 
         <div class="page4SummaryContainers">
           <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Concepto
             transacción </label>
-          <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> Este es el
-            concepto de la transacción </label>
+          <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;">@if(concept != ""){ {{concept}} } @else {Sin concepto} </label>
         </div>
 
         <div class="page4SummaryContainers">

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { categories } from '../models/categories';
+import { categories, category } from '../models/categories';
 
 @Component({
   selector: 'app-new-expense',
@@ -18,7 +18,9 @@ export class NewExpensePage implements OnInit {
   headerAction: string = "Selecciona un amigo";
   headerStep: string = "Paso 1 de 5";
   nextBtnText: string = "Continuar";
-  selectedCategory: string | undefined = "";
+  selectedCategory: category = {parentCat: "",subCat: "",styleClass: "",iconPath: "", catTextToShow: "", subcatTextToShow: ""};
+  concept: string = "";
+  amount?: number = undefined;
 
   categories = categories;
 
@@ -27,16 +29,27 @@ export class NewExpensePage implements OnInit {
     this.changeHeaderTexts();
   }
 
-  selectCategory(category: string | undefined) {
-    this.selectedCategory = category;
-    console.log(this.selectedCategory);
-    this.nextPage();
+  //Selects the parent category to show the correct subcategories on the next step
+  selectCategory(category: category) {
+    console.log(category);
+    if(this.selectedCategory != undefined)
+    {
+      this.selectedCategory = category;
+      console.log(this.selectedCategory);
+      this.nextPage();
+    }
+    
   }
 
-  selectSubCategory(category: string | undefined) {
+  //Selects the subcategory taking the current object
+  selectSubCategory(category: category) {
+    console.log(category);
+    if(this.selectedCategory != undefined)
+    {
     this.selectedCategory = category;
     console.log(this.selectedCategory);
     this.nextPage();
+    }
   }
 
   nextPage() {

@@ -6,20 +6,13 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     width: 100%;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 20px 20px 20px 20px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     height: fit-content;
-    box-shadow: 0 0px 15px var(--color-acento-shadow);
-    background-color: var(--color-contenedor);
 }
 
-.bgNavbar
-{
-    background-color: var(--color-background);
-    z-index: 999;
-}
+
 
 .divContenedorOpcion
 {
@@ -73,4 +66,17 @@
 {
     text-align: center; 
     font-size: 14px;
+    padding: 2px 7px 2px 7px;
+    transition: 0.2s ease-in-out;
+    border-radius: 8px;
+    
+}
+
+.textoOpcionesSelected
+{
+    transition: 0.2s ease-in-out;
+    background-color: var(--color-acento);
+    box-shadow: 0 0px 15px var(--color-acento-shadow);
+    padding: 2px 7px 2px 7px;
+    border-radius: 8px;
 }
