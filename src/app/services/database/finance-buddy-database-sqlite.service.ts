@@ -10,6 +10,7 @@ export class FinanceBuddyDatabaseSQLiteService {
   private db!: SQLiteDBConnection;
   private isOpen = false;
 
+  // Initializes the database and creates the tables if they don't exist
   async initializeDatabase(): Promise<void> {
     try {
       const isConn = (await this.sqlite.isConnection('financebuddydb', false)).result;
@@ -28,6 +29,7 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
+  //Make sure that the database is open before doing any operations
   private async ensureDbOpen(): Promise<void> {
     if (!this.db) {
       const isConn = (await this.sqlite.isConnection('financebuddydb', false)).result;
@@ -45,11 +47,10 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
-
-
-
+  //Create the needed tables
   async createTables() {
     try {
+      //------- TABLE FRIENDS -------
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS Friends (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,6 +59,7 @@ export class FinanceBuddyDatabaseSQLiteService {
                 Phone TEXT
             );
         `);
+      //------- TABLE TRANSACTIONS -------  
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS Transactions (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,6 +72,8 @@ export class FinanceBuddyDatabaseSQLiteService {
                 FOREIGN KEY (AccountID) REFERENCES Accounts(ID)
             );
         `);
+      
+      //------- TABLE DEBTS -------  
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS Debts (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -83,6 +87,8 @@ export class FinanceBuddyDatabaseSQLiteService {
                 FOREIGN KEY (AccountID) REFERENCES Accounts(ID)
             );
         `);
+
+      //------- TABLE DEBT PAYMENTS -------
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS DebtPayments (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -94,15 +100,16 @@ export class FinanceBuddyDatabaseSQLiteService {
                 FOREIGN KEY (PaymentAccountID) REFERENCES Accounts(ID)
             );
         `);
+
+      //------- TABLE ACCOUNTS (bank/cash accounts) -------  
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS Accounts (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 AccountName TEXT NOT NULL,
-                AccountType TEXT,
+                BankCode TEXT,
                 IBAN TEXT,
                 Currency TEXT,
-                Balance REAL DEFAULT 0.0,
-                Bank_tint TEXT
+                Balance REAL DEFAULT 0.0
             );
         `);
     } catch (error) {
@@ -119,4 +126,67 @@ export class FinanceBuddyDatabaseSQLiteService {
       console.error('Error executing SQL:', error);
     }
   }
+
+  //------- COMMON OPERATIONS ON TABLES -------
+  // ACCOUNTS TABLE
+  async createAccount(AccountName: string, BankCode: string, IBAN: string, Currency: string, Balance: number) {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.run('INSERT INTO Accounts (AccountName, BankCode, IBAN, Currency, Balance) VALUES (?, ?, ?, ?, ?)', [AccountName, BankCode, IBAN, Currency, Balance]);
+    } catch (error) {
+      console.error('Error creating account:', error);
+      return null;
+    }
+  }
+
+  async getAccounts() {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.query('SELECT * FROM Accounts');
+    } catch (error) {
+      console.error('Error getting accounts:', error);
+      return null;
+    }
+  }
+
+  async getAccountDetailsByID(id: number) {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.query('SELECT * FROM Accounts WHERE ID = ?', [id]);
+    } catch (error) {
+      console.error('Error getting account details:', error);
+      return null;
+    }
+  }
+
+  async deleteAccountByID(id: number) {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.run('DELETE FROM Accounts WHERE ID = ?', [id]);
+    } catch (error) {
+      console.error('Error deleting account:', error);
+      return null;
+    }
+  }
+
+  async getDebts() {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.query('SELECT * FROM Debts');
+    } catch (error) {
+      console.error('Error getting debts:', error);
+      return null;
+    }
+  }
+
+  async getDebtPayments() {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.query('SELECT * FROM DebtPayments');
+    } catch (error) {
+      console.error('Error getting debt payments:', error);
+      return null;
+    }
+  }
+
 }

@@ -1,0 +1,13 @@
+<div class="accountCard" [ngStyle]="{ 'background-color': bankEntityByCode?.corporateColorHex}" >
+  <div style="display: flex; flex-grow: 1;">
+    <label style="flex-grow: 1;"> {{bankEntityByCode?.shortName}} </label>
+    <!--
+    <img style="height: 25px; width: 25px;" src="assets/images/revolut_icon.png">
+    -->
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 5px; ">
+    <label style="font-size: 12px; color: var(--color-secondarytext-container);"> Saldo disponible </label>
+    <label style="font-size: 28px; color: var(--color-primarytext); font-weight: 600;"> {{accountBalance()}} {{accountBankCode()}} </label>
+  </div>
+</div>

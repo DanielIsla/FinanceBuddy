@@ -1,6 +1,6 @@
 <div #popupContainer class="popup-container" (click)="cerrarPopup()">
   <div class="popup-content" (click)="$event.stopPropagation()">
-    <!-- Calendario aquí -->
+    <!-- Main calendar container -->
     <div class="calendar-container">
 
       <!-- Selector de Mes -->
@@ -53,7 +53,7 @@
       </div>
 
       <!-- Botones cerrar y aceptar -->
-      <div style="display: flex; gap: 10px; margin-top: 20px;">
+      <div style="display: flex; gap: 10px;">
         <div
           style="background-color: var(--color-error); height: 50px; width: 50px; display: flex; align-items: center; justify-content: center; border-radius: 25px;"
           (click)="cerrarPopup()"> <img style="height: 35px; width: 35px; rotate: 45deg;" src="assets/images/more.png">

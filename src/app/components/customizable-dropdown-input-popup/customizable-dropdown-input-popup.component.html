@@ -1,0 +1,18 @@
+<div #popupContainer class="popupContainer" [ngClass]="{ 'show': visible }" [hidden]="!visible">
+  <div class="popupContent">
+    <label style=" font-size: 20px; font-weight: 450;">{{ title }}</label>
+
+    <app-dropdown [options]="currencyOptions" [backgroundColor]="'#353535'" [placeholder]="'Selecciona una moneda'" (selected)="onCurrencySelected($event)"></app-dropdown>
+
+    <!-- Botones cerrar y aceptar -->
+      <div style="display: flex; gap: 10px;">
+        <div
+          style="background-color: var(--color-error); height: 50px; width: 50px; display: flex; align-items: center; justify-content: center; border-radius: 25px;"
+          (click)="onCancel()"> <img style="height: 35px; width: 35px; rotate: 45deg;" src="assets/images/more.png">
+        </div>
+        <div
+          style="background-color: var(--color-success); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; "
+          (click)="onConfirm()"> Aceptar </div>
+      </div>
+  </div>
+</div>

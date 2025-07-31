@@ -1,0 +1,97 @@
+<ion-content [fullscreen]="false">
+  <!-- Popups -->
+  <app-customizable-input-popup [title]="'Cambiar nombre'" [visible]="nameChangePopupOpen"
+    (confirm)="closeNameChangePopup($event)" (cancel)="nameChangePopupOpen = false" [inputType]="'text'" #nameSelector> </app-customizable-input-popup>
+
+  <app-customizable-input-popup [title]="'Cambiar IBAN'" [visible]="IBANChangePopupOpen"
+    (confirm)="closeIBANChangePopup($event)" (cancel)="IBANChangePopupOpen = false" [inputType]="'number'" #IBANSelector> </app-customizable-input-popup>
+
+  <app-customizable-dropdown-input-popup [title]="'Cambiar moneda'" [visible]="CurrencyChangePopupOpen"
+    (confirm)="closeCurrencyChangePopup($event)" (cancel)="CurrencyChangePopupOpen = false" #currencySelector> </app-customizable-dropdown-input-popup>
+
+  <div [ngStyle]="{ 'background-color': currentBackground }" class="pageContainer">
+
+    <!--Top bar, current balance, colored-->
+    <div class="topSubContainer">
+      <!--Top bar with tittle and back button-->
+      <div style="display:flex; align-items: center;">
+        <div (click)="goBack()"
+          style="background-color: var(--color-contenedor-2); height: 60px; width: 60px; border-radius: 30px; padding: 17px;">
+          <img src="assets/images/back.png">
+        </div>
+      </div>
+      <label
+        style="font-size: 25px; font-weight: 600; text-align: center; position: absolute; align-self: center; margin-top: 15px;">Detalles</label>
+
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 20px;">
+        <label style="font-size: 20px; font-weight: 600; text-align: center;" [ngStyle]="{ 'color': currentColor }">Saldo actual</label>
+        <label style="font-size: 40px; font-weight: 600; text-align: center;" [ngStyle]="{ 'color': currentColor }">566.67 {{accountID}} {{Currency}}</label>
+      </div>
+    </div>
+
+    <!--Bottom bar, current balance, background color-->
+    <div class="bottomSubContainer">
+      <!--Account details-->
+      <div style=" display: flex; flex-grow: 1; flex-direction: column;">
+        <div class="detailContainers">
+          <div class="detail">
+            <div style="flex-grow: 1;">
+              <label style="font-size: 18px;  display: flex; flex-direction: column-reverse; font-weight: 450; "> Banco
+              </label>
+              <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> {{bank.shortName}}
+              </label>
+            </div>
+            <img (click)="changeBank()"
+              style="height: 40px; width: 40px; background-color: var(--color-contenedor); border-radius: 20px; padding: 5px;"
+              src="assets/images/edit_icon.png">
+          </div>
+
+          <div class="detail">
+            <div style="flex-grow: 1;">
+              <label style="font-size: 18px;  display: flex; flex-direction: column-reverse; font-weight: 450; "> Nombre
+                de la cuenta </label>
+              <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> {{name}} </label>
+            </div>
+            <img (click)="openNameChangePopup()"
+              style="height: 40px; width: 40px; background-color: var(--color-contenedor); border-radius: 20px; padding: 5px;"
+              src="assets/images/edit_icon.png">
+          </div>
+
+          <div class="detail">
+            <div style="flex-grow: 1;">
+              <label style="font-size: 18px;  display: flex; flex-direction: column-reverse; font-weight: 450; "> IBAN
+              </label>
+              <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> {{IBAN}} </label>
+            </div>
+            <img (click)="openIBANChangePopup()"
+              style="height: 40px; width: 40px; background-color: var(--color-contenedor); border-radius: 20px; padding: 5px;"
+              src="assets/images/edit_icon.png">
+          </div>
+
+          <div class="detail">
+            <div style="flex-grow: 1;">
+              <label style="font-size: 18px;  display: flex; flex-direction: column-reverse; font-weight: 450; "> Moneda
+              </label>
+              <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> {{Currency}}
+              </label>
+            </div>
+            <img (click)="openCurrencyChangePopup()"
+              style="height: 40px; width: 40px; background-color: var(--color-contenedor); border-radius: 20px; padding: 5px;"
+              src="assets/images/edit_icon.png">
+          </div>
+
+        </div>
+      </div>
+      <!-- Botones cerrar y aceptar -->
+
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px; width: 100%;">
+        <div *ngIf="changesPending"
+          style="background-color: var(--color-success); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; ">
+          Guardar cambios </div>
+        <div
+          style="background-color: var(--color-error); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; ">
+          Borrar cuenta </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

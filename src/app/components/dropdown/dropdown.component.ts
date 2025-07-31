@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common'; // 👈 Importa CommonModule
 export class DropdownComponent {
   @Input() options: { label: string; image: string }[] = [];
   @Input() placeholder: string = 'Selecciona una opción';
+  @Input() backgroundColor: string = "#1e1e1e"; 
   @Output() selected = new EventEmitter<{ label: string; image: string }>();
 
   isOpen = false;
