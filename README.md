@@ -39,9 +39,6 @@ cd FinanceBuddy
 
 ### 2. Install Node.js and Tools (COPY THIS BLOCK)
 
-```markdown
-### 2. Install Node.js
-
 #### 🪟 Windows
 
 1. Download the Windows installer from: https://nodejs.org/  
