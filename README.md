@@ -3,7 +3,7 @@
 ## 📋 Description
 
 **FinanceBuddy** is a mobile application built with **Ionic** and **Angular** that helps you manage your personal finances easily and efficiently.  
-With this app, you can:
+With this app, you can (some features are work-in-progress):
 
 - Create personalized budgets  
 - Track and categorize your expenses  
