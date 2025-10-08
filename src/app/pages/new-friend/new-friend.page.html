@@ -1,4 +1,55 @@
 <ion-content fullscreen="false">
-  <div style="display: flex; padding: 25px; height: 100%; flex-grow: 1; flex-direction: column; background-color: var(--color-background);">
+  <div
+    style="display: flex; padding: 25px; height: 100%; flex-grow: 1; flex-direction: column; background-color: var(--color-background);">
+
+    <div class="texboxContainer">
+      <!-- Top header with back button -->
+      <div style="display:flex; align-items: center;">
+        <div (click)="goBack()"
+          style="background-color: var(--color-contenedor-2); height: 60px; width: 60px; border-radius: 30px; padding: 17px;">
+          <img src="assets/images/back.png">
+        </div>
+      </div>
+
+      <label
+        style="font-size: 25px; font-weight: 600; text-align: center; position: absolute; align-self: center; margin-top: 15px;">Nuevo
+        amigo</label>
+
+      <p>Nombre *</p>
+      <input class="reactiveField textbox" [ngClass]="{'texboxError' : isValidName === false, 'texboxSuccess' : isValidName === true }" type="text" id="fname"
+        name="fname" size="9" [(ngModel)]="name" (input)="validateName()">
+      <p class="tip" [ngClass]="{'tipError': isValidName === false, 'tipSuccess': isValidName === true}"> {{nameTip}} </p>
+
+      <p>Apellidos *</p>
+      <input class="reactiveField textbox" [ngClass]="{'texboxError' : isValidSurname === false, 'texboxSuccess' : isValidSurname === true}" type="text"
+        id="fname" name="fname" size="9" [(ngModel)]="surname" (input)="validateSurname()">
+      <p class="tip" [ngClass]="{'tipError' : isValidSurname === false, 'tipSuccess' : isValidSurname === true }">{{surnameTip}}</p>
+
+      <input class="reactiveField textbox" [ngClass]="{'texboxError' : isValidSurname2 === false , 'texboxSuccess' : isValidSurname2 === true}"
+        style="margin-top: 5px;" type="text" id="fname" name="fname" size="9" [(ngModel)]="surname2" (input)="validateSurname2()">
+      <p class="tip" [ngClass]="{'tipError' : isValidSurname2 === false , 'tipSuccess' : isValidSurname2 === true }">{{surname2Tip}}</p>
+
+      <p>Teléfono *</p>
+      <input class="reactiveField textbox" [ngClass]="{'texboxError' : isValidPhone === false , 'texboxSuccess' : isValidPhone === true}" type="text" id="fname"
+        name="fname" size="9" [(ngModel)]="friendPhone" (input)="validatePhone()">
+      <p class="tip" [ngClass]="{'tipError' : isValidPhone === false , 'tipSuccess' : isValidPhone === true}">{{phoneTip}}</p>
+
+      <p>Correo electrónico</p>
+      <input class="reactiveField textbox" [ngClass]="{'texboxError' : isValidEmail === false , 'texboxSuccess' : isValidEmail === true }" type="text" id="fname"
+        name="fname" size="9" [(ngModel)]="friendEmail" (blur)="validateEmail()" (input)="isValidEmail = undefined; emailTip = 'Correo personal, opcional';">
+      <p class="tip" [ngClass]="{'tipError' : isValidEmail === false , 'tipSuccess' : isValidEmail === true }">{{emailTip}}</p>
+    </div>
+
+    <!-- Botones cerrar y aceptar -->
+    <div style="display: flex; gap: 10px; margin-top: 20px;">
+      <div
+        style="background-color: var(--color-error); height: 50px; width: 50px; display: flex; align-items: center; justify-content: center; border-radius: 25px;">
+        <img style="height: 35px; width: 35px; rotate: 45deg;" src="assets/images/more.png" (click)="goBack()">
+      </div>
+      <div
+        style="background-color: var(--color-success); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; " (click)="createFriend()">
+        Aceptar </div>
+    </div>
+
   </div>
 </ion-content>

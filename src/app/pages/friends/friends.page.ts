@@ -6,6 +6,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { PopupComponent } from '../../components/addfriendpopup/addfriendpopup.component';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-friends',
@@ -40,7 +41,9 @@ export class FriendsPage implements OnInit
     this.router.navigate(['/new-friend']);
   }
 
-  goBack() {
+  async goBack() {
     this.navCtrl.back();
+
+    await Haptics.impact({ style: ImpactStyle.Light });
   }
 }
