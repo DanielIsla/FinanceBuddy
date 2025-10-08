@@ -117,7 +117,7 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
-  //Este método es utilizado para ejecutar consultas sql
+  //This method is used to execute SQL queries
   async executeSql(sql: string, params: any[] = []): Promise<any> {
     try {
       await this.ensureDbOpen();
@@ -139,6 +139,7 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
+  //Get all the accounts from the database accounts table
   async getAccounts() {
     try {
       await this.ensureDbOpen();
@@ -149,6 +150,7 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
+  //Self explanatory
   async getAccountDetailsByID(id: number) {
     try {
       await this.ensureDbOpen();
@@ -159,6 +161,7 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
+  //Self explanatory
   async deleteAccountByID(id: number) {
     try {
       await this.ensureDbOpen();
@@ -169,6 +172,20 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
+  //------- TRANSACTIONS TABLE -------
+  async createTransaction(BaseCategory: string, SpecificCategory: string, Amount: number, Concept: string, AccountID: number) {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.run('INSERT INTO Transactions (BaseCategory, SpecificCategory, Amount, Concept, AccountID) VALUES (?, ?, ?, ?, ?)', [BaseCategory, SpecificCategory, Amount, Concept, AccountID]);
+    } catch (error) {
+      console.error('Error creating transaction:', error);
+      return null;
+    }
+  }
+
+  //------- DEBTS TABLE -------
+
+  //Get all the debts from the table debts, to show them on page load
   async getDebts() {
     try {
       await this.ensureDbOpen();
@@ -189,4 +206,37 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
+
+  //------- FRIENDS TABLE -------
+  //Creates a new friend
+  async createFriend(FullName: string, Email: string, Phone: string) {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.run('INSERT INTO Friends (FullName, Email, Phone) VALUES (?, ?, ?)', [FullName, Email, Phone]);
+    } catch (error) {
+      console.error('Error creating friend:', error);
+      return null;
+    }
+  }
+
+  //Get all the friends from the table friends
+  async getFriends() {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.query('SELECT * FROM Friends');
+    } catch (error) {
+      console.error('Error getting friends:', error);
+      return null;
+    }
+  }
+
+  async updateFriend(FriendID: number, FullName: string, Email: string, Phone: string) {
+    try {
+      await this.ensureDbOpen();
+      return this.db!.run('UPDATE Friends SET FullName = ?, Email = ?, Phone = ? WHERE ID = ?', [FullName, Email, Phone, FriendID]);
+    } catch (error) {
+      console.error('Error updating friend:', error);
+      return null;
+    }
+  }
 }

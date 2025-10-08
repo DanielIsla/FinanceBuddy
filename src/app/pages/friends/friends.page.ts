@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { PopupComponent } from '../../components/addfriendpopup/addfriendpopup.component';
 
 @Component({
@@ -15,7 +16,7 @@ import { PopupComponent } from '../../components/addfriendpopup/addfriendpopup.c
 })
 export class FriendsPage implements OnInit 
 {
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private router: Router) { }
 
   pageNumber: number = 1;
 
@@ -35,8 +36,8 @@ export class FriendsPage implements OnInit
     this.pageNumber = 2;
   }
 
-  mostrarPopup() {
-    this.popup.abrirPopup();
+  nuevoAmigo() {
+    this.router.navigate(['/new-friend']);
   }
 
   goBack() {
