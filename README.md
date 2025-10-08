@@ -25,7 +25,7 @@ Before starting, make sure you have the following installed:
 
 Open a terminal and run:
 
-```bash
+bash
 git clone https://github.com/DanielIsla/FinanceBuddy.git
 cd FinanceBuddy
 
