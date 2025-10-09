@@ -23,7 +23,7 @@ export class FriendsPage implements OnInit
 
   ngOnInit() 
   {
-    
+
   }
 
   @ViewChild(PopupComponent) popup!: PopupComponent;
@@ -43,7 +43,6 @@ export class FriendsPage implements OnInit
 
   async goBack() {
     this.navCtrl.back();
-
     await Haptics.impact({ style: ImpactStyle.Light });
   }
 }
