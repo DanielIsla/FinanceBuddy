@@ -1,0 +1,140 @@
+ion-content {
+    // This makes the content take up the full height
+    --background: var(--color-background);
+}
+
+.friends-contacts-container {
+    display: flex;
+    padding: 25px;
+    height: 100%;
+    flex-direction: column;
+    position: relative; // Needed for absolute positioning of children
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    position: relative; // For positioning the title
+    justify-content: center; // Center title horizontally
+    margin-bottom: 20px;
+}
+
+.back-button {
+    background-color: var(--color-contenedor-2);
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    padding: 17px;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.page-title {
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 15px; // Matches original style
+}
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    // Add padding to the bottom so the last item isn't hidden by the buttons
+    padding-bottom: 120px;
+    gap: 15px; // Adds space between contact items
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: var(--color-contenedor-2);
+    cursor: pointer;
+}
+
+.contact-avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: var(--color-contenedor);
+    p{
+        font-size: 20px;
+    }
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: 10px;
+    flex-grow: 1;
+
+    .contact-name {
+        font-weight: 450;
+        font-size: 16px;
+    }
+
+    .contact-phone {
+        font-weight: 450;
+        font-size: 12px;
+        color: var(--color-secondarytext);
+    }
+}
+
+.continue-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.action-buttons-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 25px 25px 25px; // Top, H-sides, Bottom
+    display: flex;
+    gap: 10px;
+    background-color: var(--background);
+}
+
+.cancel-button {
+    background-color: var(--color-error);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    cursor: pointer;
+
+    img {
+        height: 35px;
+        width: 35px;
+        rotate: 45deg;
+    }
+}
+
+.accept-button {
+    background-color: var(--color-success);
+    height: 50px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}

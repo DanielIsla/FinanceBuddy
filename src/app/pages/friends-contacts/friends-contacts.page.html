@@ -1,14 +1,32 @@
-<ion-content fullscreen="false">
-
-  <div style="display: flex; padding: 25px; height: 100%; flex-grow: 1; flex-direction: column; background-color: var(--color-background);">
-    <div style="display:flex; align-items: center;">
-      <div (click)="goBack()" style="background-color: var(--color-contenedor-2); height: 60px; width: 60px; border-radius: 30px; padding: 17px;">
+<ion-content>
+  <div class="friends-contacts-container">
+    <div class="header">
+      <div (click)="goBack()" class="back-button">
         <img src="assets/images/back.png">
+      </div>
+      <label class="page-title">Importar agenda</label>
+    </div>
+
+    <!-- This container will hold and layout all the contact items -->
+    <div class="contacts-list">
+      <!-- Loop through the contacts fetched from the device -->
+      <div *ngFor="let contact of contacts" class="contact-item">
+        <div class="contact-avatar">
+          <p> {{ contact.name?.display?.charAt(0) }} </p>
+        </div>
+        <div class="contact-info">
+          <label class="contact-name"> {{ contact.name?.display }} </label>
+          <label class="contact-phone"> {{ contact.phones && contact.phones[0]?.number }} </label>
+        </div>
+        <img class="continue-icon" src="assets/images/continue.png">
       </div>
     </div>
 
-    <label style="font-size: 25px; font-weight: 600; text-align: center; position: absolute; align-self: center; margin-top: 15px;">Importar agenda</label>
-  
-
+     <div class="action-buttons-container">
+      <div class="cancel-button" (click)="goBack()">
+        <img src="assets/images/more.png">
+      </div>
+      <div class="accept-button"> Aceptar </div>
+    </div>
   </div>
 </ion-content>

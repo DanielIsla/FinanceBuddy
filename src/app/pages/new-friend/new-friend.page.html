@@ -40,15 +40,14 @@
       <p class="tip" [ngClass]="{'tipError' : isValidEmail === false , 'tipSuccess' : isValidEmail === true }">{{emailTip}}</p>
     </div>
 
-    <!-- Botones cerrar y aceptar -->
-    <div style="display: flex; gap: 10px; margin-top: 20px;">
-      <div
-        style="background-color: var(--color-error); height: 50px; width: 50px; display: flex; align-items: center; justify-content: center; border-radius: 25px;">
-        <img style="height: 35px; width: 35px; rotate: 45deg;" src="assets/images/more.png" (click)="goBack()">
+    <!-- Accept and close buttons -->
+    <div class="add-from-contacts-button" (click)="addFromContacts()"> <img src="assets/images/contacts.png">Añadir desde contactos </div>
+
+    <div class="action-buttons-container">
+      <div class="cancel-button" (click)="goBack()">
+        <img src="assets/images/more.png">
       </div>
-      <div
-        style="background-color: var(--color-success); height: 50px; display: flex; flex-grow: 1; align-items: center; justify-content: center; border-radius: 25px; font-weight: 600; " (click)="createFriend()">
-        Aceptar </div>
+      <div class="accept-button" (click)="createFriend()"> Aceptar </div>
     </div>
 
   </div>

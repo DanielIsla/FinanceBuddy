@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NavController, Platform } from '@ionic/angular';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { Contacts, ContactPayload } from '@capacitor-community/contacts';
-import { options } from 'ionicons/icons';
+import { ContactPayload, Contacts, PermissionStatus, Projection } from '@capacitor-community/contacts';
 
 @Component({
   selector: 'app-friends-contacts',
@@ -16,59 +15,58 @@ import { options } from 'ionicons/icons';
 })
 export class FriendsContactsPage implements OnInit {
 
-  contacts: any[] = [];
+  permission: any;
+
+  // List of contacts, with an interface that aleady has all the posibilities
+  // Initialize with one mock contact for web development and styling.
+  // This will be overwritten by real contacts on a mobile device.
+  contacts: ContactPayload[] = [];
 
   loading: boolean = true;
+
   errorMessage: string = '';
 
   constructor(private navCtrl: NavController, private platform: Platform) { }
 
-  async ngOnInit() {
-    // Solo disponible en dispositivos móviles
-    if (!this.platform.is('capacitor')) {
-      this.errorMessage = 'Solo disponible en dispositivos móviles.';
-      this.loading = false;
+  ngOnInit() {
+    this.getContacts();
+  }
+
+  async getContacts() {
+  try {
+    const permission = await Contacts.requestPermissions();
+    this.permission = permission;
+
+    // If permissions are not granted, show an error message
+    if (permission?.contacts !== 'granted') {
+      this.errorMessage = 'Permisos no concedidos';
       return;
     }
 
-    try {
-      // Ask for contact access permision
-      const perm = await Contacts.requestPermissions();
-      const granted = perm.contacts === 'granted';
+    // If permissions are granted, get the contacts
+    const result = await Contacts.getContacts({
+      projection: {
+        name: true,
+        phones: true,
+        emails: true,
+        image: true,
+      },
+    });
 
-      // Check if permission was granted
-      if (!granted) {
-        this.errorMessage = 'Permiso denegado por el usuario.';
-        this.loading = false;
-        return;
-      }
-
-      //If it was, we get the user contacts
-      const { contacts } = await Contacts.getContacts({
-        projection: { name: true, phones: true, emails: true },
-      });
-
-      //Mapping data
-      this.contacts = (contacts || []).map(c => {
-        const firstName = c.name?.given ?? '';
-        const lastName = c.name?.family ?? '';
-        return {
-          displayName: `${firstName} ${lastName}`.trim(), // <-- aquí generamos displayName
-          phone: c.phones?.[0]?.number ?? '',
-          email: c.emails?.[0]?.address ?? ''
-        };
-      });
-    }
-
-    catch (err) {
-      console.error(err);
-      this.errorMessage = 'Error al acceder a los contactos.';
-      this.loading = false;
-    }
+    //We set the contacts variable to what we just got from the phone
+    this.contacts = result.contacts;
   }
+
+  catch (error) {
+    console.error("Error requesting permissions:", error);
+    this.errorMessage = "Error requesting permissions";
+  }
+}
+
 
   async goBack() {
     this.navCtrl.back();
+    console.log(this.contacts);
     await Haptics.impact({ style: ImpactStyle.Light });
   }
 }

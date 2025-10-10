@@ -15,24 +15,40 @@ p {
     border: 0px;
     background-color: var(--color-contenedor-2);
     border-radius: 20px;
-    font-size: 14px;
-    transition: 0.5s;
 }
 
-.texboxError{
+
+.add-from-contacts-button {
+    margin-top: 20px;
+    background-color: var(--color-acento);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 14px;
+    align-self: center;
+    border-radius: 999px;
+    cursor: pointer;
+
+    img {
+        height: 25px;
+        width: 25px;
+    }
+}
+
+.texboxError {
     transition: 0.5s;
     border: 1px solid var(--color-error);
 }
 
-.texboxSuccess{
+.texboxSuccess {
     transition: 0.5s;
     border: 1px solid var(--color-success);
 }
 
-.texboxContainer
-{
-    display: flex; 
-    flex-direction: column; 
+.texboxContainer {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
 }
 
@@ -46,12 +62,47 @@ p {
     transition: 0.5s;
 }
 
-.tipError{
+.tipError {
     transition: 0.5s;
     color: var(--color-error);
 }
 
-.tipSuccess{
+.tipSuccess {
     transition: 0.5s;
     color: var(--color-success);
+}
+
+.action-buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel-button {
+    background-color: var(--color-error);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    cursor: pointer;
+
+    img {
+        height: 35px;
+        width: 35px;
+        rotate: 45deg;
+    }
+}
+
+.accept-button {
+    background-color: var(--color-success);
+    height: 50px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
 }

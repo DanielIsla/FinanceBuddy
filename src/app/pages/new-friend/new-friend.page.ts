@@ -220,6 +220,10 @@ export class NewFriendPage implements OnInit {
     this.goBack();
   }
 
+  addFromContacts() {
+    this.navCtrl.navigateForward('/friends-contacts');
+  }
+
   async goBack() {
     this.isValidName = undefined;
     this.isValidSurname = undefined;
