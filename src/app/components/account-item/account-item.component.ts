@@ -14,8 +14,8 @@ export class AccountItemComponent  implements OnInit {
 
   banks:BankEntity[] = bankEntities;
 
-  accountBankCode = input("");
-  accountBalance = input(1);
+  accountBankCode:any = input("");
+  accountBalance:any = input(1);
 
   bankEntityByCode?:BankEntity = { bankName: '', shortName: '', corporateColorHex: '', corporateColorHexSecondary: '', bankType: 'Banco Relevante', code: '' };
 

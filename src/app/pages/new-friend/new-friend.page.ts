@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { FinanceBuddyDatabaseSQLiteService } from 'src/app/services/database/finance-buddy-database-sqlite.service';
+import { FinanceBuddyDatabaseSQLiteService, Friend } from 'src/app/services/database/finance-buddy-database-sqlite.service';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
@@ -169,32 +169,32 @@ export class NewFriendPage implements OnInit {
   }
 
   validateEmail() {
-  // Si el campo está vacío → es opcional, no marcamos error ni éxito
-  if (!this.friendEmail.trim()) {
-    this.emailTip = 'Correo personal, opcional';
-    this.isValidEmail = undefined;
-    return;
-  }
+    // Si el campo está vacío → es opcional, no marcamos error ni éxito
+    if (!this.friendEmail.trim()) {
+      this.emailTip = 'Correo personal, opcional';
+      this.isValidEmail = undefined;
+      return;
+    }
 
-  // Si contiene espacios
-  if (/\s/.test(this.friendEmail)) {
-    this.emailTip = 'No introduzca espacios';
-    this.isValidEmail = false;
-    return;
-  }
+    // Si contiene espacios
+    if (/\s/.test(this.friendEmail)) {
+      this.emailTip = 'No introduzca espacios';
+      this.isValidEmail = false;
+      return;
+    }
 
-  // Patrón básico de validación de email
-  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!pattern.test(this.friendEmail)) {
-    this.emailTip = 'Formato de correo inválido';
-    this.isValidEmail = false;
-    return;
-  }
+    // Patrón básico de validación de email
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!pattern.test(this.friendEmail)) {
+      this.emailTip = 'Formato de correo inválido';
+      this.isValidEmail = false;
+      return;
+    }
 
-  // ✅ Si pasa todas las validaciones
-  this.emailTip = 'Ok';
-  this.isValidEmail = true;
-}
+    // ✅ Si pasa todas las validaciones
+    this.emailTip = 'Ok';
+    this.isValidEmail = true;
+  }
 
   //Validates the email format
   checkValidEmail(email: string): boolean {
@@ -215,7 +215,16 @@ export class NewFriendPage implements OnInit {
 
   async createFriend() {
     await Haptics.impact({ style: ImpactStyle.Heavy });
-    //this.dbService.createFriend(this.friendFullName, this.friendEmail, this.friendPhone);
+
+    //Check if all fields are valid, then proceed to add the new friend to the database
+    if (this.isValidEmail == true && this.isValidPhone == true && this.isValidName == true && this.isValidSurname == true && this.isValidSurname2 == true) {
+      const newFriend: Omit<Friend, 'ID'> = {
+        FullName: this.name + ' ' + this.surname + ' ' + this.surname2,
+        Email: this.friendEmail,
+        Phone: this.friendPhone
+      };
+      this.dbService.createFriend(newFriend);
+    }
 
     this.goBack();
   }

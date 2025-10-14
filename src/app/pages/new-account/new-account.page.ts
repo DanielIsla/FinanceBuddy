@@ -8,7 +8,7 @@ import { SelectBankPage } from '../select-bank/select-bank.page';
 import { easeBackIn } from 'd3';
 import { BankEntity } from '../../models/banks';
 import { CurrencyOptions } from '../../models/currency';
-import { FinanceBuddyDatabaseSQLiteService } from '../../services/database/finance-buddy-database-sqlite.service';
+import { FinanceBuddyDatabaseSQLiteService , Account} from '../../services/database/finance-buddy-database-sqlite.service';
 
 @Component({
   selector: 'app-new-account',
@@ -66,7 +66,7 @@ export class NewAccountPage implements OnInit {
   storeData() {
     if(this.selectedBank != undefined)
     {
-      this.dbService.createAccount(this.AccountName, this.selectedBank.code, this.AccountIBAN , this.selectedCurrency.label, parseFloat(this.startingAmount)).then(() => this.navCtrl.back());
+      //this.dbService.createAccount(this.AccountName, this.selectedBank.code, this.AccountIBAN , this.selectedCurrency.label, parseFloat(this.startingAmount)).then(() => this.navCtrl.back());
     }
 
     else

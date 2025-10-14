@@ -6,7 +6,7 @@ import { IonContent, ModalController } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 import { FinanceBuddyDatabaseSQLiteService } from '../../services/database/finance-buddy-database-sqlite.service';
 import { AccountItemComponent } from '../../components/account-item/account-item.component';
-import { Account } from '../../services/database/TableObjects/Account';
+import { Account } from '../../services/database/finance-buddy-database-sqlite.service';
 import { AccountDetailsPage } from '../account-details/account-details.page';
 
 @Component({

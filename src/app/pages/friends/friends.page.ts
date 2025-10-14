@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { IonicModule } from '@ionic/angular';
+import { IonContent } from '@ionic/angular/standalone';
+import { FinanceBuddyDatabaseSQLiteService, Friend } from 'src/app/services/database/finance-buddy-database-sqlite.service';
 import { Router } from '@angular/router';
-import { PopupComponent } from '../../components/addfriendpopup/addfriendpopup.component';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
@@ -13,20 +11,30 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   templateUrl: './friends.page.html',
   styleUrls: ['./friends.page.scss'],
   standalone: true,
-  imports: [PopupComponent,IonContent],
+  imports: [IonContent, JsonPipe, CommonModule],
 })
-export class FriendsPage implements OnInit 
+export class FriendsPage
 {
-  constructor(private navCtrl: NavController, private router: Router) { }
+  constructor(private navCtrl: NavController, private router: Router, private dbService: FinanceBuddyDatabaseSQLiteService) { }
 
+  friendList: Friend[] = [];
   pageNumber: number = 1;
 
-  ngOnInit() 
-  {
-    
+  ngOnInit() {
+    this.loadFriends();
   }
 
-  @ViewChild(PopupComponent) popup!: PopupComponent;
+  async loadFriends() {
+    try {
+      const result = await this.dbService.getFriends();
+      if (result && result.values) {
+        this.friendList = result.values;
+      }
+    } catch (error) {
+      console.error('Error loading friends:', error);
+      this.friendList = []; // Ensure list is empty on error
+    }
+  }
 
   pageChangeFriends()
   {
