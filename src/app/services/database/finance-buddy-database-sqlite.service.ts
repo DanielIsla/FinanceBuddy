@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
+import {
+  CapacitorSQLite,
+  SQLiteConnection,
+  SQLiteDBConnection,
+} from '@capacitor-community/sqlite';
 
 //Database transfer models ----------------------------------------------------------------------------------
 export interface Friend {
@@ -42,9 +46,8 @@ export interface Account {
 //Database creation ----------------------------------------------------------------------------------
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class FinanceBuddyDatabaseSQLiteService {
   private sqlite: SQLiteConnection = new SQLiteConnection(CapacitorSQLite);
   private db!: SQLiteDBConnection;
@@ -53,12 +56,19 @@ export class FinanceBuddyDatabaseSQLiteService {
   // Initializes the database and creates the tables if they don't exist
   async initializeDatabase(): Promise<void> {
     try {
-      const isConn = (await this.sqlite.isConnection('financebuddydb', false)).result;
+      const isConn = (await this.sqlite.isConnection('financebuddydb', false))
+        .result;
 
       if (isConn) {
         this.db = await this.sqlite.retrieveConnection('financebuddydb', false);
       } else {
-        this.db = await this.sqlite.createConnection('financebuddydb', false, 'no-encryption', 1, false);
+        this.db = await this.sqlite.createConnection(
+          'financebuddydb',
+          false,
+          'no-encryption',
+          1,
+          false
+        );
       }
 
       await this.db.open();
@@ -72,7 +82,8 @@ export class FinanceBuddyDatabaseSQLiteService {
   //Make sure that the database is open before doing any operations
   private async ensureDbOpen(): Promise<void> {
     if (!this.db) {
-      const isConn = (await this.sqlite.isConnection('financebuddydb', false)).result;
+      const isConn = (await this.sqlite.isConnection('financebuddydb', false))
+        .result;
       if (isConn) {
         this.db = await this.sqlite.retrieveConnection('financebuddydb', false);
         await this.db.open();
@@ -99,7 +110,7 @@ export class FinanceBuddyDatabaseSQLiteService {
                 Phone TEXT
             );
         `);
-      //------- TABLE TRANSACTIONS -------  
+      //------- TABLE TRANSACTIONS -------
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS Transactions (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -112,8 +123,8 @@ export class FinanceBuddyDatabaseSQLiteService {
                 FOREIGN KEY (AccountID) REFERENCES Accounts(ID)
             );
         `);
-      
-      //------- TABLE DEBTS -------  
+
+      //------- TABLE DEBTS -------
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS Debts (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -141,7 +152,7 @@ export class FinanceBuddyDatabaseSQLiteService {
             );
         `);
 
-      //------- TABLE ACCOUNTS (bank/cash accounts) -------  
+      //------- TABLE ACCOUNTS (bank/cash accounts) -------
       await this.executeSql(`
             CREATE TABLE IF NOT EXISTS Accounts (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -172,7 +183,16 @@ export class FinanceBuddyDatabaseSQLiteService {
   async createAccount(account: Omit<Account, 'ID'>) {
     try {
       await this.ensureDbOpen();
-      return this.db!.run('INSERT INTO Accounts (AccountName, BankCode, IBAN, Currency, Balance) VALUES (?, ?, ?, ?, ?)', [account.AccountName, account.BankCode, account.IBAN, account.Currency, account.Balance]);
+      return this.db!.run(
+        'INSERT INTO Accounts (AccountName, BankCode, IBAN, Currency, Balance) VALUES (?, ?, ?, ?, ?)',
+        [
+          account.AccountName,
+          account.BankCode,
+          account.IBAN,
+          account.Currency,
+          account.Balance,
+        ]
+      );
     } catch (error) {
       console.error('Error creating account:', error);
       return null;
@@ -183,7 +203,9 @@ export class FinanceBuddyDatabaseSQLiteService {
   async getAccounts(): Promise<{ values: Account[] } | null> {
     try {
       await this.ensureDbOpen();
-      return this.db!.query('SELECT * FROM Accounts') as Promise<{ values: Account[] }>;
+      return this.db!.query('SELECT * FROM Accounts') as Promise<{
+        values: Account[];
+      }>;
     } catch (error) {
       console.error('Error getting accounts:', error);
       return null;
@@ -191,10 +213,14 @@ export class FinanceBuddyDatabaseSQLiteService {
   }
 
   //Self explanatory
-  async getAccountDetailsByID(id: number): Promise<{ values: Account[] } | null> {
+  async getAccountDetailsByID(
+    id: number
+  ): Promise<{ values: Account[] } | null> {
     try {
       await this.ensureDbOpen();
-      return this.db!.query('SELECT * FROM Accounts WHERE ID = ?', [id]) as Promise<{ values: Account[] }>;
+      return this.db!.query('SELECT * FROM Accounts WHERE ID = ?', [
+        id,
+      ]) as Promise<{ values: Account[] }>;
     } catch (error) {
       console.error('Error getting account details:', error);
       return null;
@@ -216,7 +242,16 @@ export class FinanceBuddyDatabaseSQLiteService {
   async createTransaction(transaction: Omit<Transaction, 'ID' | 'Date'>) {
     try {
       await this.ensureDbOpen();
-      return this.db!.run('INSERT INTO Transactions (BaseCategory, SpecificCategory, Amount, Concept, AccountID) VALUES (?, ?, ?, ?, ?)', [transaction.BaseCategory, transaction.SpecificCategory, transaction.Amount, transaction.Concept, transaction.AccountID]);
+      return this.db!.run(
+        'INSERT INTO Transactions (BaseCategory, SpecificCategory, Amount, Concept, AccountID) VALUES (?, ?, ?, ?, ?)',
+        [
+          transaction.BaseCategory,
+          transaction.SpecificCategory,
+          transaction.Amount,
+          transaction.Concept,
+          transaction.AccountID,
+        ]
+      );
     } catch (error) {
       console.error('Error creating transaction:', error);
       return null;
@@ -229,7 +264,9 @@ export class FinanceBuddyDatabaseSQLiteService {
   async getDebts(): Promise<{ values: Debt[] } | null> {
     try {
       await this.ensureDbOpen();
-      return this.db!.query('SELECT * FROM Debts') as Promise<{ values: Debt[] }>;
+      return this.db!.query('SELECT * FROM Debts') as Promise<{
+        values: Debt[];
+      }>;
     } catch (error) {
       console.error('Error getting debts:', error);
       return null;
@@ -246,13 +283,15 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
-
   //------- FRIENDS TABLE -------
   //Creates a new friend
   async createFriend(friend: Omit<Friend, 'ID'>) {
     try {
       await this.ensureDbOpen();
-      return this.db!.run('INSERT INTO Friends (FullName, Email, Phone) VALUES (?, ?, ?)', [friend.FullName, friend.Email, friend.Phone]);
+      return this.db!.run(
+        'INSERT INTO Friends (FullName, Email, Phone) VALUES (?, ?, ?)',
+        [friend.FullName, friend.Email, friend.Phone]
+      );
     } catch (error) {
       console.error('Error creating friend:', error);
       return null;
@@ -263,18 +302,28 @@ export class FinanceBuddyDatabaseSQLiteService {
   async getFriends(): Promise<{ values: Friend[] } | null> {
     try {
       await this.ensureDbOpen();
-      return this.db!.query('SELECT * FROM Friends') as Promise<{ values: Friend[] }>;
+      return this.db!.query('SELECT * FROM Friends') as Promise<{
+        values: Friend[];
+      }>;
     } catch (error) {
       console.error('Error getting friends:', error);
       return null;
     }
   }
 
-  async updateFriend(FriendID: number, FullName: string, Email: string, Phone: string) {
+  async updateFriend(
+    FriendID: number,
+    FullName: string,
+    Email: string,
+    Phone: string
+  ) {
     const friend: Friend = { ID: FriendID, FullName, Email, Phone };
     try {
       await this.ensureDbOpen();
-      return this.db!.run('UPDATE Friends SET FullName = ?, Email = ?, Phone = ? WHERE ID = ?', [friend.FullName, friend.Email, friend.Phone, friend.ID]);
+      return this.db!.run(
+        'UPDATE Friends SET FullName = ?, Email = ?, Phone = ? WHERE ID = ?',
+        [friend.FullName, friend.Email, friend.Phone, friend.ID]
+      );
     } catch (error) {
       console.error('Error updating friend:', error);
       return null;

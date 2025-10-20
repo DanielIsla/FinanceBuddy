@@ -1,4 +1,4 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
@@ -14,8 +14,11 @@ import { FinanceBuddyDatabaseSQLiteService } from './services/database/finance-b
 })
 export class AppComponent {
   visible = true;
-  overlays  = false;
-  constructor(private platform: Platform, private dbService: FinanceBuddyDatabaseSQLiteService) {
+  overlays = false;
+  constructor(
+    private platform: Platform,
+    private dbService: FinanceBuddyDatabaseSQLiteService
+  ) {
     this.initializeApp();
   }
 
@@ -29,6 +32,6 @@ export class AppComponent {
   }
 
   async ngOnInit() {
-  await this.dbService.initializeDatabase();
+    await this.dbService.initializeDatabase();
   }
 }

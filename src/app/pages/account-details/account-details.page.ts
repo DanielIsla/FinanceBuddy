@@ -13,7 +13,13 @@ import { BankEntity } from 'src/app/models/banks';
   templateUrl: './account-details.page.html',
   styleUrls: ['./account-details.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, SelectBankPage, CustomizableInputPopupComponent, CustomizableDropdownInputPopupComponent]
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    CustomizableInputPopupComponent,
+    CustomizableDropdownInputPopupComponent,
+  ],
 })
 export class AccountDetailsPage implements OnInit {
   @Input() backgroundColor: string = '#000000'; // valor por defecto
@@ -21,7 +27,6 @@ export class AccountDetailsPage implements OnInit {
 
   @ViewChild('nameSelector') nameSelector!: ElementRef;
   @ViewChild('IBANSelector') IBANSelector!: ElementRef;
-
 
   currentBackground: string = '#000000'; //Color value used for the top
   currentColor: string = '#000000'; //Color value used for the top text
@@ -32,14 +37,20 @@ export class AccountDetailsPage implements OnInit {
   IBANChangePopupOpen: boolean = false;
   CurrencyChangePopupOpen: boolean = false;
 
-  bank: BankEntity = { bankName: 'Revolut', shortName: 'Revolut', corporateColorHex: '#1e1e1e', corporateColorHexSecondary: '#FFFFFF', bankType: 'Banco Relevante', code: 'revolut' };
+  bank: BankEntity = {
+    bankName: 'Revolut',
+    shortName: 'Revolut',
+    corporateColorHex: '#1e1e1e',
+    corporateColorHexSecondary: '#FFFFFF',
+    bankType: 'Banco Relevante',
+    code: 'revolut',
+  };
   name: string = 'Sin nombre definido';
   IBAN: string = 'Sin IBAN definido';
   Currency: string = 'Sin moneda definida';
   id: string = '1';
 
-
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {
     this.currentBackground = '#000000';
@@ -70,7 +81,10 @@ export class AccountDetailsPage implements OnInit {
         this.changesPending = true;
 
         //Update the background color
-        if (this.bank.corporateColorHex != null && this.bank.corporateColorHexSecondary != null) {
+        if (
+          this.bank.corporateColorHex != null &&
+          this.bank.corporateColorHexSecondary != null
+        ) {
           this.currentBackground = this.bank.corporateColorHex;
           this.currentColor = this.bank.corporateColorHexSecondary;
         }
@@ -90,7 +104,6 @@ export class AccountDetailsPage implements OnInit {
     this.CurrencyChangePopupOpen = true;
   }
 
-
   //Close and get the new name
   async closeNameChangePopup(value: string) {
     this.nameChangePopupOpen = false;
@@ -98,7 +111,7 @@ export class AccountDetailsPage implements OnInit {
       this.name = value;
       this.changesPending = true;
     }
-  } 
+  }
   async closeIBANChangePopup(value: string) {
     this.IBANChangePopupOpen = false;
     if (value != null) {
@@ -109,7 +122,7 @@ export class AccountDetailsPage implements OnInit {
 
   async closeCurrencyChangePopup(value: string) {
     this.CurrencyChangePopupOpen = false;
-    if (value != "") {
+    if (value != '') {
       this.Currency = value;
       this.changesPending = true;
     }

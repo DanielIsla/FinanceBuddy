@@ -1,25 +1,21 @@
-import { Component, EnvironmentInjector, inject, ViewChild} from '@angular/core';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
-import { NavController } from '@ionic/angular'; // Import NavController
+import { Component, EnvironmentInjector, inject } from '@angular/core';
+import { IonTabs } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { triangle, ellipse, square } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; // If using routing
-import { RouterModule } from '@angular/router';  // Import RouterModule
-
-
+import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, CommonModule, RouterModule],
+  imports: [IonTabs, CommonModule, RouterModule],
 })
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
 
   selectedTab: string = 'tab1'; // Default tab
-
 
   constructor(private router: Router) {
     addIcons({ triangle, ellipse, square });
@@ -50,6 +46,6 @@ export class TabsPage {
 
   openMore() {
     // Handle the "More" button click (e.g., open a modal)
-    console.log("More clicked");
+    console.log('More clicked');
   }
 }

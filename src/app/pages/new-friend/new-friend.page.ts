@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { FinanceBuddyDatabaseSQLiteService, Friend } from 'src/app/services/database/finance-buddy-database-sqlite.service';
+import { IonContent } from '@ionic/angular/standalone';
+import {
+  FinanceBuddyDatabaseSQLiteService,
+  Friend,
+} from 'src/app/services/database/finance-buddy-database-sqlite.service';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
@@ -11,12 +14,13 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   templateUrl: './new-friend.page.html',
   styleUrls: ['./new-friend.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, CommonModule, FormsModule],
 })
 export class NewFriendPage implements OnInit {
-
-  constructor(private navCtrl: NavController, private dbService: FinanceBuddyDatabaseSQLiteService) { }
-
+  constructor(
+    private navCtrl: NavController,
+    private dbService: FinanceBuddyDatabaseSQLiteService
+  ) {}
 
   //Name and both surnames, separate for better user understanding
   name: string = '';
@@ -208,20 +212,23 @@ export class NewFriendPage implements OnInit {
     return phoneRegex.test(phone);
   }
 
-
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async createFriend() {
     await Haptics.impact({ style: ImpactStyle.Heavy });
 
     //Check if all fields are valid, then proceed to add the new friend to the database
-    if (this.isValidEmail == true && this.isValidPhone == true && this.isValidName == true && this.isValidSurname == true && this.isValidSurname2 == true) {
+    if (
+      this.isValidEmail == true &&
+      this.isValidPhone == true &&
+      this.isValidName == true &&
+      this.isValidSurname == true &&
+      this.isValidSurname2 == true
+    ) {
       const newFriend: Omit<Friend, 'ID'> = {
         FullName: this.name + ' ' + this.surname + ' ' + this.surname2,
         Email: this.friendEmail,
-        Phone: this.friendPhone
+        Phone: this.friendPhone,
       };
       this.dbService.createFriend(newFriend);
     }

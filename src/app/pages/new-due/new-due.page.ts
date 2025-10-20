@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
 import { Router } from '@angular/router'; // If using routing
-import { RouterModule } from '@angular/router';  // Import RouterModule
+import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
   selector: 'app-new-due',
   templateUrl: './new-due.page.html',
   styleUrls: ['./new-due.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterModule]
+  imports: [IonContent, CommonModule, FormsModule, RouterModule],
 })
 export class NewDuePage implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   pageNumber: number = 1;
-  headerAction: string = "Selecciona un amigo";
-  headerStep: string = "Paso 1 de 4";
-  nextBtnText: string = "Continuar";
+  headerAction: string = 'Selecciona un amigo';
+  headerStep: string = 'Paso 1 de 4';
+  nextBtnText: string = 'Continuar';
 
   ngOnInit() {
     this.changeHeaderTexts();
@@ -44,42 +43,35 @@ export class NewDuePage implements OnInit {
   changeHeaderTexts() {
     switch (this.pageNumber) {
       case 1: {
-        this.headerAction = "Selecciona un amigo";
-        this.headerStep = "Paso 1 de 4";
-        this.nextBtnText = "Continuar"
+        this.headerAction = 'Selecciona un amigo';
+        this.headerStep = 'Paso 1 de 4';
+        this.nextBtnText = 'Continuar';
         break;
       }
-      case 2:
-        {
-          this.headerAction = "Introduce el importe";
-          this.headerStep = "Paso 2 de 4";
-          this.nextBtnText = "Continuar"
-          break;
-        }
+      case 2: {
+        this.headerAction = 'Introduce el importe';
+        this.headerStep = 'Paso 2 de 4';
+        this.nextBtnText = 'Continuar';
+        break;
+      }
 
-      case 3:
-        {
-          this.headerAction = "Cuenta a añadir";
-          this.headerStep = "Paso 3 de 4";
-          this.nextBtnText = "Continuar"
-          break;
-        }
+      case 3: {
+        this.headerAction = 'Cuenta a añadir';
+        this.headerStep = 'Paso 3 de 4';
+        this.nextBtnText = 'Continuar';
+        break;
+      }
 
-      case 4:
-        {
-          this.headerAction = "Resumen de operación";
-          this.headerStep = "Paso 4 de 4";
-          this.nextBtnText = "Finalizar"
-          break;
-        }
+      case 4: {
+        this.headerAction = 'Resumen de operación';
+        this.headerStep = 'Paso 4 de 4';
+        this.nextBtnText = 'Finalizar';
+        break;
+      }
 
-      default:
-        {
-          break;
-        }
+      default: {
+        break;
+      }
     }
-
   }
-
-
 }

@@ -2,34 +2,49 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { IonContent, IonHeader, IonTitle, IonToolbar, ModalController, NavController } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  ModalController,
+  NavController,
+} from '@ionic/angular/standalone';
 import { DropdownComponent } from '../../components/dropdown/dropdown.component';
 import { SelectBankPage } from '../select-bank/select-bank.page';
 import { easeBackIn } from 'd3';
 import { BankEntity } from '../../models/banks';
 import { CurrencyOptions } from '../../models/currency';
-import { FinanceBuddyDatabaseSQLiteService , Account} from '../../services/database/finance-buddy-database-sqlite.service';
+import {
+  FinanceBuddyDatabaseSQLiteService,
+  Account,
+} from '../../services/database/finance-buddy-database-sqlite.service';
 
 @Component({
   selector: 'app-new-account',
   templateUrl: './new-account.page.html',
   styleUrls: ['./new-account.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, RouterModule, DropdownComponent, SelectBankPage],
+  imports: [
+    IonContent,
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    DropdownComponent,
+  ],
 })
 export class NewAccountPage implements OnInit {
-
   currencyOptions = CurrencyOptions;
   selectedBank?: BankEntity = undefined;
   selectedCurrency: any = null;
-  startingAmount:string = '';
+  startingAmount: string = '';
   AccountIBAN: string = '';
   AccountName: string = '';
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, private dbService: FinanceBuddyDatabaseSQLiteService ) { }
+  constructor(
+    private navCtrl: NavController,
+    private modalController: ModalController,
+    private dbService: FinanceBuddyDatabaseSQLiteService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async openBankSelectionModal() {
     try {
@@ -44,7 +59,6 @@ export class NewAccountPage implements OnInit {
       console.log('Data:', data);
 
       this.selectedBank = data;
-
     } catch (error) {
       console.error('Error when opening the modal selection:', error);
     }
@@ -64,14 +78,10 @@ export class NewAccountPage implements OnInit {
 
   //Store the new account in the database and goes to previous page if its all good
   storeData() {
-    if(this.selectedBank != undefined)
-    {
+    if (this.selectedBank != undefined) {
       //this.dbService.createAccount(this.AccountName, this.selectedBank.code, this.AccountIBAN , this.selectedCurrency.label, parseFloat(this.startingAmount)).then(() => this.navCtrl.back());
-    }
-
-    else
-    {
-      console.log("No bank selected");
+    } else {
+      console.log('No bank selected');
     }
   }
 }

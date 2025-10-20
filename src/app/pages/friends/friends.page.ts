@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { IonContent } from '@ionic/angular/standalone';
-import { FinanceBuddyDatabaseSQLiteService, Friend } from 'src/app/services/database/finance-buddy-database-sqlite.service';
+import {
+  FinanceBuddyDatabaseSQLiteService,
+  Friend,
+} from 'src/app/services/database/finance-buddy-database-sqlite.service';
 import { Router } from '@angular/router';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
@@ -11,11 +14,14 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   templateUrl: './friends.page.html',
   styleUrls: ['./friends.page.scss'],
   standalone: true,
-  imports: [IonContent, JsonPipe, CommonModule],
+  imports: [IonContent, CommonModule],
 })
-export class FriendsPage
-{
-  constructor(private navCtrl: NavController, private router: Router, private dbService: FinanceBuddyDatabaseSQLiteService) { }
+export class FriendsPage {
+  constructor(
+    private navCtrl: NavController,
+    private router: Router,
+    private dbService: FinanceBuddyDatabaseSQLiteService
+  ) {}
 
   friendList: Friend[] = [];
   pageNumber: number = 1;
@@ -36,12 +42,10 @@ export class FriendsPage
     }
   }
 
-  pageChangeFriends()
-  {
+  pageChangeFriends() {
     this.pageNumber = 1;
   }
-  pageChangeRecommended()
-  {
+  pageChangeRecommended() {
     this.pageNumber = 2;
   }
 

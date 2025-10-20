@@ -1,17 +1,15 @@
-import { Component, OnInit  } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../../explore-container/explore-container.component';
+import { Component, OnInit } from '@angular/core';
+import { IonContent } from '@ionic/angular/standalone';
 import { FinanceBuddyDatabaseSQLiteService } from '../../services/database/finance-buddy-database-sqlite.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent],
+  imports: [IonContent],
 })
 export class Tab1Page {
   constructor(private dbService: FinanceBuddyDatabaseSQLiteService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

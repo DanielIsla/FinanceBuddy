@@ -30,14 +30,7 @@ interface SelectableContact extends ContactPayload {
   templateUrl: './friends-contacts.page.html',
   styleUrls: ['./friends-contacts.page.scss'],
   standalone: true,
-  imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    CommonModule,
-    FormsModule,
-  ],
+  imports: [IonContent, CommonModule, FormsModule],
 })
 export class FriendsContactsPage implements OnInit {
   permission: any;

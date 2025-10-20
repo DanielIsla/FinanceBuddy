@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../../explore-container/explore-container.component';
 import { Router } from '@angular/router'; // If using routing
-import { RouterModule } from '@angular/router';  // Import RouterModule
+import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent,RouterModule],
+  imports: [IonContent, RouterModule],
 })
 export class Tab3Page {
   constructor(private router: Router) {}
