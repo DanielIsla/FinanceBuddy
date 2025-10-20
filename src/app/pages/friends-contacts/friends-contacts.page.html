@@ -18,15 +18,23 @@
           <label class="contact-name"> {{ contact.name?.display }} </label>
           <label class="contact-phone"> {{ contact.phones && contact.phones[0]?.number }} </label>
         </div>
-        <img class="continue-icon" src="assets/images/continue.png">
+        <input type="checkbox" [(ngModel)]="contact.checked" />
       </div>
     </div>
 
-     <div class="action-buttons-container">
+    <div class="action-buttons-container">
       <div class="cancel-button" (click)="goBack()">
         <img src="assets/images/more.png">
       </div>
-      <div class="accept-button"> Aceptar </div>
+      <div class="accept-button" (click)="createFriends()"> Aceptar </div>
     </div>
+
+  <!--
+    @else{
+      <label> Debes dar permisos de contactos </label>
+      <div></div>
+      <img src="assets/images/">
+    }
+      -->
   </div>
 </ion-content>
