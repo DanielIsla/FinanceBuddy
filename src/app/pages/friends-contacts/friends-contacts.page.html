@@ -2,7 +2,7 @@
   <div class="friends-contacts-container">
     <div class="header">
       <div (click)="goBack()" class="back-button">
-        <img src="assets/images/back.png">
+        <img src="assets/images/back.png" />
       </div>
       <label class="page-title">Importar agenda</label>
     </div>
@@ -10,13 +10,19 @@
     <!-- This container will hold and layout all the contact items -->
     <div class="contacts-list">
       <!-- Loop through the contacts fetched from the device -->
-      <div *ngFor="let contact of contacts" class="contact-item">
+      <div
+        *ngFor="let contact of contacts"
+        class="contact-item"
+        [ngClass]="{ 'duplicate': contact.duplicate }"
+      >
         <div class="contact-avatar">
-          <p> {{ contact.name?.display?.charAt(0) }} </p>
+          <p>{{ contact.name?.display?.charAt(0) }}</p>
         </div>
         <div class="contact-info">
           <label class="contact-name"> {{ contact.name?.display }} </label>
-          <label class="contact-phone"> {{ contact.phones && contact.phones[0]?.number }} </label>
+          <label class="contact-phone">
+            {{ contact.phones && contact.phones[0]?.number }}
+          </label>
         </div>
         <input type="checkbox" [(ngModel)]="contact.checked" />
       </div>
@@ -24,12 +30,12 @@
 
     <div class="action-buttons-container">
       <div class="cancel-button" (click)="goBack()">
-        <img src="assets/images/more.png">
+        <img src="assets/images/more.png" />
       </div>
-      <div class="accept-button" (click)="createFriends()"> Aceptar </div>
+      <div class="accept-button" (click)="createFriends()">Aceptar</div>
     </div>
 
-  <!--
+    <!--
     @else{
       <label> Debes dar permisos de contactos </label>
       <div></div>

@@ -23,6 +23,7 @@ import {
 //We extend from the contacts plugin ContactPayload interface, and add a checked field to know what contacs are selected to add
 interface SelectableContact extends ContactPayload {
   checked: boolean;
+  duplicate: boolean;
 }
 
 @Component({
@@ -51,12 +52,34 @@ export class FriendsContactsPage implements OnInit {
     this.getContacts();
   }
 
+  //Gets the friends from the database to avoid duplicates
+  async getFriends(): Promise<Friend[] | null> {
+    try {
+      const result = await this.dbService.getFriends();
+
+      //If the result is not null, return the values
+      if (result != null) {
+        return result.values;
+      }
+
+      // If the result is null, log an error and return null.
+      console.error('Error getting friends:', result);
+      return null;
+    } catch (error) {
+      console.error('Error getting friends:', error);
+      return null;
+    }
+  }
+
+  // Gets the contacts from the phone agenda
   async getContacts() {
     try {
+      // First, get the existing friends from the database to check from duplicates later
+      const friends = await this.getFriends();
+
       const permission = await Contacts.requestPermissions();
       this.permission = permission;
 
-      // If permissions are not granted, show an error message
       if (permission?.contacts !== 'granted') {
         this.errorMessage = 'Permisos no concedidos';
         return;
@@ -72,10 +95,22 @@ export class FriendsContactsPage implements OnInit {
         },
       });
 
-      //We set the contacts variable to what we just got from the phone
+      // Map phone contacts to SelectableContact and check for duplicates.
       this.contacts = result.contacts.map((contact) => ({
         ...contact,
         checked: false,
+        // A contact is a duplicate if a friend with the same phone number or email already exists.
+        duplicate: friends
+          ? friends.some(
+              (friend) =>
+                (friend.Phone &&
+                  contact.phones &&
+                  contact.phones.some((p) => p.number === friend.Phone)) ||
+                (friend.Email &&
+                  contact.emails &&
+                  contact.emails.some((e) => e.address === friend.Email))
+            )
+          : false,
       }));
     } catch (error) {
       console.error('Error requesting permissions:', error);
