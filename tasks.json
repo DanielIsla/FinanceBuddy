@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build & Open Android (Dev)",
+      "type": "shell",
+      // Executes web build, syncs assets/plugins, then opens Android Studio
+      "command": "ionic build && ionic cap sync android && ionic cap open android",
+      "group": {
+        "kind": "build",
+        "isDefault": true // Set as default build task (optional)
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Build & Open iOS (Dev)",
+      "type": "shell",
+      // Executes web build, syncs assets/plugins, then opens Xcode
+      "command": "ionic build && ionic cap sync ios && ionic cap open ios",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Build Android (Prod)",
+      "type": "shell",
+      // Use --prod for production web assets and then sync/open.
+      "command": "ionic build --prod && ionic cap sync android && ionic cap open android",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}

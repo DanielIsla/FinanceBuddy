@@ -25,17 +25,11 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.always.css";
 @import "@ionic/angular/css/palettes/dark.system.css";
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
 
+//Inter font, from google fonts
 @font-face {
   font-family: "Inter";
   src: url("assets/fonts/Inter_18pt-Medium.ttf") format("truetype");
@@ -45,56 +39,30 @@
   --ion-font-family: Inter;
 }
 
-:host {
-  background-color: var(--color-background);
-} /* Add top padding to your header toolbar to account for the status bar */
-ion-header ion-toolbar:first-of-type {
-  padding-top: var(--ion-safe-area-top);
-}
-
-/* Add bottom padding to your footer toolbar to account for the home gesture bar */
-ion-footer ion-toolbar:last-of-type {
-  padding-bottom: var(--ion-safe-area-bottom);
-}
-
 body {
   background-color: var(--color-background);
   color: white;
 }
 
-/*Styles for various components used alot throughout the app*/
-.dataInput {
-  width: 100%;
-  height: 60px;
-  margin-top: 10px;
-  padding: 10px;
-  outline: none;
-  border: 0px;
-  background-color: var(--color-contenedor-2);
-  border-radius: 20px;
-}
-
+//Bouncy buttons and fields when clicked, used accross all thea app
 .reactiveBtn {
   cursor: pointer;
   user-select: none;
   transition: transform 0.15s ease-out;
 }
-
 .reactiveBtn:active {
   transform: scale(1.1, 1);
 }
-
 .reactiveField {
   cursor: pointer;
   user-select: none;
   transition: transform 0.15s ease-out;
 }
-
 .reactiveField:active {
   transform: scale(1.03, 1);
 }
 
-/*Styles for various components used alot throughout the app*/
+//Style for all the textboxes used in the app
 .dataInput {
   width: 100%;
   margin-top: 10px;
@@ -104,4 +72,27 @@ body {
   border: 0px;
   background-color: var(--color-contenedor-2);
   border-radius: 20px;
+}
+
+//Customize all the checkboxes used in the app
+input[type="checkbox"] {
+  /* Remove default browser appearance */
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* Use app's theme colors */
+  background-color: var(--color-contenedor);
+  border: 2px solid var(--color-secondarytext-container);
+  border-radius: 8px;
+  width: 25px;
+  height: 25px;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-acento);
+  border-color: var(--color-acento);
+  background-image: url("/assets/images/check.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }

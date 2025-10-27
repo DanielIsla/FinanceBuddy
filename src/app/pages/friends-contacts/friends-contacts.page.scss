@@ -59,28 +59,6 @@ ion-content {
   border-radius: 20px;
   background-color: var(--color-contenedor-2);
   cursor: pointer;
-
-  input[type="checkbox"] {
-    /* Remove default browser appearance */
-    -webkit-appearance: none;
-    appearance: none;
-
-    /* Use app's theme colors */
-    background-color: var(--color-contenedor);
-    border: 2px solid var(--color-secondarytext-container);
-    border-radius: 8px;
-    width: 25px;
-    height: 25px;
-    transition: all 0.2s ease-in-out;
-  }
-
-  input[type="checkbox"]:checked {
-    background-color: var(--color-acento);
-    border-color: var(--color-acento);
-    background-image: url("/assets/images/check.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
 }
 
 .contact-item-duplicate {
