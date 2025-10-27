@@ -26,7 +26,13 @@ export class FriendsPage {
   friendList: Friend[] = [];
   pageNumber: number = 1;
 
+  //Load friends list on page init
   ngOnInit() {
+    this.loadFriends();
+  }
+
+  //Load friends list on page enter, perfect to reload when comming back or directly from other child page
+  ionViewWillEnter() {
     this.loadFriends();
   }
 

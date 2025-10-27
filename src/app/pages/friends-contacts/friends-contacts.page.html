@@ -11,9 +11,9 @@
     <div class="contacts-list">
       <!-- Loop through the contacts fetched from the device -->
       <div
-        *ngFor="let contact of contacts"
         class="contact-item"
-        [ngClass]="{ 'duplicate': contact.duplicate }"
+        *ngFor="let contact of contacts"
+        [ngClass]="{ 'contact-item-duplicate': contact.duplicate }"
       >
         <div class="contact-avatar">
           <p>{{ contact.name?.display?.charAt(0) }}</p>
@@ -32,7 +32,7 @@
       <div class="cancel-button" (click)="goBack()">
         <img src="assets/images/more.png" />
       </div>
-      <div class="accept-button" (click)="createFriends()">Aceptar</div>
+      <div class="accept-button" (click)="createFriends() ">Aceptar</div>
     </div>
 
     <!--

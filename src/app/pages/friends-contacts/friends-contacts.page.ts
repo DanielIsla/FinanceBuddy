@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NavController, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import {
   IonContent,
@@ -43,9 +44,10 @@ export class FriendsContactsPage implements OnInit {
   errorMessage: string = '';
 
   constructor(
-    private navCtrl: NavController,
+    private router: Router,
     private platform: Platform,
-    private dbService: FinanceBuddyDatabaseSQLiteService
+    private dbService: FinanceBuddyDatabaseSQLiteService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -99,6 +101,7 @@ export class FriendsContactsPage implements OnInit {
       this.contacts = result.contacts.map((contact) => ({
         ...contact,
         checked: false,
+
         // A contact is a duplicate if a friend with the same phone number or email already exists.
         duplicate: friends
           ? friends.some(
@@ -143,12 +146,19 @@ export class FriendsContactsPage implements OnInit {
       await this.dbService.createFriend(newFriend);
     }
     // After creating the friends, navigate back.
-    this.goBack();
+    this.goBackTwice();
   }
 
   async goBack() {
-    this.navCtrl.back();
-    console.log(this.contacts);
+    this.location.back();
+    await Haptics.impact({ style: ImpactStyle.Light });
+  }
+
+  async goBackTwice() {
+    //Go back 2 pages, going to friends. Jump manual friend creation page
+    this.location.historyGo(-2);
+
+    // Clean up the contacts list after navigating away.
     this.contacts = [];
     await Haptics.impact({ style: ImpactStyle.Light });
   }
