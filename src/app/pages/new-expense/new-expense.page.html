@@ -1,156 +1,378 @@
 <ion-content fullscreen="false">
   <div
-    style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
-    <div style="display: flex; flex-grow: 1; flex-direction: column;">
-
-      <label style="font-size: 25px; font-weight: 600;">Nuevo gasto</label>
+    style="
+      height: 100%;
+      width: 100%;
+      float: right;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-background);
+      padding: 25px;
+    "
+  >
+    <div style="display: flex; flex-grow: 1; flex-direction: column">
+      <label style="font-size: 25px; font-weight: 600">Nuevo gasto</label>
 
       <div class="stepperLine">
-
         <div class="icnStepper">
-          <img style="flex-grow: 1;" src="assets/images/money_recive.svg">
+          <img style="flex-grow: 1" src="assets/images/money_recive.svg" />
         </div>
 
         <div class="stepperText">
-          <label style="color: var(--color-primarytext);">{{headerAction}}</label>
-          <label style="color: var(--color-secondarytext);">{{headerStep}}</label>
+          <label style="color: var(--color-primarytext)"
+            >{{headerAction}}</label
+          >
+          <label style="color: var(--color-secondarytext)"
+            >{{headerStep}}</label
+          >
         </div>
-
       </div>
 
-      <div style="margin-top: 10px; display: flex; gap: 5px;">
-        <div [ngStyle]="{'background-color': pageNumber >= 1 ? 'var(--color-acento)' : 'gray'}"
-          style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
-        <div [ngStyle]="{'background-color': pageNumber >= 2 ? 'var(--color-acento)' : 'gray'}"
-          style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
-        <div [ngStyle]="{'background-color': pageNumber >= 3 ? 'var(--color-acento)' : 'gray'}"
-          style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
-        <div [ngStyle]="{'background-color': pageNumber >= 4 ? 'var(--color-acento)' : 'gray'}"
-          style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
-        <div [ngStyle]="{'background-color': pageNumber >= 5 ? 'var(--color-acento)' : 'gray'}"
-          style="height: 5px; border-radius: 5px; background-color: var(--color-secondarytext); flex-grow: 1;"></div>
+      <div style="margin-top: 10px; display: flex; gap: 5px">
+        <div
+          [ngStyle]="{'background-color': pageNumber >= 1 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
+        ></div>
+        <div
+          [ngStyle]="{'background-color': pageNumber >= 2 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
+        ></div>
+        <div
+          [ngStyle]="{'background-color': pageNumber >= 3 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
+        ></div>
+        <div
+          [ngStyle]="{'background-color': pageNumber >= 4 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
+        ></div>
+        <div
+          [ngStyle]="{'background-color': pageNumber >= 5 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
+        ></div>
       </div>
 
-
-      <div style="height: 100%; margin-top: 25px; display: flex; flex-direction: column;">
-
+      <div
+        style="
+          height: 100%;
+          margin-top: 25px;
+          display: flex;
+          flex-direction: column;
+        "
+      >
         <!-- Select the expense category -->
-        @if (pageNumber == 1)
-        {
-        <div style="width: 100%; height: 100%;">
+        @if (pageNumber == 1) {
+        <div style="width: 100%; height: 100%">
           <div class="categoriesContainer">
             <ng-container *ngFor="let category of categories">
-              <div *ngIf="category.parentCat == category.subCat" class="{{category.styleClass}} categoryBox" (click)="selectCategory(category)">
-                <img style="height: 60px; width: 60px;" [src]="category.iconPath">
-                <div style="height: 15px; width: 100%;"></div>
-                <label style="font-size: 14px;">{{ category.subcatTextToShow }}</label>
+              <div
+                *ngIf="category.parentCat == category.subCat"
+                class="{{category.styleClass}} categoryBox"
+                (click)="selectCategory(category)"
+              >
+                <img
+                  style="height: 60px; width: 60px"
+                  [src]="category.iconPath"
+                />
+                <div style="height: 15px; width: 100%"></div>
+                <label style="font-size: 14px"
+                  >{{ category.subcatTextToShow }}</label
+                >
               </div>
             </ng-container>
           </div>
         </div>
-        }
-
-        @if (pageNumber == 2)
-        {
-          <div style="width: 100%; height: 100%;">
+        } @if (pageNumber == 2) {
+        <div style="width: 100%; height: 100%">
           <div class="categoriesContainer">
             <ng-container *ngFor="let category of categories">
-              <div *ngIf="category.parentCat == selectedCategory.subCat && category.parentCat != category.subCat" class="{{category.parentCat}} categoryBox" (click)="selectSubCategory(category)">
-                <img style="height: 60px; width: 60px;" [src]="category.iconPath">
-                <div style="height: 15px; width: 100%;"></div>
-                <label style="font-size: 14px;">{{ category.subcatTextToShow }}</label>
+              <div
+                *ngIf="category.parentCat == selectedCategory.subCat && category.parentCat != category.subCat"
+                class="{{category.parentCat}} categoryBox"
+                (click)="selectSubCategory(category)"
+              >
+                <img
+                  style="height: 60px; width: 60px"
+                  [src]="category.iconPath"
+                />
+                <div style="height: 15px; width: 100%"></div>
+                <label style="font-size: 14px"
+                  >{{ category.subcatTextToShow }}</label
+                >
               </div>
             </ng-container>
           </div>
         </div>
-        }
+        } @if (pageNumber == 3) {
 
-        @if (pageNumber == 3)
-        {
-
-        <div style="display: flex; margin-top: 20px;">
-          <label style="font-size: 50px; font-weight: 600;">$</label>
-          <input class="importeInput" type="number" id="fname" name="fname" size="9" [(ngModel)]="amount" >
+        <div style="display: flex; margin-top: 20px">
+          <label style="font-size: 50px; font-weight: 600">$</label>
+          <input
+            class="importeInput"
+            type="number"
+            id="fname"
+            name="fname"
+            size="9"
+            [(ngModel)]="amount"
+          />
         </div>
 
         <label
-          style="font-size: 20px; margin-top: 25px; font-weight: 600; flex-grow: 1; display: flex; flex-direction: column-reverse;">Concepto</label>
-        <input class="reactiveField"
-          style="width: 100%; height: 60px; margin-top: 10px; margin-bottom: 25px; padding: 10px; outline:none; border: 0px; background-color: var(--color-contenedor-2); border-radius: 20px;"
-          type="text" id="fname" name="fname" size="9" [(ngModel)]="concept">
-        }
+          style="
+            font-size: 20px;
+            margin-top: 25px;
+            font-weight: 600;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column-reverse;
+          "
+          >Concepto</label
+        >
+        <input
+          class="reactiveField dataInput"
+          type="text"
+          id="fname"
+          name="fname"
+          size="9"
+          [(ngModel)]="concept"
+        />
 
-        @if (pageNumber == 4)
-        {
+        } @if (pageNumber == 4) {
 
-        <label style="font-size: 16px;  display: flex; flex-direction: column-reverse;">Elige a que cuenta se cargará el
-          gasto</label>
+        <label
+          style="font-size: 16px; display: flex; flex-direction: column-reverse"
+          >Elige a que cuenta se cargará el gasto</label
+        >
 
-        <div style="display: flex; margin-top: 20px;">
+        <div style="display: flex; margin-top: 20px">
           <div class="accountCardSelected">
-            <div style="display: flex; flex-grow: 1;">
-              <label style="flex-grow: 1;"> Revolut </label>
-              <img style="height: 25px; width: 25px;" src="assets/images/revolut_icon.png">
+            <div style="display: flex; flex-grow: 1">
+              <label style="flex-grow: 1"> Revolut </label>
+              <img
+                style="height: 25px; width: 25px"
+                src="assets/images/revolut_icon.png"
+              />
             </div>
 
-            <div style="display: flex; flex-direction: column; gap: 5px;">
-              <label style="font-size: 12px; color: var(--color-secondarytext-container);"> Saldo disponible </label>
-              <label style="font-size: 28px; color: var(--color-primarytext); font-weight: 600;"> $54,92 </label>
+            <div style="display: flex; flex-direction: column; gap: 5px">
+              <label
+                style="
+                  font-size: 12px;
+                  color: var(--color-secondarytext-container);
+                "
+              >
+                Saldo disponible
+              </label>
+              <label
+                style="
+                  font-size: 28px;
+                  color: var(--color-primarytext);
+                  font-weight: 600;
+                "
+              >
+                $54,92
+              </label>
             </div>
           </div>
-
-
         </div>
-        }
-
-        @if (pageNumber == 5)
-        {
-        <div class="page4SummaryContainers" style="display: flex; align-items: center;">
+        } @if (pageNumber == 5) {
+        <div
+          class="page4SummaryContainers"
+          style="display: flex; align-items: center"
+        >
           <img
-            style="height: 50px; width: 50px; background-color: var(--color-acento); padding: 3px; border-radius: 25px;"
-            src={{selectedCategory.iconPath}}>
-          <div style="display: flex; flex-direction: column; margin-left: 15px;">
-            <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Categoria </label>
-            <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;"> {{selectedCategory.catTextToShow}} > {{selectedCategory.subcatTextToShow}} </label>
+            style="
+              height: 50px;
+              width: 50px;
+              background-color: var(--color-acento);
+              padding: 3px;
+              border-radius: 25px;
+            "
+            src="{{selectedCategory.iconPath}}"
+          />
+          <div style="display: flex; flex-direction: column; margin-left: 15px">
+            <label
+              style="
+                font-size: 16px;
+                display: flex;
+                flex-direction: column-reverse;
+              "
+            >
+              Categoria
+            </label>
+            <label
+              style="
+                font-size: 14px;
+                display: flex;
+                flex-direction: column-reverse;
+                margin-top: 5px;
+              "
+            >
+              {{selectedCategory.catTextToShow}} >
+              {{selectedCategory.subcatTextToShow}}
+            </label>
           </div>
         </div>
 
         <div class="page4SummaryContainers">
-          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Importe
-            transacción </label>
           <label
-            style="font-size: 30px;  display: flex; flex-direction: column-reverse; margin-top: 5px; font-weight: 600; color: var(--color-acento);">
-            {{amount}}$ </label>
-        </div>
-
-        <div class="page4SummaryContainers">
-          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Concepto
-            transacción </label>
-          <label style="font-size: 14px;  display: flex; flex-direction: column-reverse; margin-top: 5px;">@if(concept != ""){ {{concept}} } @else {Sin concepto} </label>
-        </div>
-
-        <div class="page4SummaryContainers">
-          <label style="font-size: 16px;  display: flex; flex-direction: column-reverse; "> Cuenta de cargo
+            style="
+              font-size: 16px;
+              display: flex;
+              flex-direction: column-reverse;
+            "
+          >
+            Importe transacción
           </label>
-          <div class="accountCard" style="flex-grow: 0; width: 100%; border-radius: 20px; margin-top: 10px;">
-            <div style="display: flex; flex-grow: 1;">
-              <label style="flex-grow: 1;"> Revolut </label>
-              <img style="height: 25px; width: 25px;" src="assets/images/revolut_icon.png">
+          <label
+            style="
+              font-size: 30px;
+              display: flex;
+              flex-direction: column-reverse;
+              margin-top: 5px;
+              font-weight: 600;
+              color: var(--color-acento);
+            "
+          >
+            {{amount}}$
+          </label>
+        </div>
+
+        <div class="page4SummaryContainers">
+          <label
+            style="
+              font-size: 16px;
+              display: flex;
+              flex-direction: column-reverse;
+            "
+          >
+            Concepto transacción
+          </label>
+          <label
+            style="
+              font-size: 14px;
+              display: flex;
+              flex-direction: column-reverse;
+              margin-top: 5px;
+            "
+            >@if(concept != ""){ {{concept}} } @else {Sin concepto}
+          </label>
+        </div>
+
+        <div class="page4SummaryContainers">
+          <label
+            style="
+              font-size: 16px;
+              display: flex;
+              flex-direction: column-reverse;
+            "
+          >
+            Cuenta de cargo
+          </label>
+          <div
+            class="accountCard"
+            style="
+              flex-grow: 0;
+              width: 100%;
+              border-radius: 20px;
+              margin-top: 10px;
+            "
+          >
+            <div style="display: flex; flex-grow: 1">
+              <label style="flex-grow: 1"> Revolut </label>
+              <img
+                style="height: 25px; width: 25px"
+                src="assets/images/revolut_icon.png"
+              />
             </div>
 
-            <div style="display: flex; gap: 10px;">
-              <div style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
-                <label style="font-size: 12px; color: var(--color-secondarytext-container);"> Saldo disponible </label>
-                <label style="font-size: 28px; color: var(--color-primarytext); font-weight: 600;"> $54,92 </label>
+            <div style="display: flex; gap: 10px">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 5px;
+                  align-items: center;
+                "
+              >
+                <label
+                  style="
+                    font-size: 12px;
+                    color: var(--color-secondarytext-container);
+                  "
+                >
+                  Saldo disponible
+                </label>
+                <label
+                  style="
+                    font-size: 28px;
+                    color: var(--color-primarytext);
+                    font-weight: 600;
+                  "
+                >
+                  $54,92
+                </label>
               </div>
 
-              <div style="flex-grow: 1; align-items: center; display: flex; justify-content: center; rotate: 180deg;">
-                <img style="height: 30px; width: 30px;" src="assets/images/back.png">
+              <div
+                style="
+                  flex-grow: 1;
+                  align-items: center;
+                  display: flex;
+                  justify-content: center;
+                  rotate: 180deg;
+                "
+              >
+                <img
+                  style="height: 30px; width: 30px"
+                  src="assets/images/back.png"
+                />
               </div>
 
-              <div style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
-                <label style="font-size: 12px; color: var(--color-success);"> Tras operación </label>
-                <label style="font-size: 28px; color: var(--color-success); font-weight: 600;"> $108,92 </label>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 5px;
+                  align-items: center;
+                "
+              >
+                <label style="font-size: 12px; color: var(--color-success)">
+                  Tras operación
+                </label>
+                <label
+                  style="
+                    font-size: 28px;
+                    color: var(--color-success);
+                    font-weight: 600;
+                  "
+                >
+                  $108,92
+                </label>
               </div>
             </div>
           </div>
@@ -160,14 +382,31 @@
       </div>
 
       <div class="prevnextLine">
-        <div *ngIf="pageNumber != 1 && pageNumber != 2" class="reactiveBtn" style="padding: 10px; border-radius: 15px; background-color: var(--color-acento);"
-          (click)="nextPage()">
-          {{nextBtnText}} </div>
-        <div class="reactiveBtn"
-          style="padding: 10px; display: flex; border-radius: 15px; background-color: var(--color-acento);"
-          (click)="prevPage()"> <img height="22px" width="22px" src="assets/images/back.png"> </div>
+        <div
+          *ngIf="pageNumber != 1 && pageNumber != 2"
+          class="reactiveBtn"
+          style="
+            padding: 10px;
+            border-radius: 15px;
+            background-color: var(--color-acento);
+          "
+          (click)="nextPage()"
+        >
+          {{nextBtnText}}
+        </div>
+        <div
+          class="reactiveBtn"
+          style="
+            padding: 10px;
+            display: flex;
+            border-radius: 15px;
+            background-color: var(--color-acento);
+          "
+          (click)="prevPage()"
+        >
+          <img height="22px" width="22px" src="assets/images/back.png" />
+        </div>
       </div>
-
     </div>
   </div>
 </ion-content>

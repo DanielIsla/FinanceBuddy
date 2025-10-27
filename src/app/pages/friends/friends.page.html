@@ -1,36 +1,30 @@
 <ion-content fullscreen="false">
-  <div
-    style="display: flex; padding: 25px; height: 100%; flex-grow: 1; flex-direction: column; background-color: var(--color-background);">
-    <div style="display:flex; align-items: center;">
-      <div (click)="goBack()"
-        style="background-color: var(--color-contenedor-2); height: 60px; width: 60px; border-radius: 30px; padding: 17px;">
-        <img src="assets/images/back.png">
+  <div class="friends-page-container">
+    <div class="friends-header">
+      <div (click)="goBack()" class="back-button">
+        <img src="assets/images/back.png" />
       </div>
     </div>
 
-    <label
-      style="font-size: 25px; font-weight: 600; text-align: center; position: absolute; align-self: center; margin-top: 15px;">Amigos</label>
+    <label class="page-title">Amigos</label>
 
     <div class="friendsContainer">
       <div class="amigoItem" *ngFor="let friend of friendList">
         <div class="icnAmigo">
-          <p>
-            {{friend.FullName.charAt(0).toUpperCase()}}
-          </p>
+          <p>{{friend.FullName.charAt(0).toUpperCase()}}</p>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 4px; margin-left: 10px; flex-grow: 1;">
-          <label style="font-weight: 450; font-size: 16px; flex-grow: 1;"> {{friend.FullName}} </label>
-          <label style="font-weight: 450; font-size: 12px; color: var(--color-secondarytext);"> {{friend.Phone}} </label>
+        <div class="friend-details">
+          <label class="friend-name"> {{friend.FullName}} </label>
+          <label class="friend-phone"> {{friend.Phone}} </label>
         </div>
-        <img style="height: 30x; width: 30px;" src="assets/images/continue.png">
+        <img class="continue-icon" src="assets/images/continue.png" />
       </div>
     </div>
 
-    <div style="display: flex; flex-direction: row-reverse; align-items: center; justify-content: center;">
-      <div (click)="nuevoAmigo()"
-        style=" display: flex; padding: 15px 30px 15px 30px; border-radius: 30px; background-color: var(--color-acento); align-items: center; height: 60px;">
-        <img style="height: 25px; width: 25px; " src="assets/images/more.png">
-        <label style="font-weight: 450; font-size: 16px; text-align: center; margin-left: 5px;"> Nuevo amigo </label>
+    <div class="add-friend-container">
+      <div (click)="nuevoAmigo()" class="add-friend-button">
+        <img class="add-friend-icon" src="assets/images/more.png" />
+        <label class="add-friend-label"> Nuevo amigo </label>
       </div>
     </div>
   </div>
