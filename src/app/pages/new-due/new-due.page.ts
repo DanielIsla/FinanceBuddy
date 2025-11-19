@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonContent } from '@ionic/angular/standalone';
 import { Router } from '@angular/router'; // If using routing
 import { RouterModule } from '@angular/router'; // Import RouterModule
+import { FinanceBuddyDatabaseSQLiteService } from 'src/app/services/database/finance-buddy-database-sqlite.service';
+import { Friend } from 'src/app/services/database/finance-buddy-database-sqlite.service';
+import { Account } from 'src/app/services/database/finance-buddy-database-sqlite.service';
 
 @Component({
   selector: 'app-new-due',
@@ -13,12 +16,25 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
   imports: [IonContent, CommonModule, FormsModule, RouterModule],
 })
 export class NewDuePage implements OnInit {
-  constructor() {}
+  constructor(
+    private dbService: FinanceBuddyDatabaseSQLiteService,
+    private router: Router
+  ) {}
 
   pageNumber: number = 1;
   headerAction: string = 'Selecciona un amigo';
   headerStep: string = 'Paso 1 de 4';
   nextBtnText: string = 'Continuar';
+
+  //Database new due variables
+  concept: string = '';
+  amount?: number = undefined;
+  selectedFriend?: Friend = undefined;
+  account?: Account = undefined;
+
+  //Variables to store user friends and accounts from the database
+  friends: Friend[] | null = [];
+  accounts: Account[] | null = [];
 
   ngOnInit() {
     this.changeHeaderTexts();
@@ -73,5 +89,11 @@ export class NewDuePage implements OnInit {
         break;
       }
     }
+  }
+
+  //Loads friends and account so the user can select them
+  async loadFriendsAccountsDB() {
+    this.friends = await this.dbService.getFriends();
+    this.accounts = await this.dbService.getAccounts();
   }
 }

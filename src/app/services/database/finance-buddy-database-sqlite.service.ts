@@ -200,12 +200,16 @@ export class FinanceBuddyDatabaseSQLiteService {
   }
 
   //Get all the accounts from the database accounts table
-  async getAccounts(): Promise<{ values: Account[] } | null> {
+  /**
+   * Retrieves all the accounts from the table accounts.
+   * @param None
+   * @returns A Promise of an array of Account objects, or null if there was an error.
+   */
+  async getAccounts(): Promise<Account[] | null> {
     try {
       await this.ensureDbOpen();
-      return this.db!.query('SELECT * FROM Accounts') as Promise<{
-        values: Account[];
-      }>;
+      const result = await this.db!.query('SELECT * FROM Accounts');
+      return result.values as Account[];
     } catch (error) {
       console.error('Error getting accounts:', error);
       return null;
@@ -298,13 +302,16 @@ export class FinanceBuddyDatabaseSQLiteService {
     }
   }
 
-  //Get all the friends from the table friends
-  async getFriends(): Promise<{ values: Friend[] } | null> {
+  /**
+   * Retrieves all the friends from the table friends.
+   * @param None
+   * @returns A Promise of an array of Friend objects, or null if there was an error.
+   */
+  async getFriends(): Promise<Friend[] | null> {
     try {
       await this.ensureDbOpen();
-      return this.db!.query('SELECT * FROM Friends') as Promise<{
-        values: Friend[];
-      }>;
+      const result = await this.db!.query('SELECT * FROM Friends');
+      return result.values as Friend[];
     } catch (error) {
       console.error('Error getting friends:', error);
       return null;

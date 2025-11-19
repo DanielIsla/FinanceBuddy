@@ -1,22 +1,49 @@
-<ion-content fullscreen="false">
+<ion-header class="ion-no-border">
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+<ion-content>
   <app-calendarselector #calendarselector></app-calendarselector>
-
   <div
-    style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
-    <label style="font-size: 25px; font-weight: 600;">Deudas</label>
+    style="
+      height: 100%;
+      width: 100%;
+      float: right;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-background);
+      padding: 25px;
+    "
+  >
+    <label style="font-size: 25px; font-weight: 600">Deudas</label>
 
     <input type="checkbox" id="toggle" class="toggleCheckbox" />
-    <label for="toggle" class='toggleContainer'>
+    <label for="toggle" class="toggleContainer">
       <div>Debes</div>
       <div>Te deben</div>
     </label>
 
     <div class="selectStartEndDate">
       <div>
-        <div (click)="abrirPopup()" style="margin-top:3px; width: fit-content; padding: 4px; display: flex; align-items: center; border-radius: 15px;">
-          <img style="width: 15px; height: 15px; rotate: 270deg;" src="assets/images/back.png">
-          <label style=" font-size: 14px; color: var;"></label>
-          <img style="width: 35px; height: 35px;"  src="assets/images/calendar.png">
+        <div
+          (click)="abrirPopup()"
+          style="
+            margin-top: 3px;
+            width: fit-content;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            border-radius: 15px;
+          "
+        >
+          <img
+            style="width: 15px; height: 15px; rotate: 270deg"
+            src="assets/images/back.png"
+          />
+          <label style="font-size: 14px; color: var"></label>
+          <img
+            style="width: 35px; height: 35px"
+            src="assets/images/calendar.png"
+          />
         </div>
       </div>
     </div>

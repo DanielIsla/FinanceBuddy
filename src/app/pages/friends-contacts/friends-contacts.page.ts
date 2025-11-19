@@ -61,7 +61,7 @@ export class FriendsContactsPage implements OnInit {
 
       //If the result is not null, return the values
       if (result != null) {
-        return result.values;
+        return result;
       }
 
       // If the result is null, log an error and return null.

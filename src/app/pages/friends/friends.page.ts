@@ -39,8 +39,8 @@ export class FriendsPage {
   async loadFriends() {
     try {
       const result = await this.dbService.getFriends();
-      if (result && result.values) {
-        this.friendList = result.values;
+      if (result != null) {
+        this.friendList = result;
       }
     } catch (error) {
       console.error('Error loading friends:', error);

@@ -14,16 +14,28 @@ import { AccountDetailsPage } from '../account-details/account-details.page';
   templateUrl: './accounts.page.html',
   styleUrls: ['./accounts.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, RouterModule, AccountItemComponent]
+  imports: [
+    IonContent,
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    AccountItemComponent,
+  ],
 })
 export class AccountsPage implements OnInit {
-
   accounts: Account[] = [];
 
-  constructor(private navCtrl: NavController, private dbService: FinanceBuddyDatabaseSQLiteService, private modalController: ModalController) { }
+  constructor(
+    private navCtrl: NavController,
+    private dbService: FinanceBuddyDatabaseSQLiteService,
+    private modalController: ModalController
+  ) {}
 
   async ngOnInit() {
-    this.dbService.getAccounts().then((result) => { if (result?.values != undefined) { result?.values.forEach((account) => this.accounts.push(account)) } });
+    const result = await this.dbService.getAccounts();
+    if (result != null) {
+      this.accounts = result;
+    }
     console.log(this.accounts);
   }
 
@@ -33,8 +45,8 @@ export class AccountsPage implements OnInit {
         component: AccountDetailsPage,
         componentProps: {
           accountID: accountID,
-          backgroundColor: '#009933'
-        }
+          backgroundColor: '#009933',
+        },
       });
 
       //Show the modal
@@ -42,7 +54,6 @@ export class AccountsPage implements OnInit {
       const { data, role } = await modal.onDidDismiss();
 
       console.log('Data:', data);
-
     } catch (error) {
       console.error('Error when opening the modal selection:', error);
     }
@@ -51,5 +62,4 @@ export class AccountsPage implements OnInit {
   goBack() {
     this.navCtrl.back();
   }
-
 }
