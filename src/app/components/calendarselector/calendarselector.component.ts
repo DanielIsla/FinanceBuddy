@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -7,7 +13,7 @@ interface Day {
   day: number;
   isPreviousMonth: boolean;
   isNextMonth: boolean;
-  isFuture: boolean;  // Nueva propiedad para marcar días futuros
+  isFuture: boolean; // Nueva propiedad para marcar días futuros
 }
 
 @Component({
@@ -23,15 +29,18 @@ export class CalendarselectorComponent {
   startDate: Date | null = null;
   endDate: Date | null = null;
   prevMonthLastDate: number = 0;
-  today: Date = new Date();  // Para comparar fechas futuras
+  today: Date = new Date(); // Para comparar fechas futuras
 
   @ViewChild('popupContainer') popupContainer!: ElementRef;
-  @Output() dateRangeSelected = new EventEmitter<{ start: Date, end: Date }>();
+  @Output() dateRangeSelected = new EventEmitter<{
+    startDate: Date;
+    endDate: Date;
+  }>();
 
   constructor() {
     this.generateCalendar();
   }
-  
+
   resetCalendar() {
     this.currentDate = new Date();
     this.startDate = null;
@@ -50,28 +59,45 @@ export class CalendarselectorComponent {
     this.prevMonthLastDate = prevMonthLastDate;
 
     const nextMonthFirstDay = new Date(year, month + 1, 1).getDay();
-    const nextMonthDays = [...Array(7 - (lastDate + firstDay) % 7).keys()].map(i => i + 1);
+    const nextMonthDays = [
+      ...Array(7 - ((lastDate + firstDay) % 7)).keys(),
+    ].map((i) => i + 1);
 
     const prevMonthDays = [];
-    for (let i = prevMonthLastDate - firstDay + 1; i <= prevMonthLastDate; i++) {
-      prevMonthDays.push({ day: i, isPreviousMonth: true, isNextMonth: false, isFuture: false });
+    for (
+      let i = prevMonthLastDate - firstDay + 1;
+      i <= prevMonthLastDate;
+      i++
+    ) {
+      prevMonthDays.push({
+        day: i,
+        isPreviousMonth: true,
+        isNextMonth: false,
+        isFuture: false,
+      });
     }
 
-    const currentMonthDays = [...Array(lastDate).keys()].map(i => i + 1).map(day => ({
-      day,
-      isPreviousMonth: false,
-      isNextMonth: false,
-      isFuture: this.isFutureDate(new Date(year, month, day)), // Marcar fechas futuras
-    }));
+    const currentMonthDays = [...Array(lastDate).keys()]
+      .map((i) => i + 1)
+      .map((day) => ({
+        day,
+        isPreviousMonth: false,
+        isNextMonth: false,
+        isFuture: this.isFutureDate(new Date(year, month, day)), // Marcar fechas futuras
+      }));
 
-    const nextMonthDaysObjects = nextMonthDays.map(day => ({
+    const nextMonthDaysObjects = nextMonthDays.map((day) => ({
       day,
       isPreviousMonth: false,
       isNextMonth: true,
       isFuture: true, // Todos los días del próximo mes son futuros
     }));
 
-    this.days = [...prevMonthDays, ...currentMonthDays, ...nextMonthDaysObjects];
+    this.days = [
+      ...prevMonthDays,
+      ...currentMonthDays,
+      ...nextMonthDaysObjects,
+    ];
   }
 
   isFutureDate(date: Date): boolean {
@@ -81,22 +107,24 @@ export class CalendarselectorComponent {
   changeMonth(offset: number) {
     const newDate = new Date(this.currentDate);
     newDate.setMonth(newDate.getMonth() + offset);
-  
+
     const today = new Date();
 
     // Solo permitir cambiar a meses anteriores, no al futuro
     if (newDate > today) {
       return;
     }
-  
+
     this.currentDate = newDate;
     this.generateCalendar();
   }
-  
-  
 
   selectDate(day: number) {
-    const selectedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
+    const selectedDate = new Date(
+      this.currentDate.getFullYear(),
+      this.currentDate.getMonth(),
+      day
+    );
 
     if (selectedDate > this.today) {
       return; // Evitar selección de fechas futuras
@@ -125,19 +153,28 @@ export class CalendarselectorComponent {
 
   isInRange(day: number): boolean {
     if (!this.startDate || !this.endDate) return false;
-    const selectedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
+    const selectedDate = new Date(
+      this.currentDate.getFullYear(),
+      this.currentDate.getMonth(),
+      day
+    );
     return selectedDate > this.startDate && selectedDate < this.endDate;
   }
 
   isSameDate(date: Date, day: number): boolean {
-    return date.getFullYear() === this.currentDate.getFullYear() &&
+    return (
+      date.getFullYear() === this.currentDate.getFullYear() &&
       date.getMonth() === this.currentDate.getMonth() &&
-      date.getDate() === day;
+      date.getDate() === day
+    );
   }
 
   emitDateRange() {
     if (this.startDate && this.endDate) {
-      this.dateRangeSelected.emit({ start: this.startDate, end: this.endDate });
+      this.dateRangeSelected.emit({
+        startDate: this.startDate,
+        endDate: this.endDate,
+      });
     }
   }
 

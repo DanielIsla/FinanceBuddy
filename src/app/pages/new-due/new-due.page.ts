@@ -8,6 +8,11 @@ import { FinanceBuddyDatabaseSQLiteService } from 'src/app/services/database/fin
 import { Friend } from 'src/app/services/database/finance-buddy-database-sqlite.service';
 import { Account } from 'src/app/services/database/finance-buddy-database-sqlite.service';
 
+//We extend from friend, that way we can add a checked field
+interface SelectableFriend extends Friend {
+  checked: boolean;
+}
+
 @Component({
   selector: 'app-new-due',
   templateUrl: './new-due.page.html',
@@ -33,11 +38,12 @@ export class NewDuePage implements OnInit {
   account?: Account = undefined;
 
   //Variables to store user friends and accounts from the database
-  friends: Friend[] | null = [];
+  friends: SelectableFriend[] | null = [];
   accounts: Account[] | null = [];
 
   ngOnInit() {
     this.changeHeaderTexts();
+    this.loadFriendsAccountsDB();
   }
 
   nextPage() {
@@ -93,7 +99,30 @@ export class NewDuePage implements OnInit {
 
   //Loads friends and account so the user can select them
   async loadFriendsAccountsDB() {
-    this.friends = await this.dbService.getFriends();
-    this.accounts = await this.dbService.getAccounts();
+    try {
+      const result = await this.dbService.getFriends();
+      if (result != null) {
+        this.friends = result.map((friend) => ({ ...friend, checked: false }));
+
+        if (this.friends != null) {
+          this.friends.forEach((friend) => {
+            friend.checked = false;
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error loading friends:', error);
+      this.friends = []; // Ensure list is empty on error
+    }
+
+    try {
+      const result = await this.dbService.getAccounts();
+      if (result != null) {
+        this.accounts = result;
+      }
+    } catch (error) {
+      console.error('Error loading friends:', error);
+      this.accounts = []; // Ensure list is empty on error
+    }
   }
 }

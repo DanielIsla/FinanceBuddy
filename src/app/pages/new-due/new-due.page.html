@@ -1,68 +1,151 @@
 <ion-content fullscreen="false">
-  <div class="new-due-container">
-    <div class="content-wrapper">
-      <label class="page-title">Me han prestado</label>
+  <div
+    style="
+      height: 100%;
+      width: 100%;
+      float: right;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-background);
+      padding: 25px;
+    "
+  >
+    <div style="display: flex; flex-grow: 1; flex-direction: column">
+      <label style="font-size: 25px; font-weight: 600">Me han prestado</label>
 
       <div class="stepperLine">
         <div class="icnStepper">
-          <img src="assets/images/money_recive.svg" />
+          <img style="flex-grow: 1" src="assets/images/money_recive.svg" />
         </div>
 
         <div class="stepperText">
-          <label>{{headerAction}}</label>
-          <label>{{headerStep}}</label>
+          <label style="color: var(--color-primarytext)"
+            >{{headerAction}}</label
+          >
+          <label style="color: var(--color-secondarytext)"
+            >{{headerStep}}</label
+          >
         </div>
       </div>
 
-      <div class="progress-bar-container">
+      <div style="margin-top: 10px; display: flex; gap: 5px">
         <div
-          class="progress-step"
           [ngStyle]="{'background-color': pageNumber >= 1 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
         ></div>
         <div
-          class="progress-step"
           [ngStyle]="{'background-color': pageNumber >= 2 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
         ></div>
         <div
-          class="progress-step"
           [ngStyle]="{'background-color': pageNumber >= 3 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
         ></div>
         <div
-          class="progress-step"
           [ngStyle]="{'background-color': pageNumber >= 4 ? 'var(--color-acento)' : 'gray'}"
+          style="
+            height: 5px;
+            border-radius: 5px;
+            background-color: var(--color-secondarytext);
+            flex-grow: 1;
+          "
         ></div>
       </div>
 
-      <div class="page-content">
+      <div
+        style="
+          height: 100%;
+          margin-top: 25px;
+          display: flex;
+          flex-direction: column;
+        "
+      >
         @if (pageNumber == 1) {
         <div>
-          <div class="amigoItem" *ngFor="let friend of friends ">
+          <div class="amigoItem" *ngFor="let friend of friends">
             <div class="icnAmigo"><img src="assets/images/pfp.webp" /></div>
-            <div class="friend-details">
-              <label class="friend-name"> {{friend.FullName}} </label>
-              <label class="friend-phone"> {{friend.Phone}} </label>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                margin-left: 10px;
+                flex-grow: 1;
+              "
+            >
+              <label style="font-weight: 450; font-size: 16px; flex-grow: 1">
+                {{friend.FullName}}
+              </label>
+              <label
+                style="
+                  font-weight: 450;
+                  font-size: 12px;
+                  color: var(--color-secondarytext);
+                "
+              >
+                {{friend.Phone}}
+              </label>
             </div>
             <div class="btnAñadirAmigo">
               Seleccionar
-              <img src="assets/images/more.png" />
+              <img
+                style="height: 22px; width: 22px; margin-left: 5px"
+                src="assets/images/more.png"
+              />
             </div>
           </div>
         </div>
         } @if (pageNumber == 2) {
         <div class="amigoItem">
           <div class="icnAmigo"><img src="assets/images/pfp.webp" /></div>
-          <div class="friend-details">
-            <label class="friend-name">{{selectedFriend?.FullName}}</label>
-            <label class="friend-phone"> {{selectedFriend?.Phone}} </label>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+              margin-left: 10px;
+              flex-grow: 1;
+            "
+          >
+            <label style="font-weight: 450; font-size: 16px; flex-grow: 1">
+              Jose Luis
+            </label>
+            <label
+              style="
+                font-weight: 450;
+                font-size: 12px;
+                color: var(--color-secondarytext);
+              "
+            >
+              +34 678 65 75 85
+            </label>
           </div>
-          <div class="btnAñadirAmigo selected">
+          <div class="btnAñadirAmigo" style="color: var(--color-success)">
             Seleccionado
-            <img src="assets/images/selected.png" />
+            <img
+              style="height: 22px; width: 22px; margin-left: 5px"
+              src="assets/images/selected.png"
+            />
           </div>
         </div>
 
-        <div class="amount-container">
-          <label class="currency-symbol">$</label>
+        <div style="display: flex; margin-top: 20px">
+          <label style="font-size: 50px; font-weight: 600">$</label>
           <input
             class="importeInput"
             type="number"
@@ -72,22 +155,42 @@
           />
         </div>
 
-        <label class="concept-label">Concepto</label>
+        <label
+          style="
+            font-size: 20px;
+            margin-top: 25px;
+            font-weight: 600;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column-reverse;
+          "
+          >Concepto</label
+        >
         <input
-          class="concept-input"
+          style="
+            width: 100%;
+            height: 60px;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            padding: 10px;
+            outline: none;
+            border: 0px;
+            background-color: var(--color-contenedor-2);
+            border-radius: 20px;
+          "
           type="text"
           id="fname"
           name="fname"
           size="9"
-          [(ngModel)]="concept"
         />
         } @if (pageNumber == 3) {
 
-        <label class="account-selection-label"
+        <label
+          style="font-size: 16px; display: flex; flex-direction: column-reverse"
           >Elige a que cuenta se añadirá el dinero recibido</label
         >
 
-        <div class="account-selection-container">
+        <div style="display: flex; margin-top: 20px">
           <div class="accountCardSelected">
             <div style="display: flex; flex-grow: 1">
               <label style="flex-grow: 1"> Revolut </label>
@@ -97,32 +200,100 @@
               />
             </div>
 
-            <div>
-              <label> Saldo disponible </label>
-              <label> $54,92 </label>
+            <div style="display: flex; flex-direction: column; gap: 5px">
+              <label
+                style="
+                  font-size: 12px;
+                  color: var(--color-secondarytext-container);
+                "
+              >
+                Saldo disponible
+              </label>
+              <label
+                style="
+                  font-size: 28px;
+                  color: var(--color-primarytext);
+                  font-weight: 600;
+                "
+              >
+                $54,92
+              </label>
             </div>
           </div>
         </div>
         } @if (pageNumber == 4) {
         <div class="page4SummaryContainers">
-          <label class="summary-label"> Amigo seleccionado </label>
+          <label
+            style="
+              font-size: 16px;
+              display: flex;
+              flex-direction: column-reverse;
+            "
+          >
+            Amigo seleccionado
+          </label>
 
           <div class="amigoItem" style="margin-top: 10px">
             <div class="icnAmigo"><img src="assets/images/pfp.webp" /></div>
-            <div class="friend-details">
-              <label class="friend-name"> Jose Luis </label>
-              <label class="friend-phone"> +34 678 65 75 85 </label>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                margin-left: 10px;
+                flex-grow: 1;
+              "
+            >
+              <label style="font-weight: 450; font-size: 16px; flex-grow: 1">
+                Jose Luis
+              </label>
+              <label
+                style="
+                  font-weight: 450;
+                  font-size: 12px;
+                  color: var(--color-secondarytext);
+                "
+              >
+                +34 678 65 75 85
+              </label>
             </div>
           </div>
         </div>
 
         <div class="page4SummaryContainers">
-          <label class="summary-label"> Importe transacción </label>
-          <label class="summary-amount"> 54$ </label>
+          <label
+            style="
+              font-size: 16px;
+              display: flex;
+              flex-direction: column-reverse;
+            "
+          >
+            Importe transacción
+          </label>
+          <label
+            style="
+              font-size: 30px;
+              display: flex;
+              flex-direction: column-reverse;
+              margin-top: 5px;
+              font-weight: 600;
+              color: var(--color-acento);
+            "
+          >
+            54$
+          </label>
         </div>
 
         <div class="page4SummaryContainers">
-          <label class="summary-label"> Cuenta a añadir </label>
+          <label
+            style="
+              font-size: 16px;
+              display: flex;
+              flex-direction: column-reverse;
+            "
+          >
+            Cuenta a añadir
+          </label>
           <div
             class="accountCard"
             style="
@@ -209,8 +380,23 @@
         </div>
 
         <div class="page4SummaryContainers">
-          <label class="summary-label"> Concepto transacción </label>
-          <label class="summary-concept">
+          <label
+            style="
+              font-size: 16px;
+              display: flex;
+              flex-direction: column-reverse;
+            "
+          >
+            Concepto transacción
+          </label>
+          <label
+            style="
+              font-size: 14px;
+              display: flex;
+              flex-direction: column-reverse;
+              margin-top: 5px;
+            "
+          >
             Este es el concepto de la transacción
           </label>
         </div>
@@ -218,9 +404,26 @@
       </div>
 
       <div class="prevnextLine">
-        <div class="next-btn" (click)="nextPage()">{{nextBtnText}}</div>
-        <div class="prev-btn" (click)="prevPage()">
-          <img src="assets/images/back.png" />
+        <div
+          style="
+            padding: 10px;
+            border-radius: 15px;
+            background-color: var(--color-acento);
+          "
+          (click)="nextPage()"
+        >
+          {{nextBtnText}}
+        </div>
+        <div
+          style="
+            padding: 10px;
+            display: flex;
+            border-radius: 15px;
+            background-color: var(--color-acento);
+          "
+          (click)="prevPage()"
+        >
+          <img height="22px" width="22px" src="assets/images/back.png" />
         </div>
       </div>
     </div>
