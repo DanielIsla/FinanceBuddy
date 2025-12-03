@@ -1,0 +1,23 @@
+<p>{{ inputLabel }}</p>
+<input
+  class="reactiveField dataInput"
+  [ngClass]="{
+    texboxError: isValid === false,
+    texboxSuccess: isValid === true
+  }"
+  type="text"
+  id="fname"
+  name="fname"
+  size="9"
+  [(ngModel)]="value"
+  (input)="validateValue()"
+/>
+<p
+  class="tip"
+  [ngClass]="{
+    tipError: isValid === false,
+    tipSuccess: isValid === true
+  }"
+>
+  {{ currentTip }}
+</p>

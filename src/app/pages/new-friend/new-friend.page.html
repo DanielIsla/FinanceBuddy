@@ -26,6 +26,14 @@
         </div>
       </div>
 
+      <app-textbox
+        [(value)]="name"
+        [inputLabel]="'Nombre*'"
+        [fieldType]="'email'"
+        [isRequired]="true"
+        (validityChange)="isValidName = $event"
+      ></app-textbox>
+
       <label
         style="
           font-size: 25px;

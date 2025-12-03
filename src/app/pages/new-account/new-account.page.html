@@ -5,7 +5,6 @@
         <img src="assets/images/back.png" />
       </div>
     </div>
-
     <label class="page-title">Crear cuenta</label>
 
     <div class="textboxContainer">
@@ -25,11 +24,10 @@
           <img class="restart-selection-icon" src="assets/images/more.png" />
         </div>
       </div>
-
       }
 
       <div class="input-group">
-        <label class="input-label">Nombre de cuenta</label>
+        <h3>Nombre de cuenta</h3>
         <input
           class="dataInput reactiveField"
           type="text"
@@ -55,15 +53,17 @@
         />
       </div>
 
-      <label class="input-label with-margin">Moneda *</label>
-      <app-dropdown
-        [options]="currencyOptions"
-        placeholder="Selecciona una moneda"
-        (selected)="onCurrencySelected($event)"
-      ></app-dropdown>
+      <div class="input-group">
+        <label class="input-label">Moneda *</label>
+        <app-dropdown
+          [options]="currencyOptions"
+          placeholder="Selecciona una moneda"
+          (selected)="onCurrencySelected($event)"
+        ></app-dropdown>
+      </div>
 
       <div class="input-group">
-        <label class="input-label with-margin">Balance inicial *</label>
+        <label class="input-label">Balance inicial *</label>
         <div class="balance-input-container">
           <input
             class="dataInput reactiveField balance-input"

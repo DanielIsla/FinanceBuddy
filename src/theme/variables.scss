@@ -13,25 +13,13 @@
   --color-acento-shadow: rgba(244, 120, 54, 0.4);
 
   // Status colors
-  --color-success: rgb(50, 200, 70); /* Verde más brillante y definido */
-  --color-error: rgb(220, 50, 50); /* Rojo más puro y directo */
+  --color-success: rgb(50, 200, 70);
+  --color-error: rgb(220, 50, 50);
 
   // Text colors
-  --color-primarytext: rgb(
-    240,
-    240,
-    240
-  ); /* Blanco ligeramente roto para menos fatiga visual */
-  --color-secondarytext: rgb(
-    160,
-    160,
-    160
-  ); /* Gris medio que contraste bien con los fondos */
-  --color-secondarytext-container: rgb(
-    200,
-    200,
-    200
-  ); /* Un gris más claro para textos en contenedores, mayor legibilidad */
+  --color-primarytext: rgb(240, 240, 240);
+  --color-secondarytext: rgb(160, 160, 160);
+  --color-secondarytext-container: rgb(200, 200, 200);
 
   // Categories colors
   --color-comida: #ff9800;

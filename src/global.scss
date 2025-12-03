@@ -39,39 +39,50 @@
   --ion-font-family: Inter;
 }
 
+//Style for all the headers used in the app
+h1 {
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--color-primarytext);
+}
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primarytext);
+}
+
 body {
   background-color: var(--color-background);
   color: white;
 }
 
 //Bouncy buttons and fields when clicked, used accross all thea app
-.reactiveBtn {
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.15s ease-out;
-}
-.reactiveBtn:active {
-  transform: scale(1.1, 1);
-}
 .reactiveField {
   cursor: pointer;
   user-select: none;
   transition: transform 0.15s ease-out;
-}
-.reactiveField:active {
-  transform: scale(1.03, 1);
+  .reactiveField:active {
+    transform: scale(1.03, 1);
+  }
 }
 
-//Style for all the textboxes used in the app
 .dataInput {
+  //Style for all the textboxes used in the app
   width: 100%;
-  margin-top: 10px;
   height: 55px;
   padding: 15px;
   outline: none;
   border: 0px;
   background-color: var(--color-contenedor-2);
   border-radius: 20px;
+  .reactiveBtn {
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.15s ease-out;
+    .reactiveBtn:active {
+      transform: scale(1.1, 1);
+    }
+  }
 }
 
 //Customize all the checkboxes used in the app

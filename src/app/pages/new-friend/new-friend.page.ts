@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { IonContent } from '@ionic/angular/standalone';
+import { TextboxComponent } from 'src/app/components/textbox/textbox.component';
 import {
   FinanceBuddyDatabaseSQLiteService,
   Friend,
@@ -14,7 +15,7 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   templateUrl: './new-friend.page.html',
   styleUrls: ['./new-friend.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule],
+  imports: [IonContent, CommonModule, FormsModule, TextboxComponent],
 })
 export class NewFriendPage implements OnInit {
   constructor(

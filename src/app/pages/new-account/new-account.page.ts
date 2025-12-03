@@ -8,8 +8,8 @@ import {
   NavController,
 } from '@ionic/angular/standalone';
 import { DropdownComponent } from '../../components/dropdown/dropdown.component';
+import { TextboxComponent } from 'src/app/components/textbox/textbox.component';
 import { SelectBankPage } from '../select-bank/select-bank.page';
-import { easeBackIn } from 'd3';
 import { BankEntity } from '../../models/banks';
 import { CurrencyOptions } from '../../models/currency';
 import {
@@ -28,6 +28,7 @@ import {
     FormsModule,
     RouterModule,
     DropdownComponent,
+    TextboxComponent,
   ],
 })
 export class NewAccountPage implements OnInit {
