@@ -1,4 +1,4 @@
-<p>{{ inputLabel }}</p>
+<h3>{{ inputlabel }}</h3>
 <input
   class="reactiveField dataInput"
   [ngClass]="{
@@ -11,13 +11,19 @@
   size="9"
   [(ngModel)]="value"
   (input)="validateValue()"
+  maxlength="{{ maxlength }}"
 />
-<p
-  class="tip"
-  [ngClass]="{
-    tipError: isValid === false,
-    tipSuccess: isValid === true
-  }"
->
-  {{ currentTip }}
-</p>
+<div class="tipContainer">
+  <h3
+    class="tip"
+    [ngClass]="{
+      tipError: isValid === false,
+      tipSuccess: isValid === true
+    }"
+  >
+    {{ currentTip }}
+  </h3>
+  <h3 *ngIf="maxlength !== 0" class="maxCharTip">
+    {{ value.length }}/{{ maxlength }}
+  </h3>
+</div>

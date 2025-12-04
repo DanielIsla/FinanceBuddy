@@ -25,15 +25,6 @@
           <img src="assets/images/back.png" />
         </div>
       </div>
-
-      <app-textbox
-        [(value)]="name"
-        [inputLabel]="'Nombre*'"
-        [fieldType]="'email'"
-        [isRequired]="true"
-        (validityChange)="isValidName = $event"
-      ></app-textbox>
-
       <label
         style="
           font-size: 25px;
@@ -46,96 +37,43 @@
         >Nuevo amigo</label
       >
 
-      <p>Nombre *</p>
-      <input
-        class="reactiveField dataInput"
-        [ngClass]="{'texboxError' : isValidName === false, 'texboxSuccess' : isValidName === true }"
-        type="text"
-        id="fname"
-        name="fname"
-        size="9"
-        [(ngModel)]="name"
-        (input)="validateName()"
-      />
-      <p
-        class="tip"
-        [ngClass]="{'tipError': isValidName === false, 'tipSuccess': isValidName === true}"
-      >
-        {{nameTip}}
-      </p>
+      <!--TODO cambiar largo de las cajas de texto, validar realmente en la página lo devuelto por los textbox, hacer consulta a db-->
 
-      <p>Apellidos *</p>
-      <input
-        class="reactiveField dataInput"
-        [ngClass]="{'texboxError' : isValidSurname === false, 'texboxSuccess' : isValidSurname === true}"
-        type="text"
-        id="fname"
-        name="fname"
-        size="9"
-        [(ngModel)]="surname"
-        (input)="validateSurname()"
-      />
-      <p
-        class="tip"
-        [ngClass]="{'tipError' : isValidSurname === false, 'tipSuccess' : isValidSurname === true }"
-      >
-        {{surnameTip}}
-      </p>
+      <app-textbox
+        [(value)]="name"
+        [inputlabel]="'Nombre*'"
+        [fieldtype]="'name'"
+        [isrequired]="true"
+        (validitychange)="isValidName = $event"
+        [maxlength]="50"
+      ></app-textbox>
 
-      <input
-        class="reactiveField dataInput"
-        [ngClass]="{'texboxError' : isValidSurname2 === false , 'texboxSuccess' : isValidSurname2 === true}"
-        style="margin-top: 5px"
-        type="text"
-        id="fname"
-        name="fname"
-        size="9"
-        [(ngModel)]="surname2"
-        (input)="validateSurname2()"
-      />
-      <p
-        class="tip"
-        [ngClass]="{'tipError' : isValidSurname2 === false , 'tipSuccess' : isValidSurname2 === true }"
-      >
-        {{surname2Tip}}
-      </p>
+      <app-textbox
+        [(value)]="name"
+        [inputlabel]="'Apellidos'"
+        [fieldtype]="'surname'"
+        [isrequired]="true"
+        (validitychange)="isValidName = $event"
+        [maxlength]="50"
+      ></app-textbox>
 
-      <p>Teléfono *</p>
-      <input
-        class="reactiveField dataInput"
-        [ngClass]="{'texboxError' : isValidPhone === false , 'texboxSuccess' : isValidPhone === true}"
-        type="text"
-        id="fname"
-        name="fname"
-        size="9"
-        [(ngModel)]="friendPhone"
-        (input)="validatePhone()"
-      />
-      <p
-        class="tip"
-        [ngClass]="{'tipError' : isValidPhone === false , 'tipSuccess' : isValidPhone === true}"
-      >
-        {{phoneTip}}
-      </p>
+      <app-textbox
+        [(value)]="name"
+        [inputlabel]="'Telefono'"
+        [fieldtype]="'phone'"
+        [isrequired]="true"
+        (validitychange)="isValidName = $event"
+        [maxlength]="50"
+      ></app-textbox>
 
-      <p>Correo electrónico</p>
-      <input
-        class="reactiveField dataInput"
-        [ngClass]="{'texboxError' : isValidEmail === false , 'texboxSuccess' : isValidEmail === true }"
-        type="text"
-        id="fname"
-        name="fname"
-        size="9"
-        [(ngModel)]="friendEmail"
-        (blur)="validateEmail()"
-        (input)="isValidEmail = undefined; emailTip = 'Correo personal, opcional';"
-      />
-      <p
-        class="tip"
-        [ngClass]="{'tipError' : isValidEmail === false , 'tipSuccess' : isValidEmail === true }"
-      >
-        {{emailTip}}
-      </p>
+      <app-textbox
+        [(value)]="name"
+        [inputlabel]="'Correo electrónico*'"
+        [fieldtype]="'email'"
+        [isrequired]="true"
+        (validitychange)="isValidName = $event"
+        [maxlength]="50"
+      ></app-textbox>
     </div>
 
     <!-- Accept and close buttons -->

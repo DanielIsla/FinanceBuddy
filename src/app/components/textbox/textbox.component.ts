@@ -15,16 +15,23 @@ export class TextboxComponent implements OnInit {
   @Input() value: string = '';
 
   //Field type, that will be used to see what validation to apply (Email, Name, Phone, etc)
-  @Input() fieldType: string = 'text';
+  @Input() fieldtype: string = 'text';
 
   //If the field is required
-  @Input() isRequired: boolean = false;
+  @Input() isrequired: boolean = false;
 
   //Label for the input, that will be displayed on top
-  @Input() inputLabel: string = 'Input Field';
-  @Output() valueChange = new EventEmitter<string>();
+  @Input() inputlabel: string = 'Input Field';
 
-  @Output() validityChange = new EventEmitter<boolean>();
+  //Max fiel length
+  @Input() maxlength: number = 0;
+
+  //--- OUTPUTS TO PARENT ---
+  //Emits the validity of the field
+  @Output() validitychange = new EventEmitter<boolean>();
+
+  //Emits the value of the field
+  @Output() valueChange = new EventEmitter<string>();
 
   public isValid: boolean | undefined;
   public currentTip: string = '';
@@ -32,7 +39,7 @@ export class TextboxComponent implements OnInit {
   constructor() {}
   ngOnInit() {
     // We initialize the validity and tip variables
-    this.currentTip = this.getInitialTip(this.fieldType); // Initial validation if value is present
+    this.currentTip = this.getInitialTip(this.fieldtype); // Initial validation if value is present
     if (this.value.length > 0) {
       this.validateValue();
     }
@@ -54,22 +61,22 @@ export class TextboxComponent implements OnInit {
   //On blur event, that triggers the validation when the user leaves the field
   onInputBlur(): void {
     this.validateValue();
-    this.validityChange.emit(this.isValid === true);
+    this.validitychange.emit(this.isValid === true);
   }
 
   // --- CORE VALIDATION DISPATCHER ---
   // Validates the data based on field type and required status
   validateValue(): void {
     // Checks if the field is required
-    if (this.isRequired && !this.value.trim()) {
+    if (this.isrequired && !this.value.trim()) {
       this.currentTip = 'Se debe rellenar el campo';
       this.isValid = false;
-      this.validityChange.emit(false);
+      this.validitychange.emit(false);
       return;
     }
 
     // Based on the field type, calls the validation method needed
-    switch (this.fieldType) {
+    switch (this.fieldtype) {
       case 'name':
         this.validateName(this.value);
         break;
@@ -85,11 +92,11 @@ export class TextboxComponent implements OnInit {
       default:
         // If no specific validation, assume valid if not empty
         this.isValid = true;
-        this.currentTip = this.getInitialTip(this.fieldType);
+        this.currentTip = this.getInitialTip(this.fieldtype);
         break;
     }
     // Ensure the output event is emitted with the final status after validation runs
-    this.validityChange.emit(this.isValid === true);
+    this.validitychange.emit(this.isValid === true);
   }
 
   // --- VALIDATION METHODS ---
@@ -125,15 +132,19 @@ export class TextboxComponent implements OnInit {
       this.currentTip = 'Se debe rellenar el campo';
       this.isValid = false;
       return;
-    } // If contains spaces
+    }
 
+    //TODO Añadir validación de espacios, pero solo para 1
+    /*
+    // If contains spaces
     if (/\s/.test(surname)) {
       this.currentTip = 'No introduzca espacios';
       this.isValid = false;
       return;
     } // If contains special characters or numbers
+     */
 
-    const pattern = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$/;
+    const pattern = /^(?!.* {2})[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/;
     if (!pattern.test(surname)) {
       this.currentTip = 'Introduzca solo letras';
       this.isValid = false;
@@ -221,15 +232,14 @@ export class TextboxComponent implements OnInit {
     switch (type) {
       case 'name': // English type
         return 'Introduzca solo el nombre';
-      case 'surname1': // English type
-      case 'surname2': // English type
-        return 'Primer o Segundo apellido';
+      case 'surname':
+        return 'Introduzca sus apellidos';
       case 'email': // English type
         return 'Correo personal, opcional';
       case 'phone': // English type
         return 'Telefono de su amigo, con prefijo';
       default:
-        return 'Standard text format.';
+        return '';
     }
   }
 }

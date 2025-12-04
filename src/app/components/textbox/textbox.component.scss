@@ -15,6 +15,42 @@
   }
 }
 
+.tipContainer {
+  display: flex;
+  flex-direction: row;
+  .tip {
+    font-size: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    margin-top: 5px !important;
+    margin-left: 15px;
+    color: var(--color-secondarytext);
+    transition: 0.5s;
+    flex-grow: 1;
+  }
+
+  .maxCharTip {
+    font-size: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    margin-top: 5px !important;
+    margin-left: 15px;
+    color: var(--color-secondarytext);
+    transition: 0.5s;
+    margin-right: 10px;
+  }
+
+  .tipError {
+    transition: 0.5s;
+    color: var(--color-error);
+  }
+
+  .tipSuccess {
+    transition: 0.5s;
+    color: var(--color-success);
+  }
+}
+
 //It puts a colored halo around the texbox, for error or success
 .texboxError {
   transition: 0.5s;
@@ -23,24 +59,4 @@
 .texboxSuccess {
   transition: 0.5s;
   border: 1px solid var(--color-success);
-}
-
-.tip {
-  font-size: 10px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  margin-top: 5px !important;
-  margin-left: 15px;
-  color: var(--color-secondarytext);
-  transition: 0.5s;
-}
-
-.tipError {
-  transition: 0.5s;
-  color: var(--color-error);
-}
-
-.tipSuccess {
-  transition: 0.5s;
-  color: var(--color-success);
 }
