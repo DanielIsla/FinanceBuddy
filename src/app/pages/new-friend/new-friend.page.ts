@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavController } from '@ionic/angular';
@@ -23,29 +23,21 @@ export class NewFriendPage implements OnInit {
     private dbService: FinanceBuddyDatabaseSQLiteService
   ) {}
 
-  //Name and both surnames, separate for better user understanding
+  //Get textbox reference to force validation from the parent component later if neccesary
+  @ViewChildren(TextboxComponent)
+  textboxes!: QueryList<TextboxComponent>;
+
+  //Form data
   name: string = '';
   surname: string = '';
-  surname2: string = '';
+  phone: string = '';
+  email: string = '';
 
-  //Friend information, with name and surnames on same variable for storing it on the database
-  friendFullName: string = '';
-  friendEmail: string = '';
-  friendPhone: string = '+34';
-
-  //Is data valid? We check every time the user writes something, to live update the error messages
-  isValidName?: boolean;
-  isValidSurname?: boolean;
-  isValidSurname2?: boolean;
-  isValidPhone?: boolean;
-  isValidEmail?: boolean;
-
-  //Tip variable messages
-  nameTip: string = 'Introduzca solo el nombre';
-  surnameTip: string = 'Primer apellido';
-  surname2Tip: string = 'Segundo apellido';
-  emailTip: string = 'Correo personal, opcional';
-  phoneTip: string = 'Telefono de su amigo, con prefijo';
+  //Form validation states
+  isValidName: boolean | undefined;
+  isValidSurname: boolean | undefined;
+  isValidPhone: boolean | undefined;
+  isValidEmail: boolean | undefined;
 
   ngOnInit() {}
 
@@ -54,21 +46,25 @@ export class NewFriendPage implements OnInit {
 
     //Check if all fields are valid, then proceed to add the new friend to the database
     if (
-      this.isValidEmail == true &&
-      this.isValidPhone == true &&
       this.isValidName == true &&
       this.isValidSurname == true &&
-      this.isValidSurname2 == true
+      this.isValidPhone == true
     ) {
       const newFriend: Omit<Friend, 'ID'> = {
-        FullName: this.name + ' ' + this.surname + ' ' + this.surname2,
-        Email: this.friendEmail,
-        Phone: this.friendPhone,
+        FullName: this.name + ' ' + this.surname,
+        Phone: this.phone,
+        Email: this.email,
       };
-      this.dbService.createFriend(newFriend);
-    }
 
-    this.goBack();
+      //Add the new friend to the database
+      this.dbService.createFriend(newFriend);
+
+      //When everything is done, we go back to the "friends" list page
+      this.goBack();
+    } else {
+      //Here, something is wrong, so we force the texboxes to show their errors
+      this.textboxes.forEach((textbox) => textbox.forceValidation());
+    }
   }
 
   addFromContacts() {
@@ -78,7 +74,6 @@ export class NewFriendPage implements OnInit {
   async goBack() {
     this.isValidName = undefined;
     this.isValidSurname = undefined;
-    this.isValidSurname2 = undefined;
     this.isValidPhone = undefined;
     this.isValidEmail = undefined;
 

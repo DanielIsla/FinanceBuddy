@@ -22,8 +22,7 @@
 .friendsContainer {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  margin-top: 25px;
+  gap: 15px;
   height: 100%;
   overflow-y: scroll;
 }
@@ -51,6 +50,7 @@
   .friends-header {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
   }
 
   .back-button {

@@ -3,14 +3,10 @@
   class="reactiveField dataInput"
   [ngClass]="{
     texboxError: isValid === false,
-    texboxSuccess: isValid === true
+    texboxSuccess: isValid === true,
   }"
-  type="text"
-  id="fname"
-  name="fname"
-  size="9"
   [(ngModel)]="value"
-  (input)="validateValue()"
+  (input)="onInputChange($event); validateValue()"
   maxlength="{{ maxlength }}"
 />
 <div class="tipContainer">

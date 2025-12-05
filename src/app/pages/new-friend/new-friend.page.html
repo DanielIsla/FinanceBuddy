@@ -41,7 +41,7 @@
 
       <app-textbox
         [(value)]="name"
-        [inputlabel]="'Nombre*'"
+        [inputlabel]="'Nombre'"
         [fieldtype]="'name'"
         [isrequired]="true"
         (validitychange)="isValidName = $event"
@@ -49,30 +49,30 @@
       ></app-textbox>
 
       <app-textbox
-        [(value)]="name"
+        [(value)]="surname"
         [inputlabel]="'Apellidos'"
         [fieldtype]="'surname'"
         [isrequired]="true"
-        (validitychange)="isValidName = $event"
+        (validitychange)="isValidSurname = $event"
         [maxlength]="50"
       ></app-textbox>
 
       <app-textbox
-        [(value)]="name"
+        [(value)]="phone"
         [inputlabel]="'Telefono'"
         [fieldtype]="'phone'"
         [isrequired]="true"
-        (validitychange)="isValidName = $event"
-        [maxlength]="50"
+        (validitychange)="isValidPhone = $event"
+        [maxlength]="20"
       ></app-textbox>
 
       <app-textbox
-        [(value)]="name"
-        [inputlabel]="'Correo electrónico*'"
+        [(value)]="email"
+        [inputlabel]="'Correo electrónico'"
         [fieldtype]="'email'"
-        [isrequired]="true"
-        (validitychange)="isValidName = $event"
-        [maxlength]="50"
+        [isrequired]="false"
+        (validitychange)="isValidEmail = $event"
+        [maxlength]="100"
       ></app-textbox>
     </div>
 

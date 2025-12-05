@@ -7,7 +7,6 @@ p {
 }
 
 .add-from-contacts-button {
-  margin-top: 20px;
   background-color: var(--color-acento);
   padding: 10px;
   display: flex;
@@ -17,7 +16,6 @@ p {
   align-self: center;
   border-radius: 999px;
   cursor: pointer;
-
   img {
     height: 25px;
     width: 25px;
@@ -39,7 +37,7 @@ p {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: 30px;
+  gap: 15px;
 }
 
 .tip {

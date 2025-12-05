@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+//TODO : Add hover documentation for future uses
 @Component({
   selector: 'app-textbox',
   templateUrl: './textbox.component.html',
@@ -26,11 +27,13 @@ export class TextboxComponent implements OnInit {
   //Max fiel length
   @Input() maxlength: number = 0;
 
+  @Input() forceChecks: boolean = false;
+
   //--- OUTPUTS TO PARENT ---
   //Emits the validity of the field
   @Output() validitychange = new EventEmitter<boolean>();
 
-  //Emits the value of the field
+  //Emits the value of the field, back to the parent on the same field (Banana Box)
   @Output() valueChange = new EventEmitter<string>();
 
   public isValid: boolean | undefined;
@@ -43,6 +46,12 @@ export class TextboxComponent implements OnInit {
     if (this.value.length > 0) {
       this.validateValue();
     }
+  }
+
+  //Public method to force validation from the parent, for example when the form is submitted
+  //That way user can see the errors that prevent the form from being submitted
+  public forceValidation() {
+    this.validateValue();
   }
 
   // --- EVENT HANDLERS ---
@@ -134,16 +143,6 @@ export class TextboxComponent implements OnInit {
       return;
     }
 
-    //TODO Añadir validación de espacios, pero solo para 1
-    /*
-    // If contains spaces
-    if (/\s/.test(surname)) {
-      this.currentTip = 'No introduzca espacios';
-      this.isValid = false;
-      return;
-    } // If contains special characters or numbers
-     */
-
     const pattern = /^(?!.* {2})[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/;
     if (!pattern.test(surname)) {
       this.currentTip = 'Introduzca solo letras';
@@ -198,33 +197,26 @@ export class TextboxComponent implements OnInit {
       this.currentTip = 'Correo personal, opcional';
       this.isValid = undefined;
       return;
-    } // If it contains spaces
+    }
 
+    // If it contains spaces
     if (/\s/.test(email)) {
       this.currentTip = 'No introduzca espacios';
       this.isValid = false;
       return;
-    } // Basic email validation pattern
+    }
 
+    // Basic email validation pattern
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!pattern.test(email)) {
       this.currentTip = 'Formato de correo inválido';
       this.isValid = false;
       return;
-    } // If it passes all validations
+    }
 
+    // If it passes all validations
     this.currentTip = 'Ok';
     this.isValid = true;
-  } //Validates the email format
-
-  checkValidEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  } //Validates the phone number format
-
-  checkValidPhone(phone: string): boolean {
-    const phoneRegex = /^\+34\d{9}$/;
-    return phoneRegex.test(phone);
   }
 
   /** Helper function to get the correct initial tip based on the field type. */
