@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { SearchBarComponent } from 'src/app/components/search-bar/search-bar.component';
 import {
   IonContent,
   IonHeader,
@@ -32,7 +33,7 @@ interface SelectableContact extends ContactPayload {
   templateUrl: './friends-contacts.page.html',
   styleUrls: ['./friends-contacts.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule],
+  imports: [IonContent, CommonModule, FormsModule, SearchBarComponent],
 })
 export class FriendsContactsPage implements OnInit {
   permission: any;

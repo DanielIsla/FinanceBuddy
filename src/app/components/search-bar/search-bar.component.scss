@@ -1,0 +1,9 @@
+.searchbarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .searchIcn {
+    height: 30px;
+    width: 30px;
+  }
+}
