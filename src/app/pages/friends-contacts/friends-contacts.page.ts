@@ -44,6 +44,12 @@ export class FriendsContactsPage implements OnInit {
   contacts: SelectableContact[] = [];
   errorMessage: string = '';
 
+  // Search bar value
+  searchBarValue: string = '';
+
+  // Selected contacts
+  searchedContacts: SelectableContact[] = [];
+
   constructor(
     private router: Router,
     private platform: Platform,
@@ -148,6 +154,15 @@ export class FriendsContactsPage implements OnInit {
     }
     // After creating the friends, navigate back.
     this.goBackTwice();
+  }
+
+  //Called when the user searches for friends on the top bar
+  async searchContacts() {
+    if (this.searchBarValue) {
+      this.searchedContacts = this.contacts.filter((contact) =>
+        contact.name?.display?.toLowerCase().includes(this.searchBarValue)
+      );
+    }
   }
 
   async goBack() {

@@ -7,11 +7,14 @@
       <label class="page-title">Importar agenda</label>
     </div>
 
-    //TODO crear barra de busqueda para buscar uno en concreto //TODO crear un
-    botón para seleccionar todos los contactos
+    <!--TODO crear barra de busqueda para buscar uno en concreto-->
+    <!--TODO crear un botón para seleccionar todos los contactos-->
 
     <!-- Search bar for quick contact search -->
-    <app-search-bar></app-search-bar>
+    <app-search-bar
+      [value]="searchBarValue"
+      (valueChange)="searchContacts()"
+    ></app-search-bar>
 
     <!-- This container will hold and layout all the contact items -->
     <div class="contacts-list">
