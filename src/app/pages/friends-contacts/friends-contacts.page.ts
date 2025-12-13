@@ -38,17 +38,21 @@ interface SelectableContact extends ContactPayload {
 export class FriendsContactsPage implements OnInit {
   permission: any;
 
-  // List of contacts, with an interface that aleady has all the posibilities
-  // Initialize with one mock contact for web development and styling.
-  // This will be overwritten by real contacts on a mobile device.
+  // List of contacts, retrieved from the device
   contacts: SelectableContact[] = [];
   errorMessage: string = '';
 
   // Search bar value
   searchBarValue: string = '';
 
-  // Selected contacts
+  // Selected contacts. Its the array of contacts shown, that will be updated when the search bar value changes
   searchedContacts: SelectableContact[] = [];
+
+  ngOnChanges() {
+    // Update the list of contacts when the search bar value changes
+    this.searchContacts();
+    console.log('Search bar value: ' + this.searchBarValue);
+  }
 
   constructor(
     private router: Router,
@@ -126,6 +130,9 @@ export class FriendsContactsPage implements OnInit {
       console.error('Error requesting permissions:', error);
       this.errorMessage = 'Error requesting permissions';
     }
+
+    // Set the searchedContacts to the contacts when loading from the device
+    this.searchedContacts = this.contacts;
   }
 
   async createFriends() {
@@ -156,11 +163,15 @@ export class FriendsContactsPage implements OnInit {
     this.goBackTwice();
   }
 
-  //Called when the user searches for friends on the top bar
+  //Called when search bar value changes
   async searchContacts() {
-    if (this.searchBarValue) {
+    console.log('Search bar value search: ' + this.searchBarValue);
+    //If the search bar value is not empty, filter the contacts by name
+    if (this.searchBarValue !== '') {
       this.searchedContacts = this.contacts.filter((contact) =>
-        contact.name?.display?.toLowerCase().includes(this.searchBarValue)
+        contact.name?.display
+          ?.toLowerCase()
+          .includes(this.searchBarValue.toLowerCase())
       );
     }
   }

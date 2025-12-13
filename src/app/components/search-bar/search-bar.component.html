@@ -1,4 +1,4 @@
 <div class="searchbarContainer reactiveField dataInput">
   <img class="searchIcn" src="../../../assets/images/search.png" />
-  <input [(ngModel)]="value" />
+  <input [(ngModel)]="value" (input)="onInputChange($event)" />
 </div>

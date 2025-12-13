@@ -2,6 +2,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+//-- COMPONENT DESCRIPTION --
+/**
+ * @description
+ * Simple search bar to use anywhere
+ * * Usage: <app-search-bar [(value)]="searchBarValue" (valueChange)="yourSearchEvent()"></app-search-bar>
+ */
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -11,11 +17,27 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchBarComponent implements OnInit {
   //--- INPUTS FROM PARENT ---
-  //The textbox value itself
+  /**
+   * @description
+   * The value of the field itself. Gets updated automatically with bananaBox
+   */
   @Input() value: string = '';
 
-  //Emits the value of the field, back to the parent on the same field (Banana Box)
+  //--- OUTPUTS TO PARENT ---
+  /**
+   * @description
+   * Emits the value of the field, back to the parent. Can be used to run a method in the parent when texbox value changes
+   * * Example: <app-search-bar [(value)]="searchBarValue" (valueChange)="yourSearchEvent()"></app-search-bar>
+   */
   @Output() valueChange = new EventEmitter<string>();
+
+  //--- EVENT HANDLERS ---
+  //If the parent component updates the value, this method is called
+  onInputChange(event: any): void {
+    const newValue = event.target.value;
+    this.value = newValue;
+    this.valueChange.emit(newValue);
+  }
 
   constructor() {}
 

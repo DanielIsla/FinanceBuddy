@@ -12,7 +12,7 @@
 
     <!-- Search bar for quick contact search -->
     <app-search-bar
-      [value]="searchBarValue"
+      [(value)]="searchBarValue"
       (valueChange)="searchContacts()"
     ></app-search-bar>
 
@@ -21,7 +21,7 @@
       <!-- Loop through the contacts fetched from the device -->
       <div
         class="contact-item"
-        *ngFor="let contact of contacts"
+        *ngFor="let contact of searchedContacts"
         [ngClass]="{ 'contact-item-duplicate': contact.duplicate }"
       >
         <div class="contact-avatar">
