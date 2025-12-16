@@ -1,0 +1,698 @@
+[
+  {
+    "id": "TASK_1",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] Conver this to a component, header is repeated in other pages, passing page name as input",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_2",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] crear barra de busqueda para buscar uno en concreto",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_3",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] crear un botón para seleccionar todos los contactos",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_4",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] Add hover documentation for future uses",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_5",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] para abrir el dropdown manualmente",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_6",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] para cerrar el dropdown manualmente",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_7",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] para manejar clics en las opciones, previniendo el cambio de estado",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_8",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] s los días del próximo mes son futuros",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_9",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] export as Cap function",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_10",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] export as Cap function",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_11",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] Add progress event emission on native side",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_12",
+    "priority": "MEDIUM",
+    "tags": [
+      "deprecated"
+    ],
+    "title": "",
+    "description": "[DEPRECATED] ClassUsageInspection",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_13",
+    "priority": "MEDIUM",
+    "tags": [
+      "deprecated"
+    ],
+    "title": "",
+    "description": "[DEPRECATED] ClassUsageInspection",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_14",
+    "priority": "MEDIUM",
+    "tags": [
+      "deprecated"
+    ],
+    "title": "",
+    "description": "[DEPRECATED] ClassUsageInspection",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 9,
+        "second": 49,
+        "nano": 675883300
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_57",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] no se",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_58",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] Conver this to a component, header is repeated in other pages, passing page name as input",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_59",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] crear barra de busqueda para buscar uno en concreto",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_60",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] crear un botón para seleccionar todos los contactos",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_61",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] Add hover documentation for future uses",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_62",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] para abrir el dropdown manualmente",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_63",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] para cerrar el dropdown manualmente",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_64",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] para manejar clics en las opciones, previniendo el cambio de estado",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_65",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] s los días del próximo mes son futuros",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_66",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] export as Cap function",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_67",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] export as Cap function",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_68",
+    "priority": "MEDIUM",
+    "tags": [
+      "todo"
+    ],
+    "title": "",
+    "description": "[TODO] Add progress event emission on native side",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_69",
+    "priority": "MEDIUM",
+    "tags": [
+      "deprecated"
+    ],
+    "title": "",
+    "description": "[DEPRECATED] ClassUsageInspection",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_70",
+    "priority": "MEDIUM",
+    "tags": [
+      "deprecated"
+    ],
+    "title": "",
+    "description": "[DEPRECATED] ClassUsageInspection",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  },
+  {
+    "id": "TASK_71",
+    "priority": "MEDIUM",
+    "tags": [
+      "deprecated"
+    ],
+    "title": "",
+    "description": "[DEPRECATED] ClassUsageInspection",
+    "status": "TODO",
+    "date": {
+      "date": {
+        "year": 2025,
+        "month": 12,
+        "day": 10
+      },
+      "time": {
+        "hour": 11,
+        "minute": 11,
+        "second": 0,
+        "nano": 442715000
+      }
+    },
+    "isImported": false
+  }
+]

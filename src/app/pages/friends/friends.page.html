@@ -1,29 +1,22 @@
-<ion-content fullscreen="false">
+<ion-content [fullscreen]="true">
+  <app-page-header [customNavRoute]="''" [pageTitle]="'Amigos'"></app-page-header>
   <div class="friends-page-container">
-    <div class="friends-header">
-      <div (click)="goBack()" class="back-button">
-        <img src="assets/images/back.png" />
-      </div>
-    </div>
-
-    <label class="page-title">Amigos</label>
-
     <div class="friendsContainer">
-      <div class="amigoItem" *ngFor="let friend of friendList">
+      <div *ngFor="let friend of friendList" class="amigoItem">
         <div class="icnAmigo">
-          <p>{{friend.FullName.charAt(0).toUpperCase()}}</p>
+          <p>{{ friend.FullName.charAt(0).toUpperCase() }}</p>
         </div>
         <div class="friend-details">
-          <label class="friend-name"> {{friend.FullName}} </label>
-          <label class="friend-phone"> {{friend.Phone}} </label>
+          <label class="friend-name"> {{ friend.FullName }} </label>
+          <label class="friend-phone"> {{ friend.Phone }} </label>
         </div>
-        <img class="continue-icon" src="assets/images/continue.png" />
+        <img class="continue-icon" src="assets/images/continue.png"/>
       </div>
     </div>
 
     <div class="add-friend-container">
       <div (click)="nuevoAmigo()" class="add-friend-button">
-        <img class="add-friend-icon" src="assets/images/more.png" />
+        <img class="add-friend-icon" src="assets/images/more.png"/>
         <label class="add-friend-label"> Nuevo amigo </label>
       </div>
     </div>

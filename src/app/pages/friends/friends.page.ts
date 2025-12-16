@@ -8,13 +8,14 @@ import {
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import {PageHeaderComponent} from "../../components/page-header/page-header.component";
 
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.page.html',
   styleUrls: ['./friends.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule],
+  imports: [IonContent, CommonModule, PageHeaderComponent],
 })
 export class FriendsPage {
   constructor(

@@ -19,7 +19,7 @@ ion-content {
   margin-bottom: 20px;
 }
 
-.back-button {
+.back-btn {
   background-color: var(--color-contenedor-2);
   height: 60px;
   width: 60px;
@@ -79,6 +79,7 @@ ion-content {
   align-items: center;
   display: flex;
   background-color: var(--color-contenedor);
+
   p {
     font-size: 20px;
   }

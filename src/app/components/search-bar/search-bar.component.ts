@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 //-- COMPONENT DESCRIPTION --
 /**
@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
  * Simple search bar to use anywhere
  * * Usage: <app-search-bar [(value)]="searchBarValue" (valueChange)="yourSearchEvent()"></app-search-bar>
  */
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -32,6 +33,10 @@ export class SearchBarComponent implements OnInit {
   @Output() valueChange = new EventEmitter<string>();
 
   //--- EVENT HANDLERS ---
+
+  constructor() {
+  }
+
   //If the parent component updates the value, this method is called
   onInputChange(event: any): void {
     const newValue = event.target.value;
@@ -39,7 +44,6 @@ export class SearchBarComponent implements OnInit {
     this.valueChange.emit(newValue);
   }
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

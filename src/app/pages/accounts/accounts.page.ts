@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NavController } from '@ionic/angular';
-import { IonContent, ModalController } from '@ionic/angular/standalone';
-import { RouterModule } from '@angular/router';
-import { FinanceBuddyDatabaseSQLiteService } from '../../services/database/finance-buddy-database-sqlite.service';
-import { AccountItemComponent } from '../../components/account-item/account-item.component';
-import { Account } from '../../services/database/finance-buddy-database-sqlite.service';
-import { AccountDetailsPage } from '../account-details/account-details.page';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {NavController} from '@ionic/angular';
+import {IonContent, ModalController} from '@ionic/angular/standalone';
+import {RouterModule} from '@angular/router';
+import {
+  Account,
+  FinanceBuddyDatabaseSQLiteService
+} from '../../services/database/finance-buddy-database-sqlite.service';
+import {AccountItemComponent} from '../../components/account-item/account-item.component';
+import {AccountDetailsPage} from '../account-details/account-details.page';
+import {PageHeaderComponent} from "../../components/page-header/page-header.component";
 
 @Component({
   selector: 'app-accounts',
@@ -20,6 +23,8 @@ import { AccountDetailsPage } from '../account-details/account-details.page';
     FormsModule,
     RouterModule,
     AccountItemComponent,
+    PageHeaderComponent,
+
   ],
 })
 export class AccountsPage implements OnInit {
@@ -29,7 +34,8 @@ export class AccountsPage implements OnInit {
     private navCtrl: NavController,
     private dbService: FinanceBuddyDatabaseSQLiteService,
     private modalController: ModalController
-  ) {}
+  ) {
+  }
 
   async ngOnInit() {
     const result = await this.dbService.getAccounts();
@@ -51,7 +57,7 @@ export class AccountsPage implements OnInit {
 
       //Show the modal
       await modal.present();
-      const { data, role } = await modal.onDidDismiss();
+      const {data, role} = await modal.onDidDismiss();
 
       console.log('Data:', data);
     } catch (error) {

@@ -1,64 +1,64 @@
 <ion-content>
   <div class="page-container">
     <div class="header-container">
-      <div (click)="goBack()" class="back-button">
-        <img src="assets/images/back.png" />
+      <div (click)="goBack()" class="back-btn">
+        <img src="assets/images/back.png"/>
       </div>
     </div>
     <label class="page-title">Crear cuenta</label>
 
     <div class="textboxContainer">
-      @if(selectedBank == undefined) {
-      <div class="bank-selection-button" (click)="openBankSelectionModal()">
-        Seleccionar banco
-      </div>
+      @if (selectedBank == undefined) {
+        <div (click)="openBankSelectionModal()" class="bank-selection-button">
+          Seleccionar banco
+        </div>
       } @else {
-      <div class="bank-display-container">
-        <div
-          [ngStyle]="{'background-color': selectedBank.corporateColorHex, border: '1px solid ' + selectedBank.corporateColorHexSecondary, 'color': selectedBank.corporateColorHexSecondary}"
-          class="selected-bank-button"
-        >
-          {{selectedBank.shortName}}
+        <div class="bank-display-container">
+          <div
+            [ngStyle]="{'background-color': selectedBank.corporateColorHex, border: '1px solid ' + selectedBank.corporateColorHexSecondary, 'color': selectedBank.corporateColorHexSecondary}"
+            class="selected-bank-button"
+          >
+            {{ selectedBank.shortName }}
+          </div>
+          <div (click)="restartBankSelection()" class="restart-selection-button">
+            <img class="restart-selection-icon" src="assets/images/more.png"/>
+          </div>
         </div>
-        <div class="restart-selection-button" (click)="restartBankSelection()">
-          <img class="restart-selection-icon" src="assets/images/more.png" />
-        </div>
-      </div>
       }
 
       <div class="input-group">
         <h3>Nombre de cuenta</h3>
         <input
+          [(ngModel)]="AccountName"
           class="dataInput reactiveField"
-          type="text"
           id="fname"
           name="fname"
           size="9"
-          [(ngModel)]="AccountName"
+          type="text"
         />
       </div>
 
       <div
-        class="input-group"
         *ngIf="selectedBank != undefined && selectedBank.shortName != 'Efectivo' "
+        class="input-group"
       >
         <label class="input-label">IBAN de cuenta</label>
         <input
+          [(ngModel)]="AccountIBAN"
           class="dataInput reactiveField"
-          type="number"
           id="fname"
           name="fname"
           size="9"
-          [(ngModel)]="AccountIBAN"
+          type="number"
         />
       </div>
 
       <div class="input-group">
         <label class="input-label">Moneda *</label>
         <app-dropdown
+          (selected)="onCurrencySelected($event)"
           [options]="currencyOptions"
           placeholder="Selecciona una moneda"
-          (selected)="onCurrencySelected($event)"
         ></app-dropdown>
       </div>
 
@@ -66,16 +66,16 @@
         <label class="input-label">Balance inicial *</label>
         <div class="balance-input-container">
           <input
+            [(ngModel)]="startingAmount"
             class="dataInput reactiveField balance-input"
-            type="number"
             id="fname"
             name="fname"
             size="9"
-            [(ngModel)]="startingAmount"
+            type="number"
           />
           <img
-            src="assets/images/currency/EUR_icon.png"
             class="currency-icon"
+            src="assets/images/currency/EUR_icon.png"
           />
         </div>
       </div>
@@ -84,7 +84,7 @@
     <!-- Botones cerrar y aceptar -->
     <div class="action-buttons-container">
       <div class="action-button close-button">
-        <img class="close-icon" src="assets/images/more.png" />
+        <img class="close-icon" src="assets/images/more.png"/>
       </div>
       <div (click)="storeData()" class="action-button accept-button">
         Aceptar

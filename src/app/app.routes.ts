@@ -41,7 +41,8 @@ export const routes: Routes = [
   {
     path: 'account-details',
     loadComponent: () => import('./pages/account-details/account-details.page').then( m => m.AccountDetailsPage)
-  },  {
+  },
+  {
     path: 'new-friend',
     loadComponent: () => import('./pages/new-friend/new-friend.page').then( m => m.NewFriendPage)
   },
