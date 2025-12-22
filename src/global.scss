@@ -46,6 +46,7 @@ h1 {
   color: var(--color-primarytext);
 }
 
+
 h3 {
   margin-top: 0px;
   margin-bottom: 5px;
@@ -79,8 +80,7 @@ body {
   outline: none;
   border: 0px;
   background-color: var(--color-contenedor-2);
-  border-radius: var(--field-radius);
-
+  border-radius: var(--value-radius);
   .reactiveBtn {
     cursor: pointer;
     user-select: none;
