@@ -53,6 +53,8 @@ export class FinanceBuddyDatabaseSQLiteService {
   private db!: SQLiteDBConnection;
   private isOpen = false;
 
+  friendsTable : Friend | undefined;
+
   // Initializes the database and creates the tables if they don't exist
   async initializeDatabase(): Promise<void> {
     try {
@@ -97,6 +99,7 @@ export class FinanceBuddyDatabaseSQLiteService {
       }
     }
   }
+
 
   //Create the needed tables
   async createTables() {

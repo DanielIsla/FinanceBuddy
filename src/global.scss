@@ -45,6 +45,7 @@ h1 {
   font-weight: 600;
   color: var(--color-primarytext);
 }
+
 h3 {
   margin-top: 0px;
   margin-bottom: 5px;
@@ -64,6 +65,7 @@ body {
   cursor: pointer;
   user-select: none;
   transition: transform 0.15s ease-out;
+
   .reactiveField:active {
     transform: scale(1.03, 1);
   }
@@ -77,11 +79,13 @@ body {
   outline: none;
   border: 0px;
   background-color: var(--color-contenedor-2);
-  border-radius: var(--value-radius);
+  border-radius: var(--field-radius);
+
   .reactiveBtn {
     cursor: pointer;
     user-select: none;
     transition: transform 0.15s ease-out;
+
     .reactiveBtn:active {
       transform: scale(1.1, 1);
     }
@@ -109,4 +113,27 @@ input[type="checkbox"]:checked {
   background-image: url("/assets/images/check.png");
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+//Common configuration for a fullscreen page, without top and bottom margins.
+.page-container {
+  display: flex;
+  //No margin on top and bottom, so the items can go all the way up on the status bar, under header and footer
+  padding: 0px 25px;
+  height: 100%;
+  flex-direction: column;
+  background-color: var(--color-background);
+}
+
+//Fullscreen list container,with padding to move the content under the header and over the footer, but allowing to go under it at some point
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-items-gap);
+  height: 100%;
+  padding-top: calc(var(--header-top-margin) + var(--list-items-gap) + var(--ion-safe-area-top));
+  //Header height + 1 regular gap margin(as the page container doesnt have it in this case) + padding for separation between header and items + status bar
+  padding-bottom: calc(var(--ion-safe-area-bottom) + var(--footer-bottom-margin) + var(--list-items-gap));
+  //Footer height + 1 regular gap margin(as the page container doesnt have it in this case) + padding for separation between header and items + status bar
+  overflow-y: scroll;
 }

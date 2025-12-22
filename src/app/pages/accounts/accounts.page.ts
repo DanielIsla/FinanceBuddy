@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {NavController} from '@ionic/angular';
@@ -27,7 +27,7 @@ import {PageHeaderComponent} from "../../components/page-header/page-header.comp
 
   ],
 })
-export class AccountsPage implements OnInit {
+class AccountsPage implements OnInit {
   accounts: Account[] = [];
 
   constructor(
@@ -69,3 +69,5 @@ export class AccountsPage implements OnInit {
     this.navCtrl.back();
   }
 }
+
+export default AccountsPage

@@ -21,7 +21,12 @@
   --color-secondarytext: rgb(160, 160, 160);
   --color-secondarytext-container: rgb(200, 200, 200);
 
-  --value-radius: 20px;
+  //Other common values
+  --field-radius: 20px; //Common radius , for texbox, rectangular buttons, etc
+  --container-margin: 25px; //Common margin everywhere on the app
+  --header-top-margin: 85px; //Needed margin for the content to right under the header (list items, for axample)
+  --footer-bottom-margin: 90px; //Needed margin for the content right up the footer (list items, for example)
+  --list-items-gap: 15px; //Standard item separation of all the list items on the app
 
   // Categories colors
   --color-comida: #ff9800;

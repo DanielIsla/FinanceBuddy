@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NavController} from "@ionic/angular";
 import {Router} from "@angular/router";
-import {Location} from "@angular/common";
+import {Location, NgClass} from "@angular/common";
 
 //--- COMPONENT DESCRIPTION ---
 /**
  * @description
- * PUT OUTSIDE PAGE CONTAINER TO AVOID EXTRA PADDING
+ * OUTSIDE page to avoid extra padding <br>
  * Common header component for multiple pages, with customizable page tittle and route when pressing back button
  ** Example: <app-page-header [pageTitle]="pageTitle" [customBackMultiplier]="customBackMultiplier"></app-page-header>
  */
@@ -15,6 +15,9 @@ import {Location} from "@angular/common";
   selector: 'app-page-header',
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss'],
+  imports: [
+    NgClass
+  ]
 })
 export class PageHeaderComponent implements OnInit {
 
@@ -27,23 +30,26 @@ export class PageHeaderComponent implements OnInit {
 
   /**
    * @description
-   * Custom route used to navigate when pressin the back button. IT SHOULD BE SPECIFIED
+   * Custom ammount of back steps, 1 if not specified
    */
-  @Input({required: true}) customNavRoute: string = "";
+  @Input({required: false}) customBackSteps: number = 1;
+
+  /**
+   * @description
+   * Indicates if the header is over the rest of the page content, so lists item go under it for smoother looks
+   */
+  @Input({required: false}) translucentFloatingHeader: boolean = true;
 
   constructor(
     private navCtrl: NavController,
-    private router: Router,
-    private location: Location,
   ) {
   }
 
   ngOnInit() {
   }
 
-  //TODO ERROR al ir para atrás, no va para atrás
   async goBack() {
     console.log('go back');
-    this.location.back();
+    this.navCtrl.back();
   }
 }

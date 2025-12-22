@@ -1,7 +1,7 @@
 .accountsContainer
 {
     flex-grow: 1;
-    margin-top: 20px;
+    margin-top: var(--header-top-margin);
     display: flex;
     flex-direction: column;
     gap: 20px;

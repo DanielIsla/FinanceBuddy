@@ -1,26 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { SearchBarComponent } from 'src/app/components/search-bar/search-bar.component';
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
-import {
-  ContactPayload,
-  Contacts,
-  PermissionStatus,
-  Projection,
-} from '@capacitor-community/contacts';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule, Location} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Platform} from '@ionic/angular';
+import {Router} from '@angular/router';
+import {Haptics, ImpactStyle} from '@capacitor/haptics';
+import {SearchBarComponent} from 'src/app/components/search-bar/search-bar.component';
+import {IonContent,} from '@ionic/angular/standalone';
+import {ContactPayload, Contacts,} from '@capacitor-community/contacts';
 import {
   FinanceBuddyDatabaseSQLiteService,
   Friend,
 } from 'src/app/services/database/finance-buddy-database-sqlite.service';
+import {PageHeaderComponent} from "../../components/page-header/page-header.component";
+import {
+  AcceptCancelFooterComponent
+} from "../../components/footers/accept-cancel-footer/accept-cancel-footer.component";
 
 //We extend from the contacts plugin ContactPayload interface, and add a checked field to know what contacs are selected to add
 interface SelectableContact extends ContactPayload {
@@ -33,7 +27,7 @@ interface SelectableContact extends ContactPayload {
   templateUrl: './friends-contacts.page.html',
   styleUrls: ['./friends-contacts.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, SearchBarComponent],
+  imports: [IonContent, CommonModule, FormsModule, SearchBarComponent, PageHeaderComponent, AcceptCancelFooterComponent],
 })
 export class FriendsContactsPage implements OnInit {
   permission: any;
@@ -48,18 +42,13 @@ export class FriendsContactsPage implements OnInit {
   // Selected contacts. Its the array of contacts shown, that will be updated when the search bar value changes
   searchedContacts: SelectableContact[] = [];
 
-  ngOnChanges() {
-    // Update the list of contacts when the search bar value changes
-    this.searchContacts();
-    console.log('Search bar value: ' + this.searchBarValue);
-  }
-
   constructor(
     private router: Router,
     private platform: Platform,
     private dbService: FinanceBuddyDatabaseSQLiteService,
     private location: Location
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.getContacts();
@@ -116,14 +105,14 @@ export class FriendsContactsPage implements OnInit {
         // A contact is a duplicate if a friend with the same phone number or email already exists.
         duplicate: friends
           ? friends.some(
-              (friend) =>
-                (friend.Phone &&
-                  contact.phones &&
-                  contact.phones.some((p) => p.number === friend.Phone)) ||
-                (friend.Email &&
-                  contact.emails &&
-                  contact.emails.some((e) => e.address === friend.Email))
-            )
+            (friend) =>
+              (friend.Phone &&
+                contact.phones &&
+                contact.phones.some((p) => p.number === friend.Phone)) ||
+              (friend.Email &&
+                contact.emails &&
+                contact.emails.some((e) => e.address === friend.Email))
+          )
           : false,
       }));
     } catch (error) {
@@ -165,20 +154,25 @@ export class FriendsContactsPage implements OnInit {
 
   //Called when search bar value changes
   async searchContacts() {
-    console.log('Search bar value search: ' + this.searchBarValue);
-    //If the search bar value is not empty, filter the contacts by name
-    if (this.searchBarValue !== '') {
+    var contactItemsContainer = document.getElementsByClassName("contacts-list");
+    contactItemsContainer[0].scrollTop = 0;
+
+    // If the search bar value is not empty, filter the contacts by name
+    if (this.searchBarValue && this.searchBarValue.trim() !== '') {
       this.searchedContacts = this.contacts.filter((contact) =>
         contact.name?.display
           ?.toLowerCase()
           .includes(this.searchBarValue.toLowerCase())
       );
+    } else {
+      // When the search bar is empty, show all contacts
+      this.searchedContacts = this.contacts;
     }
   }
 
   async goBack() {
     this.location.back();
-    await Haptics.impact({ style: ImpactStyle.Light });
+    await Haptics.impact({style: ImpactStyle.Light});
   }
 
   async goBackTwice() {
@@ -187,6 +181,6 @@ export class FriendsContactsPage implements OnInit {
 
     // Clean up the contacts list after navigating away.
     this.contacts = [];
-    await Haptics.impact({ style: ImpactStyle.Light });
+    await Haptics.impact({style: ImpactStyle.Light});
   }
 }

@@ -1,7 +1,6 @@
+<app-page-header [pageTitle]="'Cuenta'" [translucentFloatingHeader] = "false"></app-page-header>
 <ion-content [fullscreen]="false">
-  <app-page-header [customNavRoute]="''" [pageTitle]="'Cuenta'"></app-page-header>
-  <div
-    style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
+  <div style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
 
     <div class="accountsContainer">
       <app-account-item (click)="openAccountActionsModal(account.ID)" *ngFor="let account of accounts"

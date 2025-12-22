@@ -1,48 +1,52 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NavController } from '@ionic/angular';
-import { IonContent } from '@ionic/angular/standalone';
-import { TextboxComponent } from 'src/app/components/textbox/textbox.component';
+import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {NavController} from '@ionic/angular';
+import {IonContent} from '@ionic/angular/standalone';
+import {TextboxComponent} from 'src/app/components/textbox/textbox.component';
 import {
   FinanceBuddyDatabaseSQLiteService,
   Friend,
 } from 'src/app/services/database/finance-buddy-database-sqlite.service';
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import {Haptics, ImpactStyle} from '@capacitor/haptics';
+import {
+  AcceptCancelFooterComponent
+} from "../../components/footers/accept-cancel-footer/accept-cancel-footer.component";
+import {PageHeaderComponent} from "../../components/page-header/page-header.component";
 
 @Component({
   selector: 'app-new-friend',
   templateUrl: './new-friend.page.html',
   styleUrls: ['./new-friend.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, TextboxComponent],
+  imports: [IonContent, CommonModule, FormsModule, TextboxComponent, AcceptCancelFooterComponent, PageHeaderComponent],
 })
 export class NewFriendPage implements OnInit {
-  constructor(
-    private navCtrl: NavController,
-    private dbService: FinanceBuddyDatabaseSQLiteService
-  ) {}
-
   //Get textbox reference to force validation from the parent component later if neccesary
   @ViewChildren(TextboxComponent)
   textboxes!: QueryList<TextboxComponent>;
-
   //Form data
   name: string = '';
   surname: string = '';
   phone: string = '';
   email: string = '';
-
   //Form validation states
   isValidName: boolean | undefined;
   isValidSurname: boolean | undefined;
   isValidPhone: boolean | undefined;
   isValidEmail: boolean | undefined;
 
-  ngOnInit() {}
+  constructor(
+    private navCtrl: NavController,
+    private dbService: FinanceBuddyDatabaseSQLiteService
+  ) {
+  }
+
+  ngOnInit() {
+  }
 
   async createFriend() {
-    await Haptics.impact({ style: ImpactStyle.Heavy });
+    await Haptics.impact({style: ImpactStyle.Heavy});
 
     //Check if all fields are valid, then proceed to add the new friend to the database
     if (
@@ -79,6 +83,6 @@ export class NewFriendPage implements OnInit {
 
     this.navCtrl.back();
 
-    await Haptics.impact({ style: ImpactStyle.Light });
+    await Haptics.impact({style: ImpactStyle.Light});
   }
 }

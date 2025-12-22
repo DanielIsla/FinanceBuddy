@@ -1,90 +1,47 @@
-<ion-content fullscreen="false">
-  <div
-    style="
-      display: flex;
-      padding: 25px;
-      height: 100%;
-      flex-grow: 1;
-      flex-direction: column;
-      background-color: var(--color-background);
-    "
-  >
-    <div class="texboxContainer">
-      <!-- Top header with back button -->
-      <div style="display: flex; align-items: center">
-        <div
-          (click)="goBack()"
-          style="
-            background-color: var(--color-contenedor-2);
-            height: 60px;
-            width: 60px;
-            border-radius: 30px;
-            padding: 17px;
-          "
-        >
-          <img src="assets/images/back.png" />
-        </div>
-      </div>
-      <label
-        style="
-          font-size: 25px;
-          font-weight: 600;
-          text-align: center;
-          position: absolute;
-          align-self: center;
-          margin-top: 15px;
-        "
-        >Nuevo amigo</label
-      >
-
+<ion-content [fullscreen]="true">
+  <app-page-header [pageTitle]="'Nuevo amigo'" [translucentFloatingHeader]="true"></app-page-header>
+  <div class="page-container">
+    <div class="texboxContainer list-container">
       <app-textbox
-        [(value)]="name"
-        [inputlabel]="'Nombre'"
-        [fieldtype]="'name'"
-        [isrequired]="true"
         (validitychange)="isValidName = $event"
+        [(value)]="name"
+        [fieldtype]="'name'"
+        [inputlabel]="'Nombre'"
+        [isrequired]="true"
         [maxlength]="50"
       ></app-textbox>
 
       <app-textbox
-        [(value)]="surname"
-        [inputlabel]="'Apellidos'"
-        [fieldtype]="'surname'"
-        [isrequired]="true"
         (validitychange)="isValidSurname = $event"
+        [(value)]="surname"
+        [fieldtype]="'surname'"
+        [inputlabel]="'Apellidos'"
+        [isrequired]="true"
         [maxlength]="50"
       >
       </app-textbox>
 
       <app-textbox
-        [(value)]="phone"
-        [inputlabel]="'Telefono'"
-        [fieldtype]="'phone'"
-        [isrequired]="true"
         (validitychange)="isValidPhone = $event"
+        [(value)]="phone"
+        [fieldtype]="'phone'"
+        [inputlabel]="'Telefono'"
+        [isrequired]="true"
         [maxlength]="20"
       ></app-textbox>
 
       <app-textbox
-        [(value)]="email"
-        [inputlabel]="'Correo electrónico'"
-        [fieldtype]="'email'"
-        [isrequired]="false"
         (validitychange)="isValidEmail = $event"
+        [(value)]="email"
+        [fieldtype]="'email'"
+        [inputlabel]="'Correo electrónico'"
+        [isrequired]="false"
         [maxlength]="100"
       ></app-textbox>
-    </div>
-
-    <!-- Accept and close buttons -->
-    <div class="add-from-contacts-button" (click)="addFromContacts()">
-      <img src="assets/images/contacts.png" />Añadir desde contactos
-    </div>
-
-    <div class="action-buttons-container">
-      <div class="cancel-button" (click)="goBack()">
-        <img src="assets/images/more.png" />
+      <div (click)="addFromContacts()" class="add-from-contacts-button">
+        <img src="assets/images/contacts.png"/>Añadir desde contactos
       </div>
-      <div class="accept-button" (click)="createFriend()">Aceptar</div>
     </div>
   </div>
+  <app-accept-cancel-footer (onAcceptClick)="createFriend()" (onCancelClick)="goBack()"></app-accept-cancel-footer>
 </ion-content>

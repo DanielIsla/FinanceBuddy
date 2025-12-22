@@ -32,7 +32,7 @@ export const routes: Routes = [
 
   {
     path: 'accounts',
-    loadComponent: () => import('./pages/accounts/accounts.page').then( m => m.AccountsPage)
+    loadComponent: () => import('./pages/accounts/accounts.page').then( m => m.default)
   },
   {
     path: 'accounts/new-account',

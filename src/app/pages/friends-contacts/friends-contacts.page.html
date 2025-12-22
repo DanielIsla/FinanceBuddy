@@ -1,28 +1,20 @@
 <ion-content>
-  <div class="friends-contacts-container">
-    <div class="header">
-      <div (click)="goBack()" class="back-button">
-        <img src="assets/images/back.png" />
-      </div>
-      <label class="page-title">Importar agenda</label>
-    </div>
-
-    <!--TODO crear barra de busqueda para buscar uno en concreto-->
+  <app-page-header [pageTitle]="'Importar agenda'" [translucentFloatingHeader]="true" ]></app-page-header>
+  <div class="page-container">
     <!--TODO crear un botón para seleccionar todos los contactos-->
-
     <!-- Search bar for quick contact search -->
-    <app-search-bar
-      [(value)]="searchBarValue"
-      (valueChange)="searchContacts()"
+    <app-search-bar (valueChange)="searchContacts()"
+                    [(value)]="searchBarValue"
+                    class="contacts-searchbar"
     ></app-search-bar>
 
     <!-- This container will hold and layout all the contact items -->
-    <div class="contacts-list">
+    <div class="contacts-list list-container">
       <!-- Loop through the contacts fetched from the device -->
       <div
-        class="contact-item"
         *ngFor="let contact of searchedContacts"
         [ngClass]="{ 'contact-item-duplicate': contact.duplicate }"
+        class="contact-item"
       >
         <div class="contact-avatar">
           <p>{{ contact.name?.display?.charAt(0) }}</p>
@@ -33,15 +25,8 @@
             {{ contact.phones && contact.phones[0]?.number }}
           </label>
         </div>
-        <input type="checkbox" [(ngModel)]="contact.checked" />
+        <input [(ngModel)]="contact.checked" type="checkbox"/>
       </div>
-    </div>
-
-    <div class="action-buttons-container">
-      <div class="cancel-button" (click)="goBack()">
-        <img src="assets/images/more.png" />
-      </div>
-      <div class="accept-button" (click)="createFriends() ">Aceptar</div>
     </div>
 
     <!--
@@ -50,6 +35,7 @@
       <div></div>
       <img src="assets/images/">
     }
-      -->
+    -->
   </div>
+  <app-accept-cancel-footer (onAcceptClick)="createFriends()" (onCancelClick)="goBack()"></app-accept-cancel-footer>
 </ion-content>

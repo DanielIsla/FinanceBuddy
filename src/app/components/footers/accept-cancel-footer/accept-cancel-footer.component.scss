@@ -1,0 +1,46 @@
+.action-buttons-container {
+  display: flex;
+  gap: 10px;
+  padding-bottom: calc(var(--ion-safe-area-bottom) + var(--container-margin));
+  padding-right: var(--container-margin);
+  padding-left: var(--container-margin);
+  padding-top: var(--list-items-gap);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 0px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.cancel-button {
+  background-color: var(--color-error);
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  cursor: pointer;
+
+  img {
+    height: 35px;
+    width: 35px;
+    rotate: 45deg;
+  }
+}
+
+.accept-button {
+  background-color: var(--color-success);
+  height: 50px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}

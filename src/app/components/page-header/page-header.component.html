@@ -1,7 +1,6 @@
-<div class="header-container">
+<div class="" [ngClass]="{ 'translucent-floating-header-container': translucentFloatingHeader , 'header-container': !translucentFloatingHeader }">
   <div (click)="goBack()" class="back-btn">
-    <img src="assets/images/back.png"/>
+    <img src="assets/images/back.png" alt="Page back button" />
   </div>
   <label class="page-title">{{ pageTitle }}</label>
 </div>
-

@@ -1,31 +1,35 @@
-import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { IonContent } from '@ionic/angular/standalone';
+import {Component} from '@angular/core';
+import {NavController} from '@ionic/angular';
+import {IonContent} from '@ionic/angular/standalone';
 import {
   FinanceBuddyDatabaseSQLiteService,
   Friend,
 } from 'src/app/services/database/finance-buddy-database-sqlite.service';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import {Router} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {Haptics, ImpactStyle} from '@capacitor/haptics';
 import {PageHeaderComponent} from "../../components/page-header/page-header.component";
+import {
+  NewRegisterPageFooterComponent
+} from "../../components/footers/new-register-page-footer/new-register-page-footer.component";
 
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.page.html',
   styleUrls: ['./friends.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, PageHeaderComponent],
+  imports: [IonContent, CommonModule, PageHeaderComponent, NewRegisterPageFooterComponent],
 })
 export class FriendsPage {
+  friendList: Friend[] = [];
+  pageNumber: number = 1;
+
   constructor(
     private navCtrl: NavController,
     private router: Router,
     private dbService: FinanceBuddyDatabaseSQLiteService
-  ) {}
-
-  friendList: Friend[] = [];
-  pageNumber: number = 1;
+  ) {
+  }
 
   //Load friends list on page init
   ngOnInit() {
@@ -49,13 +53,6 @@ export class FriendsPage {
     }
   }
 
-  pageChangeFriends() {
-    this.pageNumber = 1;
-  }
-  pageChangeRecommended() {
-    this.pageNumber = 2;
-  }
-
   nuevoAmigo() {
     this.router.navigate(['/new-friend']);
   }
@@ -63,6 +60,6 @@ export class FriendsPage {
   async goBack() {
     this.navCtrl.back();
 
-    await Haptics.impact({ style: ImpactStyle.Light });
+    await Haptics.impact({style: ImpactStyle.Light});
   }
 }

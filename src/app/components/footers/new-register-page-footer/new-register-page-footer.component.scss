@@ -1,0 +1,40 @@
+.new-anything-footer-container {
+  padding-bottom: calc(var(--ion-safe-area-bottom) + var(--container-margin));
+  padding-right: var(--container-margin);
+  padding-left: var(--container-margin);
+  padding-top: var(--list-items-gap);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //Fix footer floating on the bottom
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  //Blur effect
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.add-friend-button {
+  display: flex;
+  padding: 15px 25px;
+  border-radius: 25px;
+  background-color: var(--color-acento);
+  align-items: center;
+  height: 50px;
+}
+
+.add-friend-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.add-friend-label {
+  font-weight: 450;
+  font-size: 16px;
+  text-align: center;
+  margin-left: 5px;
+}
