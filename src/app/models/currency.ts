@@ -3,19 +3,19 @@ export interface CurrencyOption {
   image: string;
 }
 
-export const CurrencyOptions: CurrencyOption[] = 
-[
-    { label: 'EUR', image: 'assets/images/currency/EUR_icon.png' },
-    { label: 'USD', image: 'assets/images/currency/USD_icon.png' },
-    { label: 'GBP', image: 'assets/images/currency/GBP_icon.png' },
-    { label: 'JPY', image: 'assets/images/currency/JPY_icon.png' },
-    { label: 'CAD', image: 'assets/images/currency/CAD_icon.png' },
-    { label: 'CHF', image: 'assets/images/currency/CHF_icon.png' },
-    { label: 'CNY', image: 'assets/images/currency/CNY_icon.png' },
-    { label: 'INR', image: 'assets/images/currency/INR_icon.png' },
+export const CurrencyOptions: CurrencyOption[] =
+  [
+    {label: 'EUR', image: 'assets/images/currency/EUR_icon.png'},
+    {label: 'USD', image: 'assets/images/currency/USD_icon.png'},
+    {label: 'GBP', image: 'assets/images/currency/GBP_icon.png'},
+    {label: 'JPY', image: 'assets/images/currency/JPY_icon.png'},
+    {label: 'CAD', image: 'assets/images/currency/CAD_icon.png'},
+    {label: 'CHF', image: 'assets/images/currency/CHF_icon.png'},
+    {label: 'CNY', image: 'assets/images/currency/CNY_icon.png'},
+    {label: 'INR', image: 'assets/images/currency/INR_icon.png'},
+    {label: 'RUB', image: 'assets/images/currency/RUB_icon.png'},
     //{ label: 'BRL', image: 'assets/images/currency/BRL_icon.png' },
     //{ label: 'MXN', image: 'assets/images/currency/MXN_icon.png' },
-    { label: 'RUB', image: 'assets/images/currency/RUB_icon.png' },
     //{ label: 'ARS', image: 'assets/images/currency/ARS_icon.png' },
     //{ label: 'CLP', image: 'assets/images/currency/CLP_icon.png' },
     //{ label: 'COP', image: 'assets/images/currency/COP_icon.png' },
@@ -91,4 +91,4 @@ export const CurrencyOptions: CurrencyOption[] =
     //{ label: 'MWK', image: 'assets/images/currency/MWK_icon.png' },
     //{ label: 'MYR', image: 'assets/images/currency/MYR_icon.png' },
     //{ label: 'MVR', image: 'assets/images/currency/MVR_icon.png' }
-];
+  ];

@@ -80,7 +80,8 @@ body {
   outline: none;
   border: 0px;
   background-color: var(--color-contenedor-2);
-  border-radius: var(--value-radius);
+  border-radius: var(--field-radius);
+
   .reactiveBtn {
     cursor: pointer;
     user-select: none;

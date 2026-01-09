@@ -1,17 +1,21 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common'; // 👈 Importa CommonModule
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {CommonModule, NgOptimizedImage} from '@angular/common'; // 👈 Importa CommonModule
 
+//TODO Crear documentacion hover
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent {
-  @Input() options: { label: string; image: string }[] = [];
-  @Input() placeholder: string = 'Selecciona una opción';
-  @Input() backgroundColor: string = "#1e1e1e"; 
+  @Input({required: true}) options: { label: string; image: string }[] = [];
+  @Input({required: true}) placeholder: string = 'Selecciona una opción';
+  @Input() backgroundColor: string = "#1e1e1e";
+  @Input() dropdownLabel: string = '';
+  @Input() dropdownTip: string = '';
+
   @Output() selected = new EventEmitter<{ label: string; image: string }>();
 
   isOpen = false;
@@ -22,12 +26,12 @@ export class DropdownComponent {
     this.isOpen = !this.isOpen;
   }
 
-  // Método para abrir el dropdown manualmente
+  // Métoodo para abrir el dropdown manualmente
   openDropdown() {
     this.isOpen = true;
   }
 
-  // Método para cerrar el dropdown manualmente
+  // Métoodo para cerrar el dropdown manualmente
   closeDropdown() {
     this.isOpen = false;
   }

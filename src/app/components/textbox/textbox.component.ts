@@ -1,8 +1,14 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-//TODO : Add hover documentation for future uses
+//--- COMPONENT DESCRIPTION ---
+/**
+ * @description
+ * Textbox component, with graphical validation built-in and a customizable tittle in the top left corner
+ ** Example: <app-textbox [value]="value" [fieldtype]="'name|surname|email|phone|text|number|iban'" [isrequired]="true|false" [inputlabel]="'label'" [maxlength]="number" (validitychange)="isValidVariable = $event"></app-textbox>
+ */
+
 @Component({
   selector: 'app-textbox',
   templateUrl: './textbox.component.html',
@@ -13,21 +19,22 @@ import { FormsModule } from '@angular/forms';
 export class TextboxComponent implements OnInit {
   //--- INPUTS FROM PARENT ---
   //The textbox value itself
-  @Input() value: string = '';
+  @Input({required: true}) value: string = '';
 
-  //Field type, that will be used to see what validation to apply (Email, Name, Phone, etc)
-  @Input() fieldtype: string = 'text';
+  //Field type, that will be used to see what validation to apply (Email, Name, Phone, etc). If not specified, fiel will be valid if it's not empty (if marked as required)
+  @Input() fieldtype: string = '';
 
   //If the field is required
-  @Input() isrequired: boolean = false;
+  @Input({required: true}) isrequired: boolean = false;
 
   //Label for the input, that will be displayed on top
-  @Input() inputlabel: string = 'Input Field';
+  @Input({required: true}) inputlabel: string = 'Input Field';
 
   //Max fiel length
-  @Input() maxlength: number = 0;
+  @Input({required: true}) maxlength: number = 0;
 
-  @Input() forceChecks: boolean = false;
+  //Force the textbox validation, useful to show error when the user leaves the input empty and continues to submit
+  //@Input() forceChecks: boolean = false;
 
   //--- OUTPUTS TO PARENT ---
   //Emits the validity of the field
@@ -39,7 +46,9 @@ export class TextboxComponent implements OnInit {
   public isValid: boolean | undefined;
   public currentTip: string = '';
 
-  constructor() {}
+  constructor() {
+  }
+
   ngOnInit() {
     // We initialize the validity and tip variables
     this.currentTip = this.getInitialTip(this.fieldtype); // Initial validation if value is present
@@ -98,6 +107,12 @@ export class TextboxComponent implements OnInit {
       case 'email':
         this.validateEmail(this.value);
         break;
+      case 'number':
+        this.validateNumber(this.value);
+        break;
+      case 'iban':
+        this.validateIban(this.value);
+        break;
       default:
         // If no specific validation, assume valid if not empty
         this.isValid = true;
@@ -129,7 +144,7 @@ export class TextboxComponent implements OnInit {
       this.currentTip = 'Introduzca solo letras';
       this.isValid = false;
       return;
-    } // Si pasa todas las validaciones
+    } // If all validations are ok
 
     this.currentTip = 'Ok';
     this.isValid = true;
@@ -148,7 +163,7 @@ export class TextboxComponent implements OnInit {
       this.currentTip = 'Introduzca solo letras';
       this.isValid = false;
       return;
-    } // Si pasa todas las validaciones
+    } // If all validations are ok
 
     this.currentTip = 'Ok';
     this.isValid = true;
@@ -219,17 +234,44 @@ export class TextboxComponent implements OnInit {
     this.isValid = true;
   }
 
+  validateIban(iban: string) {
+    //IBAN validation pattern
+    const pattern = /^[a-zA-Z]{2}[0-9]{2}\s?[a-zA-Z0-9]{4}\s?[a-zA-Z0-9]{4}\s?[a-zA-Z0-9]{1,30}$/;
+    if (!pattern.test(iban)) {
+      this.currentTip = 'Formato de IBAN inválido';
+      this.isValid = false;
+    } else {
+      this.currentTip = 'Ok';
+      this.isValid = true;
+    }
+  }
+
+  private validateNumber(number: string) {
+    //If is not a number, we show the tooltip and set validation to false
+    if (isNaN(parseFloat(number))) {
+      this.currentTip = 'Introduzca únicamente números';
+      this.isValid = false;
+    } else {
+      this.currentTip = 'Ok';
+      this.isValid = true;
+    }
+  }
+
   /** Helper function to get the correct initial tip based on the field type. */
   private getInitialTip(type: string): string {
     switch (type) {
-      case 'name': // English type
+      case 'name':
         return 'Introduzca solo el nombre';
       case 'surname':
         return 'Introduzca sus apellidos';
-      case 'email': // English type
+      case 'email':
         return 'Correo personal, opcional';
-      case 'phone': // English type
+      case 'phone':
         return 'Telefono de su amigo, con prefijo';
+      case 'number':
+        return 'Introduzca el valor'
+      case 'iban':
+        return 'Introduzca su IBAN'
       default:
         return '';
     }

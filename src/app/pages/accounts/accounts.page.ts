@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {NavController} from '@ionic/angular';
@@ -11,6 +11,9 @@ import {
 import {AccountItemComponent} from '../../components/account-item/account-item.component';
 import {AccountDetailsPage} from '../account-details/account-details.page';
 import {PageHeaderComponent} from "../../components/page-header/page-header.component";
+import {
+  NewRegisterPageFooterComponent
+} from "../../components/footers/new-register-page-footer/new-register-page-footer.component";
 
 @Component({
   selector: 'app-accounts',
@@ -24,6 +27,7 @@ import {PageHeaderComponent} from "../../components/page-header/page-header.comp
     RouterModule,
     AccountItemComponent,
     PageHeaderComponent,
+    NewRegisterPageFooterComponent,
 
   ],
 })
@@ -65,8 +69,8 @@ class AccountsPage implements OnInit {
     }
   }
 
-  goBack() {
-    this.navCtrl.back();
+  newAccount() {
+    this.navCtrl.navigateForward('/accounts/new-account');
   }
 }
 

@@ -1,94 +1,64 @@
 <ion-content>
+  <app-page-header [pageTitle]="'Crear cuenta'"></app-page-header>
   <div class="page-container">
-    <div class="header-container">
-      <div (click)="goBack()" class="back-btn">
-        <img src="assets/images/back.png"/>
-      </div>
-    </div>
-    <label class="page-title">Crear cuenta</label>
-
-    <div class="textboxContainer">
-      @if (selectedBank == undefined) {
-        <div (click)="openBankSelectionModal()" class="bank-selection-button">
-          Seleccionar banco
-        </div>
-      } @else {
-        <div class="bank-display-container">
-          <div
-            [ngStyle]="{'background-color': selectedBank.corporateColorHex, border: '1px solid ' + selectedBank.corporateColorHexSecondary, 'color': selectedBank.corporateColorHexSecondary}"
-            class="selected-bank-button"
-          >
-            {{ selectedBank.shortName }}
+    <div class="list-container">
+      <div class="textboxContainer">
+        @if (selectedBank == undefined) {
+          <div (click)="openBankSelectionModal()" class="bank-selection-button">
+            Seleccionar banco
           </div>
-          <div (click)="restartBankSelection()" class="restart-selection-button">
-            <img class="restart-selection-icon" src="assets/images/more.png"/>
+        } @else {
+          <div class="bank-display-container">
+            <div
+              [ngStyle]="{'background-color': selectedBank.corporateColorHex, border: '1px solid ' + selectedBank.corporateColorHexSecondary, 'color': selectedBank.corporateColorHexSecondary}"
+              class="selected-bank-button"
+            >
+              {{ selectedBank.shortName }}
+            </div>
+            <div (click)="restartBankSelection()" class="restart-selection-button">
+              <img class="restart-selection-icon" src="assets/images/more.png"/>
+            </div>
           </div>
-        </div>
-      }
-
-      <div class="input-group">
-        <h3>Nombre de cuenta</h3>
-        <input
-          [(ngModel)]="AccountName"
-          class="dataInput reactiveField"
-          id="fname"
-          name="fname"
-          size="9"
-          type="text"
-        />
+        }
       </div>
 
-      <div
-        *ngIf="selectedBank != undefined && selectedBank.shortName != 'Efectivo' "
-        class="input-group"
-      >
-        <label class="input-label">IBAN de cuenta</label>
-        <input
-          [(ngModel)]="AccountIBAN"
-          class="dataInput reactiveField"
-          id="fname"
-          name="fname"
-          size="9"
-          type="number"
-        />
-      </div>
+      <app-textbox
+        (validitychange)="accountNameValid = $event"
+        [(value)]="AccountName"
+        [fieldtype]="'name'"
+        [inputlabel]="'Nombre de cuenta*'"
+        [isrequired]="true"
+        [maxlength]="50">
+      </app-textbox>
 
-      <div class="input-group">
-        <label class="input-label">Moneda *</label>
-        <app-dropdown
-          (selected)="onCurrencySelected($event)"
-          [options]="currencyOptions"
-          placeholder="Selecciona una moneda"
-        ></app-dropdown>
-      </div>
+      <app-textbox
+        (validitychange)="accountIBANValid = $event"
+        [(value)]="AccountIBAN"
+        [fieldtype]="'iban'"
+        [inputlabel]="'IBAN'"
+        [isrequired]="true"
+        [maxlength]="34">
+      </app-textbox>
 
-      <div class="input-group">
-        <label class="input-label">Balance inicial *</label>
-        <div class="balance-input-container">
-          <input
-            [(ngModel)]="startingAmount"
-            class="dataInput reactiveField balance-input"
-            id="fname"
-            name="fname"
-            size="9"
-            type="number"
-          />
-          <img
-            class="currency-icon"
-            src="assets/images/currency/EUR_icon.png"
-          />
-        </div>
-      </div>
-    </div>
+      <app-dropdown
+        [dropdownLabel]="'Moneda'"
+        [dropdownTip]="'Tipo de moneda de la cuenta'"
+        [options]="currencyOptions"
+        [placeholder]="'Selecciona una moneda'">
+      </app-dropdown>
 
-    <!-- Botones cerrar y aceptar -->
-    <div class="action-buttons-container">
-      <div class="action-button close-button">
-        <img class="close-icon" src="assets/images/more.png"/>
-      </div>
-      <div (click)="storeData()" class="action-button accept-button">
-        Aceptar
-      </div>
+      <app-textbox
+        (validitychange)="startingAmountValid = $event"
+        [(value)]="startingAmount"
+        [fieldtype]="'number'"
+        [inputlabel]="'Balance inicial*'"
+        [isrequired]="true"
+        [maxlength]="50">
+      </app-textbox>
     </div>
   </div>
+  <app-accept-cancel-footer
+    (onAcceptClick)="storeData()"
+    (onCancelClick)="goBack()">
+  </app-accept-cancel-footer>
 </ion-content>

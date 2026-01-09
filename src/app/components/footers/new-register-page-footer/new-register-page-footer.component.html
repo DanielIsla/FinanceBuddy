@@ -1,6 +1,6 @@
 <div class="new-anything-footer-container">
   <div (click)="actionButtonClicked()" class="add-friend-button">
     <img *ngIf="buttonIcon != ''" class="add-friend-icon" src="{{buttonIcon}}"/>
-    <label class="add-friend-label"> Nuevo amigo </label>
+    <label class="add-friend-label"> {{ buttonText }} </label>
   </div>
 </div>

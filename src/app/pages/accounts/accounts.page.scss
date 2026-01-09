@@ -1,8 +1,12 @@
-.accountsContainer
-{
-    flex-grow: 1;
-    margin-top: var(--header-top-margin);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.accountPageContainer {
+  height: 100%;
+  width: 100%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  padding: 0 25px;
+}
+
+.accountsListContainer {
 }

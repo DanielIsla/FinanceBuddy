@@ -1,19 +1,18 @@
-<app-page-header [pageTitle]="'Cuenta'" [translucentFloatingHeader] = "false"></app-page-header>
 <ion-content [fullscreen]="false">
-  <div style="height: 100%; width: 100%; float: right; display: flex; flex-direction: column; background-color: var(--color-background); padding: 25px;">
-
-    <div class="accountsContainer">
-      <app-account-item (click)="openAccountActionsModal(account.ID)" *ngFor="let account of accounts"
-                        [accountBalance]="account.Balance" [accountBankCode]="account.BankCode"></app-account-item>
-    </div>
-
-    <div style="display: flex; flex-direction: row-reverse;">
-      <div
-        routerLink="/accounts/new-account"
-        style=" display: flex; padding: 15px; border-radius: 30px; height: 60px; background-color: var(--color-acento); align-items: center;">
-        <img src="assets/images/more.png" style="height: 25px; width: 25px; ">
-        <label style="font-weight: 450; font-size: 16px; text-align: center; margin-left: 5px;"> Nueva cuenta </label>
-      </div>
+  <app-page-header [pageTitle]="'Cuenta'"></app-page-header>
+  <div class="accountPageContainer">
+    <div class="accountsListContainer list-container">
+      <app-account-item
+        (click)="openAccountActionsModal(account.ID)"
+        *ngFor="let account of accounts"
+        [accountBalance]="account.Balance"
+        [accountBankCode]="account.BankCode">
+      </app-account-item>
     </div>
   </div>
+  <app-new-register-page-footer
+    (actionButton)="newAccount()"
+    [buttonIcon]="'assets/images/more.png'"
+    [buttonText]="'Nueva cuenta'">
+  </app-new-register-page-footer>
 </ion-content>

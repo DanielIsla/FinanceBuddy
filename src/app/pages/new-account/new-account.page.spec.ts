@@ -1,5 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NewAccountPage } from './new-account.page';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {NewAccountPage} from './new-account.page';
 
 describe('NewAccountPage', () => {
   let component: NewAccountPage;
