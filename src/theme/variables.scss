@@ -14,12 +14,14 @@
 
   // Status colors
   --color-success: rgb(50, 200, 70);
+  --color-warning: rgb(244, 147, 0);
   --color-error: rgb(220, 50, 50);
 
   // Text colors
   --color-primarytext: rgb(240, 240, 240);
   --color-secondarytext: rgb(160, 160, 160);
   --color-secondarytext-container: rgb(200, 200, 200);
+  --color-primarytext-inverted: rgb(0, 0, 0);
 
   //Other common values
   --field-radius: 20px; //Common radius , for texbox, rectangular buttons, etc

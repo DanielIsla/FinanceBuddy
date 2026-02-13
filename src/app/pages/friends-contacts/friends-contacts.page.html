@@ -22,7 +22,7 @@
         <div class="contact-info">
           <label class="contact-name"> {{ contact.name?.display }} </label>
           <label class="contact-phone">
-            {{ contact.phones && contact.phones[0]?.number }}
+            {{ contact.phones && contact.phones[0].number }}
           </label>
         </div>
         <input [(ngModel)]="contact.checked" type="checkbox"/>

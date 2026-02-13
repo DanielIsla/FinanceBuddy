@@ -1,0 +1,10 @@
+<div class="toast-container" [@toastState]="{ value: isVisible ? 'visible' : 'hidden', params: { bottom: calculatedBottom } }">
+  <div class="toast-content" [ngClass]="type">
+    <div class="toast-icon" [ngSwitch]="type">
+      <img *ngSwitchCase="'success'" src="assets/images/success.png" alt="Success" />
+      <img *ngSwitchCase="'error'" src="assets/images/error.png" alt="Error" />
+      <img *ngSwitchCase="'warning'" src="assets/images/warning.png" alt="Warning" />
+    </div>
+    <span class="toast-message">{{ message }}</span>
+  </div>
+</div>

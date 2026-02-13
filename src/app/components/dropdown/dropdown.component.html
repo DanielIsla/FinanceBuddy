@@ -12,12 +12,12 @@
     class="dropdown-button"
   >
     <span *ngIf="selectedOption; else placeholderText" class="dropdown-text-image">
-      <label class="dropdown-text">{{ selectedOption?.label }}</label>
+      <label class="dropdown-text">{{ selectedOption.label }}</label>
       <img [src]="selectedOption.image" alt="Icono" class="dropdown-image"/>
     </span>
   </button>
 
-  @if (dropdownTip != "''") {
+  @if (dropdownTip !== "''") {
     <h3 class="tip">{{ dropdownTip }}</h3>
   }
 
